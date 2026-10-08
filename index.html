@@ -12,6 +12,10 @@
     padding:0;
 }
 
+html,body{
+    min-height:100%;
+}
+
 body{
     min-height:100vh;
     overflow-x:hidden;
@@ -29,6 +33,7 @@ button{
 .hidden{
     display:none !important;
 }
+
 
 /* =========================================================
    PASSWORD
@@ -104,8 +109,9 @@ button{
     color:#ff8eae;
 }
 
+
 /* =========================================================
-   INTRO
+   INTRO / PLAY SCREEN
 ========================================================= */
 
 #introScreen{
@@ -115,11 +121,83 @@ button{
     justify-content:center;
     align-items:center;
     overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 30%,rgba(133,36,72,.35),transparent 38%),
+        radial-gradient(circle at 20% 70%,rgba(104,27,60,.2),transparent 25%),
+        linear-gradient(145deg,#210915,#0c0309);
+}
+
+/* gothic decorative background */
+
+.gothic-moon{
+    position:absolute;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    right:7%;
+    top:9%;
+    background:rgba(255,190,210,.035);
+    border:1px solid rgba(255,184,207,.13);
+    box-shadow:
+        0 0 80px rgba(255,100,150,.08),
+        inset 0 0 50px rgba(255,150,180,.04);
+}
+
+.gothic-moon::after{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    left:-45px;
+    top:-15px;
+    background:#12050c;
+}
+
+.gothic-cross{
+    position:absolute;
+    color:#8e3658;
+    opacity:.35;
+    font-size:120px;
+    line-height:1;
+    text-shadow:0 0 25px #7d2348;
+}
+
+.cross-left{
+    left:7%;
+    top:14%;
+}
+
+.cross-right{
+    right:11%;
+    bottom:13%;
+    font-size:80px;
+}
+
+.gothic-corner{
+    position:absolute;
+    width:130px;
+    height:130px;
+    border:1px solid rgba(217,102,143,.18);
+}
+
+.corner-one{
+    left:25px;
+    top:25px;
+    border-right:0;
+    border-bottom:0;
+}
+
+.corner-two{
+    right:25px;
+    bottom:25px;
+    border-left:0;
+    border-top:0;
 }
 
 .intro-content{
     position:relative;
-    z-index:2;
+    z-index:5;
     text-align:center;
 }
 
@@ -138,6 +216,13 @@ button{
     letter-spacing:4px;
     text-transform:uppercase;
     font-size:13px;
+}
+
+.intro-ornament{
+    color:#b9577a;
+    letter-spacing:14px;
+    margin:13px 0;
+    font-size:14px;
 }
 
 .intro-characters{
@@ -207,6 +292,7 @@ button{
     border:2px solid #ffd0df;
 }
 
+
 /* =========================================================
    GAME
 ========================================================= */
@@ -245,6 +331,7 @@ button{
     margin:auto;
 }
 
+
 /* =========================================================
    STAGE
 ========================================================= */
@@ -268,8 +355,6 @@ button{
         0 0 35px rgba(255,80,140,.1);
     transition:.6s;
 }
-
-/* BACKGROUNDS */
 
 .stage.castle{
     background:
@@ -302,8 +387,9 @@ button{
         linear-gradient(#18061b,#08030c 70%);
 }
 
+
 /* =========================================================
-   CHARACTER CONTAINER
+   CHARACTERS
 ========================================================= */
 
 .character{
@@ -322,29 +408,30 @@ button{
     overflow:visible;
 }
 
+
 /*
-   IMPORTANT:
-   Outfit visibility is controlled with explicit IDs/classes.
-   This avoids the previous CSS selector problem.
+============================================================
+IMPORTANT OUTFIT SYSTEM
+
+There is NO CSS display:none on .outfit.
+
+JavaScript directly controls:
+    outfit.style.display = "block";
+or:
+    outfit.style.display = "none";
+
+This prevents the previous visibility conflict.
+============================================================
 */
 
 .outfit{
-    display:none;
+    opacity:1;
 }
 
-.character[data-outfit="1"] .outfit-1,
-.character[data-outfit="2"] .outfit-2,
-.character[data-outfit="3"] .outfit-3,
-.character[data-outfit="4"] .outfit-4{
-    display:block;
+.default-clothes{
+    opacity:1;
 }
 
-.character[data-outfit="1"] .default-clothes,
-.character[data-outfit="2"] .default-clothes,
-.character[data-outfit="3"] .default-clothes,
-.character[data-outfit="4"] .default-clothes{
-    display:none;
-}
 
 /* =========================================================
    BASIC BODY
@@ -396,6 +483,7 @@ button{
     stroke-width:3;
     stroke-linecap:round;
 }
+
 
 /* =========================================================
    BURAK OUTFITS
@@ -465,6 +553,7 @@ button{
     fill:#7e2143;
 }
 
+
 /* =========================================================
    ELANIE OUTFITS
 ========================================================= */
@@ -507,6 +596,7 @@ button{
     stroke:#9e4667;
     stroke-width:2;
 }
+
 
 /* =========================================================
    SELECTORS
@@ -571,6 +661,7 @@ button{
     font-size:11px;
 }
 
+
 /* =========================================================
    BACKGROUND OPTIONS
 ========================================================= */
@@ -602,6 +693,7 @@ button{
         #09030d;
 }
 
+
 /* =========================================================
    READY
 ========================================================= */
@@ -625,6 +717,7 @@ button{
 .ready-btn:hover{
     transform:scale(1.04);
 }
+
 
 /* =========================================================
    CELEBRATION
@@ -734,6 +827,7 @@ button{
     gap:45px;
 }
 
+
 /* =========================================================
    RESPONSIVE
 ========================================================= */
@@ -786,6 +880,15 @@ button{
     .logo{
         font-size:23px;
     }
+
+    .gothic-moon{
+        width:170px;
+        height:170px;
+    }
+
+    .gothic-cross{
+        font-size:80px;
+    }
 }
 
 @media(max-width:450px){
@@ -808,14 +911,19 @@ button{
     .background-option{
         font-size:12px;
     }
+
+    .intro-characters{
+        gap:25px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+
 <!-- =====================================================
-     PASSWORD
+     PASSWORD SCREEN
 ===================================================== -->
 
 <section id="passwordScreen">
@@ -848,13 +956,32 @@ button{
 </section>
 
 
+
 <!-- =====================================================
-     INTRO
+     PLAY / INTRO SCREEN
 ===================================================== -->
 
 <section id="introScreen" class="hidden">
 
+    <div class="gothic-moon"></div>
+
+    <div class="gothic-cross cross-left">
+        ✦
+    </div>
+
+    <div class="gothic-cross cross-right">
+        ♱
+    </div>
+
+    <div class="gothic-corner corner-one"></div>
+    <div class="gothic-corner corner-two"></div>
+
+
     <div class="intro-content">
+
+        <div class="intro-ornament">
+            ♱ ───── ✦ ───── ♱
+        </div>
 
         <div class="intro-characters">
 
@@ -884,9 +1011,14 @@ button{
             ✦ Play ✦
         </button>
 
+        <div class="intro-ornament">
+            ♱ ───── ♥ ───── ♱
+        </div>
+
     </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -910,9 +1042,13 @@ button{
 
     <div class="game-area">
 
-        <!-- STAGE -->
+
+        <!-- =================================================
+             STAGE
+        ================================================== -->
 
         <div class="stage" id="stage">
+
 
             <!-- =================================================
                  BURAK
@@ -921,12 +1057,13 @@ button{
             <div
                 class="character"
                 id="burak"
-                data-outfit=""
             >
 
                 <svg viewBox="0 0 230 455">
 
+
                     <!-- BACK HAIR -->
+
                     <path
                         class="burak-hair"
                         d="M65 89
@@ -940,7 +1077,9 @@ button{
                            Z"
                     />
 
+
                     <!-- NECK -->
+
                     <rect
                         class="skin"
                         x="104"
@@ -950,7 +1089,9 @@ button{
                         rx="8"
                     />
 
+
                     <!-- LEFT ARM -->
+
                     <path
                         class="skin"
                         d="M76 157
@@ -963,7 +1104,9 @@ button{
                            Z"
                     />
 
+
                     <!-- RIGHT ARM -->
+
                     <path
                         class="skin"
                         d="M154 157
@@ -976,7 +1119,9 @@ button{
                            Z"
                     />
 
+
                     <!-- BODY -->
+
                     <path
                         class="skin"
                         d="M79 143
@@ -986,7 +1131,9 @@ button{
                            Z"
                     />
 
+
                     <!-- DEFAULT SHORTS -->
+
                     <path
                         class="default-clothes"
                         fill="#29262d"
@@ -1002,7 +1149,9 @@ button{
                            Z"
                     />
 
+
                     <!-- LEGS -->
+
                     <path
                         class="skin"
                         d="M78 315
@@ -1025,7 +1174,9 @@ button{
                            Z"
                     />
 
+
                     <!-- DEFAULT SHOES -->
+
                     <path
                         class="default-clothes"
                         fill="#111116"
@@ -1058,9 +1209,11 @@ button{
                          BURAK OUTFIT 1
                     ================================================== -->
 
-                    <g class="outfit outfit-1">
+                    <g
+                        class="outfit outfit-burak-1"
+                        style="display:none"
+                    >
 
-                        <!-- SHIRT -->
                         <path
                             class="burak-black-shirt"
                             d="M75 143
@@ -1070,7 +1223,6 @@ button{
                                Z"
                         />
 
-                        <!-- PANTS -->
                         <path
                             class="burak-black-pants"
                             d="M72 272
@@ -1083,7 +1235,6 @@ button{
                                Z"
                         />
 
-                        <!-- SHOES -->
                         <path
                             class="burak-black-shoes"
                             d="M75 390
@@ -1105,7 +1256,6 @@ button{
                                Z"
                         />
 
-                        <!-- TEXT -->
                         <text
                             class="brand-deftones"
                             x="115"
@@ -1122,7 +1272,10 @@ button{
                          BURAK OUTFIT 2
                     ================================================== -->
 
-                    <g class="outfit outfit-2">
+                    <g
+                        class="outfit outfit-burak-2"
+                        style="display:none"
+                    >
 
                         <path
                             class="burak-brown-shirt"
@@ -1182,7 +1335,10 @@ button{
                          BURAK OUTFIT 3
                     ================================================== -->
 
-                    <g class="outfit outfit-3">
+                    <g
+                        class="outfit outfit-burak-3"
+                        style="display:none"
+                    >
 
                         <path
                             class="vampire-cape"
@@ -1251,7 +1407,10 @@ button{
                          BURAK OUTFIT 4
                     ================================================== -->
 
-                    <g class="outfit outfit-4">
+                    <g
+                        class="outfit outfit-burak-4"
+                        style="display:none"
+                    >
 
                         <path
                             class="pajama-pink"
@@ -1330,6 +1489,7 @@ button{
                         r="55"
                     />
 
+
                     <!-- EARS -->
 
                     <ellipse
@@ -1349,7 +1509,7 @@ button{
                     />
 
 
-                    <!-- HAIR -->
+                    <!-- FRONT HAIR -->
 
                     <path
                         class="burak-hair"
@@ -1505,6 +1665,7 @@ button{
             </div>
 
 
+
             <!-- =================================================
                  ELANIE
             ================================================== -->
@@ -1512,10 +1673,10 @@ button{
             <div
                 class="character"
                 id="elanie"
-                data-outfit=""
             >
 
                 <svg viewBox="0 0 230 455">
+
 
                     <!-- BACK HAIR -->
 
@@ -1532,6 +1693,7 @@ button{
                            Z"
                     />
 
+
                     <!-- NECK -->
 
                     <rect
@@ -1542,6 +1704,7 @@ button{
                         height="30"
                         rx="8"
                     />
+
 
                     <!-- ARMS -->
 
@@ -1569,6 +1732,7 @@ button{
                            Z"
                     />
 
+
                     <!-- BODY -->
 
                     <path
@@ -1579,6 +1743,7 @@ button{
                            Q115 284 72 270
                            Z"
                     />
+
 
                     <!-- DEFAULT SHORTS -->
 
@@ -1596,6 +1761,7 @@ button{
                            L77 319
                            Z"
                     />
+
 
                     <!-- LEGS -->
 
@@ -1620,6 +1786,7 @@ button{
                            Q120 407 119 397
                            Z"
                     />
+
 
                     <!-- DEFAULT SHOES -->
 
@@ -1655,7 +1822,10 @@ button{
                          ELANIE OUTFIT 1
                     ================================================== -->
 
-                    <g class="outfit outfit-1">
+                    <g
+                        class="outfit outfit-elanie-1"
+                        style="display:none"
+                    >
 
                         <path
                             class="elanie-black-shirt"
@@ -1712,7 +1882,10 @@ button{
                          ELANIE OUTFIT 2
                     ================================================== -->
 
-                    <g class="outfit outfit-2">
+                    <g
+                        class="outfit outfit-elanie-2"
+                        style="display:none"
+                    >
 
                         <path
                             class="elanie-brown-shirt"
@@ -1766,10 +1939,13 @@ button{
 
 
                     <!-- =================================================
-                         ELANIE OUTFIT 3 — FAIRY
+                         ELANIE OUTFIT 3
                     ================================================== -->
 
-                    <g class="outfit outfit-3">
+                    <g
+                        class="outfit outfit-elanie-3"
+                        style="display:none"
+                    >
 
                         <ellipse
                             class="fairy-wing"
@@ -1857,7 +2033,10 @@ button{
                          ELANIE OUTFIT 4
                     ================================================== -->
 
-                    <g class="outfit outfit-4">
+                    <g
+                        class="outfit outfit-elanie-4"
+                        style="display:none"
+                    >
 
                         <path
                             class="pajama-pink"
@@ -1936,6 +2115,7 @@ button{
                         r="55"
                     />
 
+
                     <!-- EARS -->
 
                     <ellipse
@@ -1969,6 +2149,7 @@ button{
                            Z"
                     />
 
+
                     <!-- BANGS -->
 
                     <path
@@ -1997,6 +2178,7 @@ button{
                            Q140 71 128 66
                            Z"
                     />
+
 
                     <!-- SIDE HAIR -->
 
@@ -2068,7 +2250,7 @@ button{
                     />
 
 
-                    <!-- EYEBROWS -->
+                    <!-- BROWS -->
 
                     <path
                         class="brow"
@@ -2155,6 +2337,7 @@ button{
             </div>
 
 
+
             <!-- =================================================
                  CELEBRATION
             ================================================== -->
@@ -2182,8 +2365,9 @@ button{
         </div>
 
 
+
         <!-- =================================================
-             BURAK SELECTOR
+             BURAK OUTFITS
         ================================================== -->
 
         <div
@@ -2238,8 +2422,9 @@ button{
         </div>
 
 
+
         <!-- =================================================
-             ELANIE SELECTOR
+             ELANIE OUTFITS
         ================================================== -->
 
         <div
@@ -2294,6 +2479,7 @@ button{
         </div>
 
 
+
         <!-- =================================================
              BACKGROUNDS
         ================================================== -->
@@ -2346,7 +2532,10 @@ button{
         </div>
 
 
-        <!-- READY -->
+
+        <!-- =================================================
+             READY
+        ================================================== -->
 
         <div
             class="ready-wrap hidden"
@@ -2365,6 +2554,7 @@ button{
     </div>
 
 </section>
+
 
 
 <script>
@@ -2466,7 +2656,7 @@ passwordInput.addEventListener(
 
 
 /* =========================================================
-   START
+   START GAME
 ========================================================= */
 
 startButton.addEventListener(
@@ -2483,7 +2673,91 @@ startButton.addEventListener(
 
 /* =========================================================
    OUTFIT SYSTEM
-   THIS IS THE IMPORTANT FIX
+========================================================= */
+
+/*
+    THIS IS THE FIX.
+
+    Every character contains four independent SVG outfit groups.
+
+    When the user clicks an outfit:
+
+    1. Every outfit is hidden directly with style.display.
+    2. Default shorts/shoes are hidden.
+    3. The selected outfit gets style.display = "block".
+    4. No CSS selector controls whether the outfit is visible.
+
+    Therefore the selected clothes are actually rendered
+    on top of the character body.
+*/
+
+function dressCharacter(character, outfitNumber){
+
+    const allOutfits =
+        character.querySelectorAll(".outfit");
+
+    const defaultClothes =
+        character.querySelectorAll(".default-clothes");
+
+
+    /* Hide every outfit */
+
+    allOutfits.forEach(function(outfit){
+
+        outfit.style.display = "none";
+
+    });
+
+
+    /* Hide default shorts and shoes */
+
+    defaultClothes.forEach(function(item){
+
+        item.style.display = "none";
+
+    });
+
+
+    /*
+        Determine the exact outfit group.
+    */
+
+    let selectedOutfit = null;
+
+    if(character === burak){
+
+        selectedOutfit =
+            character.querySelector(
+                ".outfit-burak-" + outfitNumber
+            );
+
+    }
+
+    if(character === elanie){
+
+        selectedOutfit =
+            character.querySelector(
+                ".outfit-elanie-" + outfitNumber
+            );
+
+    }
+
+
+    /*
+        Directly display the selected clothes.
+    */
+
+    if(selectedOutfit){
+
+        selectedOutfit.style.display = "block";
+
+    }
+
+}
+
+
+/* =========================================================
+   OUTFIT BUTTONS
 ========================================================= */
 
 document
@@ -2501,16 +2775,10 @@ document
                     this.dataset.outfit;
 
 
-                /*
-                    Instead of relying on a CSS class like
-                    outfit-1, outfit-2, etc., we use a dedicated
-                    data attribute.
-                */
-
                 if(characterName === "burak"){
 
-                    burak.setAttribute(
-                        "data-outfit",
+                    dressCharacter(
+                        burak,
                         outfitNumber
                     );
 
@@ -2529,15 +2797,17 @@ document
 
                         });
 
-                    this.classList.add("selected");
+                    this.classList.add(
+                        "selected"
+                    );
 
                 }
 
 
                 if(characterName === "elanie"){
 
-                    elanie.setAttribute(
-                        "data-outfit",
+                    dressCharacter(
+                        elanie,
                         outfitNumber
                     );
 
@@ -2556,14 +2826,16 @@ document
 
                         });
 
-                    this.classList.add("selected");
+                    this.classList.add(
+                        "selected"
+                    );
 
                 }
 
 
                 /*
-                    Once both characters have clothes,
-                    unlock backgrounds.
+                    Once both characters are dressed,
+                    show background choices.
                 */
 
                 if(
@@ -2598,12 +2870,14 @@ document
                 const bg =
                     this.dataset.bg;
 
+
                 stage.classList.remove(
                     "castle",
                     "saturn",
                     "bedroom",
                     "concert"
                 );
+
 
                 stage.classList.add(bg);
 
@@ -2622,13 +2896,11 @@ document
 
                     });
 
-                this.classList.add("selected");
 
+                this.classList.add(
+                    "selected"
+                );
 
-                /*
-                    Ready becomes available only
-                    after a background is selected.
-                */
 
                 if(selectedBackground){
 
@@ -2671,7 +2943,9 @@ document
             );
 
 
-            stage.classList.add("final");
+            stage.classList.add(
+                "final"
+            );
 
 
             createConfetti();
@@ -2681,11 +2955,6 @@ document
                 "show"
             );
 
-
-            /*
-                Celebration fades away after a few seconds,
-                leaving the final couple screen.
-            */
 
             setTimeout(
                 function(){
@@ -2726,7 +2995,9 @@ function createConfetti(){
             Math.random() * 360 +
             "deg)";
 
-        confetti.appendChild(piece);
+        confetti.appendChild(
+            piece
+        );
 
     }
 
