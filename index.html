@@ -3,22 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#3d1020">
 <title>Legendary Couple's Style</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@500;600;700&display=swap');
 
 :root {
-    --wine: #4b1020;
-    --wine-dark: #270811;
-    --wine-light: #741f38;
-    --dusty: #d99aa9;
-    --dusty-light: #f0c7d0;
+    --wine: #481020;
+    --wine-dark: #210711;
+    --wine-deep: #300b17;
+    --wine-light: #731f3b;
+
+    --dusty-pink: #d99baa;
+    --pink-light: #f0c6d0;
+    --pink-soft: #eab0bf;
+
+    --gold: #d7b15b;
+    --gold-light: #f3d98c;
     --cream: #fff0e5;
-    --gold: #d9b45b;
-    --gold-light: #f5d98b;
-    --brown: #482c27;
-    --pink: #e9a8b9;
+
+    --skin: #e2b99d;
+    --skin-light: #e9c4a9;
+
+    --brown-eyes: #4b2d26;
 }
 
 * {
@@ -41,23 +49,38 @@ body {
     touch-action: manipulation;
 }
 
-button {
+button,
+input {
     font: inherit;
 }
 
-/* =====================================================
-   GLOBAL BACKGROUND
-===================================================== */
+/* =========================================================
+   MAIN GAME
+========================================================= */
 
 #game {
+    position: relative;
     width: 100%;
     height: 100%;
-    position: relative;
     overflow: hidden;
+
     background:
-        radial-gradient(circle at 20% 20%, rgba(217,154,169,.16), transparent 28%),
-        radial-gradient(circle at 80% 75%, rgba(217,180,91,.08), transparent 30%),
-        linear-gradient(135deg, #25070f 0%, #4c1021 45%, #32101a 100%);
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(221, 158, 176, .16),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 80% 75%,
+            rgba(216, 176, 91, .09),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #23070f 0%,
+            #4a1021 48%,
+            #310c18 100%
+        );
 }
 
 #game::before {
@@ -65,23 +88,37 @@ button {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: .13;
+    opacity: .12;
+
     background-image:
-        radial-gradient(circle, #f3d58b 1px, transparent 1px);
-    background-size: 30px 30px;
-    mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+        radial-gradient(
+            circle,
+            #f4d68c 1px,
+            transparent 1px
+        );
+
+    background-size: 31px 31px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 20%,
+            black 80%,
+            transparent
+        );
 }
 
-/* =====================================================
-   ROYAL / COQUETTE FRAME
-===================================================== */
+/* =========================================================
+   ROYAL FRAME
+========================================================= */
 
 .frame {
     position: absolute;
     inset: 13px;
-    border: 1px solid rgba(224,187,98,.55);
+    border: 1px solid rgba(224, 187, 98, .55);
     pointer-events: none;
-    z-index: 50;
+    z-index: 500;
 }
 
 .frame::before,
@@ -93,8 +130,8 @@ button {
 
 .frame::before {
     content: "✦";
-    left: -7px;
     top: -16px;
+    left: -7px;
 }
 
 .frame::after {
@@ -107,8 +144,9 @@ button {
     position: absolute;
     width: 58px;
     height: 58px;
-    border-color: rgba(227,185,87,.65);
-    z-index: 51;
+    border-color: rgba(227, 185, 87, .65);
+    pointer-events: none;
+    z-index: 501;
 }
 
 .corner.tl {
@@ -139,20 +177,25 @@ button {
     border-right: 2px solid;
 }
 
-/* =====================================================
+/* =========================================================
    SCREENS
-===================================================== */
+========================================================= */
 
 .screen {
     position: absolute;
     inset: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity .65s ease, visibility .65s ease;
+
+    transition:
+        opacity .65s ease,
+        visibility .65s ease;
 }
 
 .screen.active {
@@ -161,93 +204,128 @@ button {
     pointer-events: auto;
 }
 
-/* =====================================================
-   PASSWORD SCREEN
-===================================================== */
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+#passwordScreen {
+    text-align: center;
+}
 
 .password-box {
-    width: min(430px, 90vw);
-    text-align: center;
+    width: min(440px, 90vw);
     padding: 30px;
 }
 
-.crown {
+.password-crown {
     color: var(--gold-light);
-    font-size: 45px;
-    text-shadow: 0 0 15px rgba(245,217,139,.35);
+    font-size: 48px;
+
+    text-shadow:
+        0 0 14px rgba(245, 217, 139, .35);
 }
 
 .password-decoration {
-    color: var(--dusty);
-    font-family: "Great Vibes", cursive;
-    font-size: 27px;
     margin: 8px 0 12px;
+
+    color: var(--pink-light);
+
+    font-family: "Great Vibes", cursive;
+    font-size: 28px;
 }
 
 .password-title {
     margin: 0;
+
     color: #ffe9dc;
-    font-size: clamp(37px, 9vw, 58px);
+
+    font-size: clamp(36px, 9vw, 58px);
     font-weight: 500;
 }
 
 .password-line {
-    width: 180px;
+    width: 185px;
     height: 1px;
-    margin: 23px auto;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        var(--gold),
-        transparent
-    );
+
+    margin: 22px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
 }
 
 .code-input {
-    width: 180px;
+    width: 185px;
     height: 62px;
-    border-radius: 15px;
+
     border: 1px solid var(--gold);
+    border-radius: 15px;
     outline: none;
-    background: rgba(26,4,11,.55);
-    color: var(--dusty-light);
+
+    background: rgba(25, 4, 11, .58);
+
+    color: var(--pink-light);
+
     text-align: center;
+
     font-size: 30px;
     letter-spacing: 13px;
+
     padding-left: 13px;
-    box-shadow: inset 0 0 20px rgba(0,0,0,.25);
+
+    box-shadow:
+        inset 0 0 20px rgba(0,0,0,.25);
 }
 
 .code-input:focus {
-    border-color: var(--dusty-light);
-    box-shadow: 0 0 20px rgba(224,161,177,.2);
+    border-color: var(--pink-light);
+
+    box-shadow:
+        0 0 22px rgba(224, 161, 177, .2);
 }
 
-.unlock {
+.unlock-button {
     margin-top: 18px;
-    padding: 10px 30px;
+
+    padding: 10px 31px;
+
     border: 1px solid var(--gold);
     border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #711d38,
+            #46101f
+        );
+
     color: #ffe9bd;
-    background: linear-gradient(135deg,#701d38,#45101f);
+
     cursor: pointer;
 }
 
-.error {
+.password-error {
     height: 24px;
     margin-top: 10px;
+
     color: #efaabb;
+
     opacity: 0;
+
     transition: opacity .25s;
 }
 
-.error.show {
+.password-error.show {
     opacity: 1;
 }
 
-/* =====================================================
-   TITLE / PLAY SCREEN
-===================================================== */
+/* =========================================================
+   START SCREEN
+========================================================= */
 
 #startScreen {
     flex-direction: column;
@@ -256,57 +334,110 @@ button {
 
 .game-title {
     position: absolute;
-    top: 8%;
+    top: 7%;
+
     margin: 0;
+
     color: #f4d69c;
-    font-size: clamp(28px, 7vw, 50px);
+
+    font-size: clamp(29px, 7vw, 51px);
     font-weight: 500;
+
     letter-spacing: 2px;
 }
 
 .game-title span {
     display: block;
+
+    color: var(--pink-light);
+
     font-family: "Great Vibes", cursive;
-    color: var(--dusty-light);
     font-size: 1.15em;
+
     letter-spacing: 0;
 }
 
-#playButton {
+.play-stars {
     position: absolute;
-    bottom: 13%;
-    border: none;
-    background: transparent;
-    color: #ffe6a1;
-    font-family: "Great Vibes", cursive;
-    font-size: clamp(70px, 18vw, 125px);
-    cursor: pointer;
-    text-shadow:
-        0 0 8px rgba(246,214,133,.6),
-        0 0 35px rgba(246,178,195,.25);
-    transition: transform .25s;
+    inset: 0;
+
+    pointer-events: none;
 }
 
-#playButton:active {
-    transform: scale(.94);
+.star {
+    position: absolute;
+
+    color: var(--gold-light);
+
+    font-size: 18px;
+
+    animation:
+        twinkle 2.4s ease-in-out infinite;
 }
 
-/* =====================================================
-   CHIBI START CHARACTERS
-===================================================== */
+.star:nth-child(1) {
+    left: 13%;
+    top: 27%;
+}
+
+.star:nth-child(2) {
+    right: 15%;
+    top: 31%;
+    animation-delay: .5s;
+}
+
+.star:nth-child(3) {
+    left: 24%;
+    top: 45%;
+    animation-delay: 1s;
+}
+
+.star:nth-child(4) {
+    right: 25%;
+    top: 46%;
+    animation-delay: 1.5s;
+}
+
+.star:nth-child(5) {
+    left: 50%;
+    top: 22%;
+    animation-delay: .8s;
+}
+
+@keyframes twinkle {
+    0%,100% {
+        opacity: .25;
+        transform: scale(.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.25);
+    }
+}
+
+/* =========================================================
+   START CHIBIS
+========================================================= */
 
 .start-characters {
     position: absolute;
+
     top: 22%;
-    width: min(440px, 85vw);
+
+    width: min(500px, 90vw);
     height: 300px;
 }
 
+/* Shared miniature chibi */
+
 .mini-character {
     position: absolute;
+
     bottom: 0;
+
     width: 145px;
-    height: 245px;
+    height: 250px;
 }
 
 .mini-character.left {
@@ -319,685 +450,1435 @@ button {
 
 .mini-head {
     position: absolute;
+
+    left: 20px;
+    top: 28px;
+
     width: 105px;
     height: 110px;
-    left: 20px;
-    top: 8px;
-    background: #e4bb9f;
-    border-radius: 48% 48% 45% 45%;
+
+    background: var(--skin);
+
+    border-radius:
+        48% 48% 45% 45%;
+
     z-index: 5;
-    box-shadow: inset 0 -6px 0 rgba(112,58,51,.08);
 }
 
-.mini-hair-boy {
+.mini-boy-hair {
     position: absolute;
-    width: 118px;
-    height: 115px;
-    left: 14px;
-    top: 0;
-    border-radius: 48% 52% 35% 45%;
-    background: #291613;
-    z-index: 7;
-}
 
-.mini-hair-boy::after {
-    content: "";
-    position: absolute;
-    width: 33px;
-    height: 83px;
-    right: -3px;
-    top: 28px;
-    background: #291613;
-    border-radius: 0 50% 50% 30%;
-}
-
-.mini-hair-girl {
-    position: absolute;
-    width: 120px;
-    height: 128px;
     left: 13px;
-    top: -3px;
-    border-radius: 50% 50% 40% 45%;
-    background: #651f25;
-    z-index: 7;
+    top: 17px;
+
+    width: 120px;
+    height: 118px;
+
+    background: #291613;
+
+    border-radius:
+        50% 52% 38% 45%;
+
+    z-index: 8;
 }
 
-.mini-hair-girl::before {
+.mini-boy-hair::before,
+.mini-boy-hair::after {
     content: "";
+
     position: absolute;
-    left: 42px;
-    top: 57px;
-    width: 60px;
-    height: 78px;
-    background: #651f25;
-    border-radius: 0 0 45% 50%;
+
+    background: #291613;
+
+    border-radius: 50%;
+}
+
+.mini-boy-hair::before {
+    left: 0;
+    top: 30px;
+
+    width: 31px;
+    height: 80px;
+
+    transform: rotate(7deg);
+}
+
+.mini-boy-hair::after {
+    right: -2px;
+    top: 29px;
+
+    width: 34px;
+    height: 84px;
+
+    transform: rotate(-6deg);
+}
+
+.mini-girl-hair {
+    position: absolute;
+
+    left: 12px;
+    top: 15px;
+
+    width: 122px;
+    height: 132px;
+
+    background: #681e26;
+
+    border-radius:
+        50% 50% 40% 42%;
+
+    z-index: 8;
+}
+
+.mini-girl-hair::after {
+    content: "";
+
+    position: absolute;
+
+    left: 5px;
+    top: 65px;
+
+    width: 113px;
+    height: 75px;
+
+    background: #681e26;
+
+    border-radius:
+        0 0 48% 48%;
 }
 
 .mini-bangs {
     position: absolute;
-    z-index: 8;
-    left: 32px;
-    top: 37px;
-    width: 77px;
-    height: 35px;
-    background: #651f25;
-    border-radius: 0 0 45% 45%;
+
+    left: 30px;
+    top: 47px;
+
+    width: 84px;
+    height: 38px;
+
+    background: #681e26;
+
+    border-radius:
+        0 0 45% 45%;
+
+    z-index: 12;
 }
+
+/* Huge chibi eyes */
 
 .mini-eye {
     position: absolute;
-    width: 12px;
-    height: 17px;
-    background: #4a2a24;
+
+    top: 67px;
+
+    width: 17px;
+    height: 24px;
+
+    background: var(--brown-eyes);
+
     border-radius: 50%;
-    top: 54px;
-    z-index: 10;
+
+    z-index: 20;
+
+    box-shadow:
+        inset 3px 3px 0 rgba(255,255,255,.35);
 }
 
-.mini-eye.left-eye {
-    left: 39px;
+.mini-eye.left {
+    left: 35px;
 }
 
-.mini-eye.right-eye {
-    right: 39px;
+.mini-eye.right {
+    right: 35px;
 }
 
 .mini-lash {
     position: absolute;
-    width: 20px;
-    height: 11px;
-    border-top: 3px solid #35201e;
-    z-index: 11;
-    top: 51px;
+
+    top: 63px;
+
+    width: 22px;
+    height: 12px;
+
+    border-top:
+        3px solid #38201d;
+
+    z-index: 21;
 }
 
-.mini-lash.left-lash {
-    left: 34px;
+.mini-lash.left {
+    left: 31px;
     transform: rotate(-12deg);
 }
 
-.mini-lash.right-lash {
-    right: 34px;
+.mini-lash.right {
+    right: 31px;
     transform: rotate(12deg);
 }
 
+/* cute mouth */
+
 .mini-mouth {
     position: absolute;
-    left: 47px;
-    top: 79px;
-    width: 13px;
-    height: 6px;
-    border-bottom: 2px solid #6b3034;
-    border-radius: 0 0 50% 50%;
-    z-index: 10;
+
+    left: 46px;
+    top: 96px;
+
+    width: 16px;
+    height: 8px;
+
+    border-bottom:
+        2px solid #71343a;
+
+    border-radius:
+        0 0 50% 50%;
+
+    z-index: 21;
 }
 
-.blush {
+/* blush */
+
+.mini-blush {
     position: absolute;
-    width: 22px;
-    height: 10px;
-    background: rgba(213,94,111,.3);
-    filter: blur(4px);
+
+    top: 91px;
+
+    width: 25px;
+    height: 12px;
+
+    background:
+        rgba(218, 92, 113, .3);
+
+    filter: blur(5px);
+
     border-radius: 50%;
-    top: 77px;
-    z-index: 9;
+
+    z-index: 19;
 }
 
-.blush.left-blush { left: 16px; }
-.blush.right-blush { right: 16px; }
+.mini-blush.left {
+    left: 12px;
+}
+
+.mini-blush.right {
+    right: 12px;
+}
 
 .mini-body {
     position: absolute;
+
     left: 35px;
-    top: 112px;
+    top: 135px;
+
     width: 75px;
-    height: 110px;
-    background: #cfa17f;
-    border-radius: 35px 35px 22px 22px;
+    height: 95px;
+
+    background: var(--skin);
+
+    border-radius:
+        34px 34px 20px 20px;
+
+    z-index: 3;
+}
+
+/* default shorts */
+
+.mini-shorts {
+    position: absolute;
+
+    left: 34px;
+    top: 210px;
+
+    width: 77px;
+    height: 32px;
+
+    background: #36212a;
+
+    border-radius:
+        7px 7px 12px 12px;
+
+    z-index: 6;
 }
 
 .mini-arm {
     position: absolute;
-    width: 20px;
-    height: 82px;
-    top: 122px;
-    background: #e4bb9f;
+
+    top: 145px;
+
+    width: 19px;
+    height: 73px;
+
+    background: var(--skin);
+
     border-radius: 20px;
+
     z-index: 4;
 }
 
-.arm-left { left: 22px; transform: rotate(18deg); }
-.arm-right { right: 22px; transform: rotate(-18deg); }
+.mini-arm.left {
+    left: 21px;
+    transform: rotate(12deg);
+}
 
-.hands {
+.mini-arm.right {
+    right: 21px;
+    transform: rotate(-12deg);
+}
+
+#playButton {
     position: absolute;
-    width: 19px;
-    height: 19px;
-    border-radius: 50%;
-    background: #e4bb9f;
-    top: 192px;
-    z-index: 20;
+
+    bottom: 11%;
+
+    border: none;
+
+    background: transparent;
+
+    color: #ffe6a1;
+
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(72px, 18vw, 125px);
+
+    cursor: pointer;
+
+    text-shadow:
+        0 0 9px rgba(246,214,133,.6),
+        0 0 35px rgba(246,178,195,.25);
+
+    transition:
+        transform .25s;
 }
 
-.start-characters .hands {
-    box-shadow: 0 0 0 2px rgba(229,178,190,.25);
+#playButton:active {
+    transform: scale(.94);
 }
 
-.hand-boy {
-    right: 2px;
-}
-
-.hand-girl {
-    left: 2px;
-}
-
-/* =====================================================
-   GAME SCREEN
-===================================================== */
+/* =========================================================
+   DRESS SCREEN
+========================================================= */
 
 #dressScreen {
     flex-direction: column;
 }
 
+/* =========================================================
+   BACKGROUND SCENE
+========================================================= */
+
 #dressStage {
     position: absolute;
-    top: 8%;
-    width: min(650px, 94vw);
-    height: 52vh;
-    min-height: 310px;
-    max-height: 470px;
+
+    top: 7%;
+
+    width: min(720px, 96vw);
+    height: 57vh;
+
+    min-height: 350px;
+    max-height: 500px;
+
+    overflow: visible;
+
+    border-radius: 24px;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(218,158,177,.12),
+            transparent 48%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(89, 22, 40, .45),
+            rgba(34, 7, 15, .5)
+        );
+
+    transition:
+        background .7s ease,
+        box-shadow .7s ease;
 }
 
-/* decorative stage */
+/* Default decorative scene */
+
+#dressStage::before {
+    content: "✦     ✧     ✦     ✧     ✦";
+
+    position: absolute;
+
+    top: 10px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: rgba(244,215,145,.65);
+
+    font-size: 14px;
+
+    letter-spacing: 10px;
+}
+
+/* =========================================================
+   BACKGROUNDS
+========================================================= */
+
+/* Dracula Castle */
+
+#dressStage.bg-castle {
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(169,59,73,.32),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #170812 0%,
+            #3d101b 55%,
+            #18070d 100%
+        );
+}
+
+#dressStage.bg-castle::after {
+    content: "♜        ♜        ♜";
+
+    position: absolute;
+
+    left: 50%;
+    top: 32px;
+
+    transform: translateX(-50%);
+
+    color: rgba(214,178,95,.42);
+
+    font-size: 65px;
+
+    letter-spacing: 22px;
+
+    white-space: nowrap;
+}
+
+/* Saturn */
+
+#dressStage.bg-saturn {
+    background:
+        radial-gradient(
+            circle at 72% 27%,
+            #e3bf7b 0 9px,
+            rgba(227,191,123,.35) 10px,
+            transparent 35px
+        ),
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(240,214,170,.7) 0 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle at 35% 15%,
+            rgba(240,214,170,.7) 0 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle at 80% 65%,
+            rgba(240,214,170,.7) 0 1px,
+            transparent 2px
+        ),
+        linear-gradient(
+            180deg,
+            #080918,
+            #17102e 55%,
+            #080711
+        );
+}
+
+#dressStage.bg-saturn::after {
+    content: "";
+
+    position: absolute;
+
+    width: 110px;
+    height: 30px;
+
+    right: 55px;
+    top: 48px;
+
+    border:
+        5px solid rgba(231,199,133,.6);
+
+    border-radius: 50%;
+
+    transform: rotate(-15deg);
+}
+
+/* Bedroom */
+
+#dressStage.bg-bedroom {
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(218,154,170,.18),
+            transparent 45%
+        ),
+        linear-gradient(
+            180deg,
+            #210a16,
+            #32101e 55%,
+            #17060e
+        );
+}
+
+#dressStage.bg-bedroom::after {
+    content: "♡";
+
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+
+    transform: translateX(-50%);
+
+    color: rgba(226,157,177,.2);
+
+    font-size: 150px;
+
+    font-family: "Great Vibes", cursive;
+}
+
+/* Concert */
+
+#dressStage.bg-concert {
+    background:
+        radial-gradient(
+            ellipse at 50% 5%,
+            rgba(218,180,94,.38),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 18% 25%,
+            rgba(220,93,130,.24),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 82% 25%,
+            rgba(220,93,130,.24),
+            transparent 25%
+        ),
+        linear-gradient(
+            180deg,
+            #130610,
+            #2d0b20 55%,
+            #090409
+        );
+}
+
+#dressStage.bg-concert::after {
+    content: "♫     ♫     ♫";
+
+    position: absolute;
+
+    left: 50%;
+    top: 35px;
+
+    transform: translateX(-50%);
+
+    color: rgba(241,203,125,.55);
+
+    font-size: 40px;
+
+    letter-spacing: 25px;
+
+    white-space: nowrap;
+}
+
+/* =========================================================
+   STAGE FLOOR
+========================================================= */
+
 .stage-floor {
     position: absolute;
+
     left: 50%;
-    bottom: 4%;
+    bottom: 2%;
+
     width: 88%;
-    height: 28px;
+    height: 32px;
+
     transform: translateX(-50%);
+
     border-radius: 50%;
-    background: linear-gradient(
-        to bottom,
-        #a66a76,
-        #5c1c2d
-    );
-    border: 1px solid rgba(230,190,100,.6);
-    box-shadow: 0 8px 30px rgba(0,0,0,.35);
+
+    background:
+        linear-gradient(
+            to bottom,
+            #a96d79,
+            #571a2b
+        );
+
+    border:
+        1px solid rgba(230,190,100,.65);
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.4);
+
+    z-index: 5;
 }
 
 .stage-floor::before {
     content: "✦  ✧  ✦  ✧  ✦";
+
     position: absolute;
+
     left: 50%;
-    top: 3px;
+    top: 4px;
+
     transform: translateX(-50%);
+
     color: #f3d98e;
+
     font-size: 12px;
+
     letter-spacing: 12px;
 }
 
-/* =====================================================
+/* =========================================================
    FULL CHIBI CHARACTERS
-===================================================== */
+========================================================= */
 
 .character {
     position: absolute;
-    bottom: 9%;
+
+    bottom: 7%;
+
     width: 180px;
-    height: 340px;
+    height: 350px;
+
     transition:
         left .8s cubic-bezier(.2,.8,.2,1),
         right .8s cubic-bezier(.2,.8,.2,1),
         transform .8s;
+
+    z-index: 20;
 }
 
+/*
+   IMPORTANT:
+   They deliberately start farther apart.
+*/
+
 #boy {
-    left: 18%;
+    left: 9%;
 }
 
 #girl {
-    right: 18%;
+    right: 9%;
 }
 
 .character.closer#boy {
-    left: 25%;
+    left: 22%;
 }
 
 .character.closer#girl {
-    right: 25%;
+    right: 22%;
 }
+
+/* =========================================================
+   HEAD / HAIR
+========================================================= */
 
 .head {
     position: absolute;
-    width: 130px;
-    height: 135px;
+
     left: 25px;
     top: 5px;
-    border-radius: 48% 48% 44% 44%;
-    background: #e2b99d;
+
+    width: 130px;
+    height: 137px;
+
+    background: var(--skin);
+
+    border-radius:
+        48% 48% 44% 44%;
+
     z-index: 8;
+
+    box-shadow:
+        inset 0 -7px 0 rgba(112,58,51,.07);
 }
+
+/* Boy dark brown hair */
 
 .boy-hair {
     position: absolute;
-    width: 142px;
-    height: 142px;
-    left: 19px;
-    top: -6px;
+
+    left: 18px;
+    top: -7px;
+
+    width: 144px;
+    height: 145px;
+
     background: #291512;
-    border-radius: 50% 50% 35% 45%;
+
+    border-radius:
+        50% 52% 35% 45%;
+
     z-index: 10;
 }
 
-.boy-hair::before {
+.boy-hair::before,
+.boy-hair::after {
     content: "";
+
     position: absolute;
-    left: 10px;
-    top: 30px;
-    width: 35px;
-    height: 102px;
+
     background: #291512;
+
     border-radius: 50%;
-    transform: rotate(5deg);
+}
+
+.boy-hair::before {
+    left: 3px;
+    top: 36px;
+
+    width: 37px;
+    height: 103px;
+
+    transform: rotate(6deg);
 }
 
 .boy-hair::after {
-    content: "";
-    position: absolute;
-    right: 6px;
-    top: 29px;
-    width: 36px;
-    height: 105px;
-    background: #291512;
-    border-radius: 50%;
-    transform: rotate(-4deg);
+    right: 0;
+    top: 34px;
+
+    width: 39px;
+    height: 106px;
+
+    transform: rotate(-5deg);
 }
+
+/* Girl dark red hair */
 
 .girl-hair {
     position: absolute;
-    width: 145px;
-    height: 150px;
+
     left: 17px;
     top: -7px;
+
+    width: 146px;
+    height: 152px;
+
     background: #681e26;
-    border-radius: 50% 50% 38% 42%;
+
+    border-radius:
+        50% 50% 38% 42%;
+
     z-index: 10;
 }
 
 .girl-hair::after {
     content: "";
+
     position: absolute;
+
     left: 5px;
-    top: 65px;
-    width: 135px;
-    height: 100px;
+    top: 66px;
+
+    width: 136px;
+    height: 105px;
+
     background: #681e26;
-    border-radius: 0 0 48% 48%;
+
+    border-radius:
+        0 0 48% 48%;
 }
 
 .girl-bangs {
     position: absolute;
-    left: 32px;
+
+    left: 31px;
     top: 38px;
-    width: 96px;
-    height: 49px;
+
+    width: 98px;
+    height: 50px;
+
     background: #681e26;
-    border-radius: 0 0 45% 45%;
+
+    border-radius:
+        0 0 45% 45%;
+
     z-index: 12;
 }
 
+/* =========================================================
+   HUGE BROWN CHIBI EYES
+========================================================= */
+
 .eye {
     position: absolute;
-    top: 69px;
-    width: 14px;
-    height: 19px;
-    background: #4c2c25;
+
+    top: 68px;
+
+    width: 19px;
+    height: 27px;
+
+    background: var(--brown-eyes);
+
     border-radius: 50%;
+
     z-index: 20;
+
+    box-shadow:
+        inset 4px 4px 0 rgba(255,255,255,.38),
+        0 1px 2px rgba(0,0,0,.15);
 }
 
 .eye.left {
-    left: 43px;
+    left: 39px;
 }
 
 .eye.right {
-    right: 43px;
+    right: 39px;
 }
+
+/* Girl eyelashes */
 
 .lash {
     position: absolute;
-    top: 65px;
-    width: 22px;
-    height: 13px;
-    border-top: 3px solid #34201d;
+
+    top: 64px;
+
+    width: 24px;
+    height: 14px;
+
+    border-top:
+        3px solid #34201d;
+
     z-index: 21;
 }
 
 .lash.left {
-    left: 39px;
+    left: 35px;
     transform: rotate(-12deg);
 }
 
 .lash.right {
-    right: 39px;
+    right: 35px;
     transform: rotate(12deg);
 }
 
+/* =========================================================
+   FACE
+========================================================= */
+
 .mouth {
     position: absolute;
-    left: 58px;
-    top: 97px;
-    width: 15px;
-    height: 7px;
-    border-bottom: 2px solid #6b3035;
-    border-radius: 0 0 50% 50%;
-    z-index: 20;
+
+    left: 57px;
+    top: 103px;
+
+    width: 17px;
+    height: 8px;
+
+    border-bottom:
+        2px solid #71343a;
+
+    border-radius:
+        0 0 50% 50%;
+
+    z-index: 21;
 }
 
 .face-blush {
     position: absolute;
-    width: 29px;
-    height: 12px;
-    top: 94px;
-    background: rgba(213,92,112,.3);
+
+    top: 98px;
+
+    width: 30px;
+    height: 13px;
+
+    background:
+        rgba(218,92,113,.31);
+
     filter: blur(5px);
+
     border-radius: 50%;
+
     z-index: 19;
 }
 
 .face-blush.left {
-    left: 19px;
+    left: 15px;
 }
 
 .face-blush.right {
-    right: 19px;
+    right: 15px;
 }
+
+/* =========================================================
+   BODY
+========================================================= */
 
 .body {
     position: absolute;
+
     left: 43px;
     top: 137px;
+
     width: 95px;
-    height: 115px;
-    background: #d2a582;
-    border-radius: 40px 40px 25px 25px;
+    height: 118px;
+
+    background: var(--skin);
+
+    border-radius:
+        40px 40px 25px 25px;
+
     z-index: 3;
 }
 
-/* legs: neutral stylized base */
-.leg {
+/*
+   Default shorts are visible before an outfit
+   is selected.
+*/
+
+.default-shorts {
     position: absolute;
-    top: 235px;
-    width: 30px;
-    height: 75px;
-    background: #d2a582;
-    border-radius: 20px;
-    z-index: 2;
+
+    left: 42px;
+    top: 230px;
+
+    width: 97px;
+    height: 43px;
+
+    background: #38232c;
+
+    border-radius:
+        8px 8px 13px 13px;
+
+    z-index: 6;
 }
 
-.leg.left-leg { left: 57px; }
-.leg.right-leg { right: 57px; }
+.default-shorts::before {
+    content: "";
+
+    position: absolute;
+
+    left: 45px;
+    top: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: #26171d;
+}
+
+/* =========================================================
+   ARMS / HAND HOLDING
+========================================================= */
 
 .arm {
     position: absolute;
-    top: 147px;
+
+    top: 148px;
+
     width: 25px;
     height: 92px;
-    background: #e2b99d;
+
+    background: var(--skin);
+
     border-radius: 25px;
+
     z-index: 4;
 }
 
 .arm.left-arm {
-    left: 26px;
+    left: 25px;
     transform: rotate(8deg);
 }
 
 .arm.right-arm {
-    right: 26px;
+    right: 25px;
     transform: rotate(-8deg);
 }
 
-/* =====================================================
-   HAND HOLDING
-===================================================== */
-
 .holding-hand {
     position: absolute;
-    width: 23px;
-    height: 23px;
-    background: #e2b99d;
+
+    width: 24px;
+    height: 24px;
+
+    background: var(--skin);
+
     border-radius: 50%;
+
     top: 218px;
+
     z-index: 30;
 }
 
+/*
+   The characters remain separated, but their inner hands
+   meet in the middle through these positions.
+*/
+
 #boy .holding-hand {
-    right: 18px;
+    right: -3px;
 }
 
 #girl .holding-hand {
-    left: 18px;
+    left: -3px;
 }
 
-/* outfits are dynamically inserted */
-.outfit {
-    position: absolute;
-    z-index: 15;
+/* Small linked heart between hands */
+
+#dressStage::after {
     pointer-events: none;
 }
 
-/* =====================================================
-   OUTFIT PANEL
-===================================================== */
+/* =========================================================
+   OUTFIT CONTROLS
+========================================================= */
 
 #outfitControls {
     position: absolute;
+
     bottom: 4%;
-    width: min(650px, 94vw);
+
+    width: min(720px, 94vw);
+
     display: flex;
-    gap: 12px;
+    gap: 13px;
+
     justify-content: center;
+
     z-index: 100;
+
+    transition:
+        opacity .4s;
 }
 
 .outfit-category {
     flex: 1;
+
     min-width: 0;
+
     padding: 12px 8px;
+
+    border:
+        1px solid rgba(228,187,98,.75);
+
     border-radius: 15px;
-    border: 1px solid rgba(228,187,98,.75);
+
     background:
         linear-gradient(
             135deg,
-            rgba(113,29,52,.95),
-            rgba(70,14,29,.95)
+            rgba(113,29,52,.97),
+            rgba(70,14,29,.97)
         );
-    color: #f9dfc9;
+
+    color: #f9dfd4;
+
     cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0,0,0,.25);
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.25);
+
+    transition:
+        transform .2s,
+        background .2s;
 }
 
-.outfit-category.active {
-    background:
-        linear-gradient(
-            135deg,
-            #c47f90,
-            #7b273d
-        );
-    color: #fff1e8;
+.outfit-category:active {
+    transform: scale(.97);
 }
 
-/* =====================================================
-   OUTFIT CHOOSER
-===================================================== */
+/* =========================================================
+   MODALS
+========================================================= */
 
-#outfitChooser {
+.modal {
     position: absolute;
+
     inset: 0;
-    background: rgba(33,5,13,.86);
-    backdrop-filter: blur(8px);
+
     z-index: 150;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    padding: 30px;
+
+    background:
+        rgba(31,5,13,.88);
+
+    backdrop-filter: blur(9px);
+
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: .4s;
+
+    transition:
+        opacity .4s,
+        visibility .4s;
 }
 
-#outfitChooser.active {
+.modal.active {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
 }
 
-.chooser-inner {
-    width: min(700px, 92vw);
-    max-height: 85vh;
+.modal-inner {
+    width: min(720px, 94vw);
+
+    max-height: 86vh;
+
     overflow-y: auto;
+
     text-align: center;
 }
 
-.chooser-title {
-    color: #f7d58e;
-    font-family: "Great Vibes", cursive;
-    font-size: clamp(36px, 8vw, 54px);
+.modal-title {
     margin: 0 0 20px;
+
+    color: var(--gold-light);
+
+    font-family: "Great Vibes", cursive;
+
+    font-size:
+        clamp(38px, 8vw, 56px);
 }
 
-.outfit-grid {
+.card-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
     gap: 13px;
 }
 
-.outfit-card {
-    min-height: 180px;
+.choice-card {
+    min-height: 185px;
+
     padding: 13px 8px;
+
+    border:
+        1px solid rgba(229,184,95,.55);
+
     border-radius: 16px;
-    border: 1px solid rgba(229,184,95,.55);
+
     background:
         linear-gradient(
             150deg,
             rgba(235,177,191,.18),
-            rgba(77,14,30,.88)
+            rgba(77,14,30,.9)
         );
+
     cursor: pointer;
-    transition: transform .2s, border-color .2s;
+
+    transition:
+        transform .2s,
+        border-color .2s;
 }
 
-.outfit-card:hover {
+.choice-card:hover {
     transform: translateY(-5px);
-    border-color: var(--gold-light);
+
+    border-color:
+        var(--gold-light);
 }
 
-.outfit-number {
+.choice-number {
     color: var(--gold-light);
+
     font-size: 14px;
+
+    letter-spacing: 1px;
 }
 
-.outfit-preview {
+.choice-preview {
+    position: relative;
+
     height: 105px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     margin: 5px 0;
-    position: relative;
 }
 
-/* preview mannequin */
 .preview-person {
-    width: 55px;
-    height: 80px;
     position: relative;
+
+    width: 62px;
+    height: 90px;
 }
 
 .preview-head {
     position: absolute;
-    left: 15px;
+
+    left: 17px;
     top: 0;
-    width: 28px;
-    height: 30px;
+
+    width: 30px;
+    height: 32px;
+
+    background: var(--skin);
+
     border-radius: 50%;
-    background: #e2b99d;
 }
 
 .preview-body {
     position: absolute;
+
     left: 11px;
-    top: 27px;
-    width: 36px;
-    height: 50px;
+    top: 29px;
+
+    width: 40px;
+    height: 52px;
+
     border-radius: 14px;
-    background: #b86d7d;
 }
 
 .preview-label {
     color: #f5d8d4;
+
     font-size: 14px;
-    line-height: 1.05;
+
+    line-height: 1.1;
 }
 
-.close-chooser {
-    margin-top: 17px;
-    border: 1px solid var(--gold);
-    background: transparent;
-    color: #f5d89a;
-    border-radius: 10px;
-    padding: 7px 20px;
-    cursor: pointer;
-}
-
-/* preview outfit colors */
 .preview-deftones {
-    background: linear-gradient(#151316 0 55%, #171518 55%);
+    background:
+        linear-gradient(
+            #171619 0 56%,
+            #121114 56%
+        );
 }
 
 .preview-opeth {
-    background: linear-gradient(#4c3028 0 55%, #171518 55%);
+    background:
+        linear-gradient(
+            #503229 0 56%,
+            #121114 56%
+        );
 }
 
 .preview-vampire {
     background:
-        linear-gradient(90deg, #24101b 0 30%, #7b1830 30% 70%, #24101b 70%);
+        linear-gradient(
+            90deg,
+            #26101a 0 30%,
+            #761d34 30% 70%,
+            #26101a 70%
+        );
 }
 
 .preview-pajamas {
     background:
-        radial-gradient(circle, #7b1830 2px, transparent 3px),
-        #e9aabb;
+        radial-gradient(
+            circle,
+            #761d34 0 3px,
+            transparent 4px
+        ),
+        #e9a9ba;
+
     background-size: 13px 13px;
 }
 
 .preview-fairy {
     background:
-        linear-gradient(135deg, #f0b4c4, #d986a1);
+        linear-gradient(
+            135deg,
+            #f4b8ca,
+            #d785a1
+        );
 }
 
-/* =====================================================
+.close-modal {
+    margin-top: 17px;
+
+    border:
+        1px solid var(--gold);
+
+    background: transparent;
+
+    color: #f5d89a;
+
+    border-radius: 10px;
+
+    padding: 7px 20px;
+
+    cursor: pointer;
+}
+
+/* =========================================================
+   BACKGROUND PREVIEWS
+========================================================= */
+
+.background-preview {
+    height: 105px;
+
+    margin: 5px 0;
+
+    border-radius: 10px;
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.preview-castle {
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(168,57,75,.4),
+            transparent 35%
+        ),
+        linear-gradient(
+            #180811,
+            #541727
+        );
+}
+
+.preview-castle::after {
+    content: "♜    ♜    ♜";
+
+    position: absolute;
+
+    left: 50%;
+    top: 30px;
+
+    transform: translateX(-50%);
+
+    color: rgba(235,194,109,.55);
+
+    font-size: 25px;
+
+    white-space: nowrap;
+}
+
+.preview-saturn {
+    background:
+        radial-gradient(
+            circle at 70% 35%,
+            #e4c17d 0 8px,
+            transparent 9px
+        ),
+        radial-gradient(
+            circle at 70% 35%,
+            transparent 13px,
+            rgba(230,201,137,.6) 14px 17px,
+            transparent 18px
+        ),
+        linear-gradient(
+            #080918,
+            #21153b
+        );
+}
+
+.preview-bedroom {
+    background:
+        radial-gradient(
+            ellipse at 50% 55%,
+            rgba(225,154,177,.2),
+            transparent 45%
+        ),
+        linear-gradient(
+            #1d0813,
+            #3b1424
+        );
+}
+
+.preview-bedroom::after {
+    content: "♡";
+
+    position: absolute;
+
+    left: 50%;
+    top: 18px;
+
+    transform: translateX(-50%);
+
+    color: rgba(235,161,184,.3);
+
+    font-size: 65px;
+
+    font-family: "Great Vibes", cursive;
+}
+
+.preview-concert {
+    background:
+        radial-gradient(
+            ellipse at 50% 0,
+            rgba(229,191,105,.5),
+            transparent 45%
+        ),
+        linear-gradient(
+            #12050d,
+            #3b0d29
+        );
+}
+
+.preview-concert::after {
+    content: "♫";
+
+    position: absolute;
+
+    left: 50%;
+    top: 27px;
+
+    transform: translateX(-50%);
+
+    color: #f0cc7f;
+
+    font-size: 35px;
+}
+
+/* =========================================================
    READY
-===================================================== */
+========================================================= */
 
 #readyButton {
     position: absolute;
+
     bottom: 4%;
+
     left: 50%;
+
     transform: translateX(-50%);
+
     z-index: 120;
-    border: 1px solid var(--gold-light);
+
+    border:
+        1px solid var(--gold-light);
+
     border-radius: 15px;
-    padding: 11px 35px;
-    background: linear-gradient(135deg,#b66d80,#6f1d35);
+
+    padding: 10px 37px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b66d80,
+            #6f1d35
+        );
+
     color: #fff1dd;
-    font-family: "Great Vibes", cursive;
-    font-size: 28px;
+
+    font-family:
+        "Great Vibes", cursive;
+
+    font-size: 29px;
+
     cursor: pointer;
+
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+
     transition: .4s;
 }
 
@@ -1007,23 +1888,35 @@ button {
     pointer-events: auto;
 }
 
-/* =====================================================
+/* =========================================================
    PLAY AGAIN
-===================================================== */
+========================================================= */
 
 #playAgain {
     position: absolute;
-    right: 6%;
+
+    right: 5.5%;
     top: 5%;
-    z-index: 300;
-    border: 1px solid rgba(229,190,104,.7);
-    background: rgba(70,13,28,.7);
+
+    z-index: 600;
+
+    border:
+        1px solid rgba(229,190,104,.7);
+
+    background:
+        rgba(70,13,28,.78);
+
     color: #f7d9a0;
+
     border-radius: 10px;
+
     padding: 7px 14px;
+
     cursor: pointer;
+
     opacity: 0;
     pointer-events: none;
+
     transition: .4s;
 }
 
@@ -1032,290 +1925,210 @@ button {
     pointer-events: auto;
 }
 
-/* =====================================================
-   FINAL CELEBRATION
-===================================================== */
+/* =========================================================
+   OUTFITS
+========================================================= */
 
-#celebration {
-    position: absolute;
-    inset: 0;
-    z-index: 250;
-    pointer-events: none;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .8s;
+/* ---------------------------------------------------------
+   BOY OUTFIT 1 — DEFTONES
+--------------------------------------------------------- */
+
+.boy-outfit-1 .default-shorts {
+    display: none;
 }
-
-#celebration.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-#goatedText {
-    position: absolute;
-    left: 50%;
-    top: 48%;
-    width: 90%;
-    transform: translate(-50%,-50%) scale(.5);
-    text-align: center;
-    font-family: "Great Vibes", cursive;
-    font-size: clamp(40px, 10vw, 75px);
-    color: #f8d995;
-    text-shadow:
-        0 0 10px rgba(255,221,150,.75),
-        0 0 35px rgba(237,159,183,.35);
-    opacity: 0;
-}
-
-#celebration.show #goatedText {
-    animation: goated 4.2s ease forwards;
-}
-
-@keyframes goated {
-    0% {
-        opacity: 0;
-        transform: translate(-50%,-50%) scale(.45);
-    }
-
-    15% {
-        opacity: 1;
-        transform: translate(-50%,-50%) scale(1.08);
-    }
-
-    25%, 72% {
-        opacity: 1;
-        transform: translate(-50%,-50%) scale(1);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translate(-50%,-50%) scale(.9);
-    }
-}
-
-#finalHeart {
-    position: absolute;
-    left: 50%;
-    top: 42%;
-    width: 40px;
-    height: 40px;
-    background: #e7a4b6;
-    transform: translate(-50%,-50%) rotate(-45deg) scale(.2);
-    opacity: 0;
-    border-radius: 8px 0 8px 8px;
-}
-
-#finalHeart::before,
-#finalHeart::after {
-    content: "";
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: inherit;
-    border-radius: 50%;
-}
-
-#finalHeart::before {
-    top: -20px;
-}
-
-#finalHeart::after {
-    left: 20px;
-}
-
-#celebration.show #finalHeart {
-    animation: heartRise 3s ease forwards;
-}
-
-@keyframes heartRise {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, 80px) rotate(-45deg) scale(.2);
-    }
-
-    25% {
-        opacity: 1;
-    }
-
-    55% {
-        transform: translate(-50%,-80px) rotate(-45deg) scale(1.1);
-    }
-
-    70% {
-        opacity: 1;
-        transform: translate(-50%,-80px) rotate(-45deg) scale(1.1);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translate(-50%,-80px) rotate(-45deg) scale(2.5);
-        filter: brightness(2);
-    }
-}
-
-/* =====================================================
-   CONFETTI
-===================================================== */
-
-.confetti {
-    position: absolute;
-    width: 8px;
-    height: 13px;
-    left: 50%;
-    top: 48%;
-    z-index: 400;
-    pointer-events: none;
-    animation:
-        confettiFly var(--duration) cubic-bezier(.1,.7,.25,1) forwards;
-}
-
-@keyframes confettiFly {
-    0% {
-        opacity: 1;
-        transform: translate(-50%,-50%) rotate(0);
-    }
-
-    100% {
-        opacity: 0;
-        transform:
-            translate(
-                calc(-50% + var(--x)),
-                calc(-50% + var(--y))
-            )
-            rotate(var(--r));
-    }
-}
-
-/* =====================================================
-   FINISHED CHARACTER STYLING
-===================================================== */
-
-.finished .character {
-    transform: scale(.92);
-}
-
-.finished #dressStage {
-    transition: transform 1s;
-    transform: scale(.94);
-}
-
-/* =====================================================
-   OUTFITS — BOY
-===================================================== */
 
 .boy-outfit-1 .body {
-    background:
-        linear-gradient(
-            #18171a 0 52%,
-            #09090b 52%
-        );
+    background: #171619;
+
+    border-radius:
+        20px 20px 13px 13px;
 }
 
 .boy-outfit-1 .body::after {
     content: "deftones";
+
     position: absolute;
-    left: 12px;
-    top: 17px;
+
+    left: 50%;
+    top: 31px;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+
     color: white;
-    font-family: Arial,sans-serif;
-    font-size: 11px;
-    font-weight: bold;
+
+    text-align: center;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    font-weight: 700;
 }
 
 .boy-outfit-1 .leg {
-    background: #121114;
-    width: 34px;
+    background: #171619;
 }
 
 .boy-outfit-1::after {
     content: "";
+
     position: absolute;
-    left: 45px;
-    top: 295px;
-    width: 91px;
+
+    left: 40px;
+    top: 302px;
+
+    width: 100px;
     height: 23px;
+
     background:
         linear-gradient(
             90deg,
-            #151419 0 43%,
-            transparent 43% 57%,
-            #151419 57%
+            #141317 0 42%,
+            transparent 42% 58%,
+            #141317 58%
         );
+
     border-radius: 8px;
 }
 
+/* ---------------------------------------------------------
+   BOY OUTFIT 2 — OPETH
+--------------------------------------------------------- */
+
+.boy-outfit-2 .default-shorts {
+    display: none;
+}
+
 .boy-outfit-2 .body {
-    background:
-        linear-gradient(
-            #4b3029 0 52%,
-            #09090b 52%
-        );
+    background: #4c3028;
+
+    border-radius:
+        20px 20px 13px 13px;
 }
 
 .boy-outfit-2 .body::after {
     content: "opeth";
+
     position: absolute;
-    left: 24px;
-    top: 17px;
+
+    left: 50%;
+    top: 31px;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+
     color: white;
-    font-family: Arial,sans-serif;
+
+    text-align: center;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
     font-size: 12px;
-    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    font-weight: 700;
 }
 
 .boy-outfit-2 .leg {
-    background: #121114;
+    background: #171619;
 }
 
 .boy-outfit-2::after {
     content: "";
+
     position: absolute;
-    left: 45px;
-    top: 295px;
-    width: 91px;
+
+    left: 40px;
+    top: 302px;
+
+    width: 100px;
     height: 23px;
+
     background:
         linear-gradient(
             90deg,
-            #151419 0 43%,
-            transparent 43% 57%,
-            #151419 57%
+            #141317 0 42%,
+            transparent 42% 58%,
+            #141317 58%
         );
+
     border-radius: 8px;
+}
+
+/* ---------------------------------------------------------
+   BOY OUTFIT 3 — VAMPIRE
+--------------------------------------------------------- */
+
+.boy-outfit-3 .default-shorts {
+    display: none;
 }
 
 .boy-outfit-3 .body {
     background:
         linear-gradient(
             90deg,
-            #23101a 0 30%,
-            #741b32 30% 70%,
-            #23101a 70%
+            #24101a 0 29%,
+            #741b32 29% 71%,
+            #24101a 71%
         );
-    border-radius: 25px 25px 12px 12px;
+
+    border-radius:
+        24px 24px 12px 12px;
 }
 
 .boy-outfit-3 .body::before {
     content: "";
+
     position: absolute;
+
     left: 38px;
     top: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 38px solid #e5c982;
+
+    border-left:
+        10px solid transparent;
+
+    border-right:
+        10px solid transparent;
+
+    border-top:
+        37px solid #e6cc8b;
 }
 
 .boy-outfit-3 .leg {
-    background: #1b1016;
+    background: #211018;
 }
 
 .boy-outfit-3::after {
     content: "✦";
+
     position: absolute;
-    right: 4px;
-    top: 170px;
+
+    right: 1px;
+    top: 174px;
+
     color: #f0cf77;
-    font-size: 20px;
+
+    font-size: 21px;
+}
+
+/* ---------------------------------------------------------
+   BOY OUTFIT 4 — HEART PAJAMAS
+--------------------------------------------------------- */
+
+.boy-outfit-4 .default-shorts {
+    display: none;
 }
 
 .boy-outfit-4 .body {
@@ -1326,90 +2139,183 @@ button {
             transparent 4px
         ),
         #e9a9ba;
+
     background-size: 24px 24px;
 }
 
 .boy-outfit-4 .leg {
-    background: #e8a8ba;
+    background: #e7a7b9;
 }
 
 .boy-outfit-4::after {
     content: "☁";
+
     position: absolute;
-    left: 45px;
-    top: 293px;
+
+    left: 42px;
+    top: 300px;
+
     color: white;
-    font-size: 35px;
-    text-shadow: 0 2px 5px rgba(0,0,0,.15);
+
+    font-size: 36px;
 }
 
-/* =====================================================
-   OUTFITS — GIRL
-===================================================== */
+/* ---------------------------------------------------------
+   GIRL OUTFIT 1 — BLACK PLEATED SKIRT
+--------------------------------------------------------- */
+
+.girl-outfit-1 .default-shorts {
+    display: none;
+}
 
 .girl-outfit-1 .body {
-    background: #161518;
-    clip-path: polygon(
-        12% 0, 88% 0,
-        100% 100%, 0 100%
-    );
+    background: #171619;
+
+    clip-path:
+        polygon(
+            12% 0,
+            88% 0,
+            100% 100%,
+            0 100%
+        );
 }
 
 .girl-outfit-1 .body::after {
     content: "deftones";
-    position: absolute;
-    left: 20px;
-    top: 17px;
-    color: white;
-    font-family: Arial,sans-serif;
-    font-size: 11px;
-    font-weight: bold;
-}
 
-.girl-outfit-1 .leg {
-    background: #e2b99d;
+    position: absolute;
+
+    left: 50%;
+    top: 31px;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+
+    color: white;
+
+    text-align: center;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    font-weight: 700;
 }
 
 .girl-outfit-1::after {
     content: "";
+
     position: absolute;
-    left: 44px;
-    top: 263px;
-    width: 93px;
-    height: 34px;
-    background: #171619;
-    clip-path: polygon(0 0,100% 0,82% 100%,18% 100%);
+
+    left: 41px;
+    top: 257px;
+
+    width: 98px;
+    height: 42px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #121114 0 11px,
+            #242126 11px 15px
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            84% 100%,
+            16% 100%
+        );
+}
+
+/* ---------------------------------------------------------
+   GIRL OUTFIT 2 — WHITE SKIRT / OPETH
+--------------------------------------------------------- */
+
+.girl-outfit-2 .default-shorts {
+    display: none;
 }
 
 .girl-outfit-2 .body {
-    background: #51332a;
-    clip-path: polygon(
-        12% 0, 88% 0,
-        100% 100%, 0 100%
-    );
+    background: #503229;
+
+    clip-path:
+        polygon(
+            12% 0,
+            88% 0,
+            100% 100%,
+            0 100%
+        );
 }
 
 .girl-outfit-2 .body::after {
     content: "opeth";
+
     position: absolute;
-    left: 25px;
-    top: 17px;
+
+    left: 50%;
+    top: 31px;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+
     color: white;
-    font-family: Arial,sans-serif;
+
+    text-align: center;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
     font-size: 11px;
-    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    font-weight: 700;
 }
 
 .girl-outfit-2::after {
     content: "";
+
     position: absolute;
-    left: 44px;
-    top: 263px;
-    width: 93px;
-    height: 34px;
-    background: white;
-    clip-path: polygon(0 0,100% 0,82% 100%,18% 100%);
-    border-bottom: 5px solid #cfcfd3;
+
+    left: 41px;
+    top: 257px;
+
+    width: 98px;
+    height: 42px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #f8f4f1 0 11px,
+            #d6d2d5 11px 15px
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            84% 100%,
+            16% 100%
+        );
+}
+
+/* ---------------------------------------------------------
+   GIRL OUTFIT 3 — FAIRY
+--------------------------------------------------------- */
+
+.girl-outfit-3 .default-shorts {
+    display: none;
 }
 
 .girl-outfit-3 .body {
@@ -1419,41 +2325,61 @@ button {
             #f4b8ca,
             #d987a1
         );
-    clip-path: polygon(
-        12% 0, 88% 0,
-        100% 100%, 0 100%
-    );
+
+    clip-path:
+        polygon(
+            12% 0,
+            88% 0,
+            100% 100%,
+            0 100%
+        );
 }
 
 .girl-outfit-3 .body::before {
     content: "✦";
+
     position: absolute;
-    left: 38px;
-    top: 28px;
+
+    left: 39px;
+    top: 26px;
+
     color: #fff4fa;
+
     font-size: 24px;
 }
 
 .girl-outfit-3 .body::after {
     content: "♡";
-    position: absolute;
-    right: 15px;
-    top: 52px;
-    color: white;
-    font-size: 18px;
-}
 
-.girl-outfit-3 .leg {
-    background: #d9a6b6;
+    position: absolute;
+
+    right: 16px;
+    top: 52px;
+
+    color: white;
+
+    font-size: 18px;
 }
 
 .girl-outfit-3::after {
     content: "✧";
+
     position: absolute;
-    right: 5px;
-    top: 175px;
+
+    right: 0;
+    top: 176px;
+
     color: #f8e4f0;
-    font-size: 25px;
+
+    font-size: 26px;
+}
+
+/* ---------------------------------------------------------
+   GIRL OUTFIT 4 — HEART PAJAMAS
+--------------------------------------------------------- */
+
+.girl-outfit-4 .default-shorts {
+    display: none;
 }
 
 .girl-outfit-4 .body {
@@ -1464,6 +2390,7 @@ button {
             transparent 4px
         ),
         #e9a9ba;
+
     background-size: 24px 24px;
 }
 
@@ -1473,51 +2400,300 @@ button {
 
 .girl-outfit-4::after {
     content: "☁";
+
     position: absolute;
-    left: 44px;
-    top: 293px;
+
+    left: 41px;
+    top: 300px;
+
     color: white;
-    font-size: 35px;
+
+    font-size: 36px;
 }
 
-/* =====================================================
+/* =========================================================
+   CELEBRATION
+========================================================= */
+
+#celebration {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 250;
+
+    pointer-events: none;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity .8s;
+}
+
+#celebration.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#finalHeart {
+    position: absolute;
+
+    left: 50%;
+    top: 43%;
+
+    width: 42px;
+    height: 42px;
+
+    background: #e7a4b6;
+
+    border-radius:
+        8px 0 8px 8px;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-45deg)
+        scale(.2);
+
+    opacity: 0;
+
+    box-shadow:
+        0 0 20px rgba(244,164,190,.8),
+        0 0 60px rgba(244,164,190,.35);
+}
+
+#finalHeart::before,
+#finalHeart::after {
+    content: "";
+
+    position: absolute;
+
+    width: 42px;
+    height: 42px;
+
+    background: inherit;
+
+    border-radius: 50%;
+}
+
+#finalHeart::before {
+    top: -21px;
+}
+
+#finalHeart::after {
+    left: 21px;
+}
+
+#celebration.show #finalHeart {
+    animation:
+        heartRise 3s ease forwards;
+}
+
+@keyframes heartRise {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, 70px)
+            rotate(-45deg)
+            scale(.2);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    55% {
+        transform:
+            translate(-50%, -80px)
+            rotate(-45deg)
+            scale(1.15);
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -80px)
+            rotate(-45deg)
+            scale(2.8);
+
+        filter:
+            brightness(2.1);
+    }
+}
+
+#goatedText {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 92%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.45);
+
+    text-align: center;
+
+    color: #f8d995;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size:
+        clamp(40px, 10vw, 75px);
+
+    text-shadow:
+        0 0 10px rgba(255,221,150,.75),
+        0 0 35px rgba(237,159,183,.35);
+
+    opacity: 0;
+}
+
+#celebration.show #goatedText {
+    animation:
+        goated 4.2s ease forwards;
+}
+
+@keyframes goated {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.45);
+    }
+
+    15% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+
+    25%,
+    72% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.9);
+    }
+}
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+.confetti {
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    width: 8px;
+    height: 13px;
+
+    z-index: 450;
+
+    pointer-events: none;
+
+    animation:
+        confettiFly
+        var(--duration)
+        cubic-bezier(.1,.7,.25,1)
+        forwards;
+}
+
+@keyframes confettiFly {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            translate(-50%,-50%)
+            rotate(0);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            rotate(var(--r));
+    }
+}
+
+/* =========================================================
+   FINAL COUPLE
+========================================================= */
+
+#dressScreen.finished #dressStage {
+    transform: scale(.96);
+}
+
+#dressScreen.finished .character {
+    transform: scale(.94);
+}
+
+/* =========================================================
    MOBILE
-===================================================== */
+========================================================= */
 
-@media (max-width: 620px) {
+@media (max-width: 650px) {
 
-    .outfit-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .card-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
     #dressStage {
-        top: 8%;
-        height: 53vh;
+        top: 7%;
+        height: 56vh;
     }
 
     .character {
-        transform: scale(.76);
-        transform-origin: bottom center;
+        transform:
+            scale(.73);
+
+        transform-origin:
+            bottom center;
     }
 
     #boy {
-        left: 6%;
+        left: 1%;
     }
 
     #girl {
-        right: 6%;
+        right: 1%;
     }
 
     .character.closer#boy {
-        left: 15%;
+        left: 13%;
     }
 
     .character.closer#girl {
-        right: 15%;
-    }
-
-    .stage-floor {
-        bottom: 4%;
+        right: 13%;
     }
 
     #outfitControls {
@@ -1529,31 +2705,67 @@ button {
     }
 
     #readyButton {
-        bottom: 5%;
+        bottom: 4%;
     }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 430px) {
 
     .character {
-        transform: scale(.66);
+        transform:
+            scale(.62);
+
+        transform-origin:
+            bottom center;
+    }
+
+    #boy {
+        left: -4%;
+    }
+
+    #girl {
+        right: -4%;
     }
 
     .character.closer#boy {
-        left: 9%;
+        left: 7%;
     }
 
     .character.closer#girl {
-        right: 9%;
+        right: 7%;
     }
 
     #dressStage {
-        height: 55vh;
+        height: 57vh;
+    }
+
+    .stage-floor {
+        width: 94%;
+    }
+}
+
+@media (max-height: 700px) {
+
+    .game-title {
+        top: 4%;
+    }
+
+    .start-characters {
+        top: 17%;
+        transform: scale(.82);
+    }
+
+    #playButton {
+        bottom: 6%;
+    }
+
+    #dressStage {
+        top: 4%;
+        height: 58vh;
     }
 }
 </style>
 </head>
-
 
 <body>
 
@@ -1567,15 +2779,20 @@ button {
     <div class="corner br"></div>
 
 
-    <!-- =================================================
-         PASSWORD
-    ================================================== -->
+    <!-- =====================================================
+         PASSWORD SCREEN
+    ====================================================== -->
 
-    <section id="passwordScreen" class="screen active">
+    <section
+        id="passwordScreen"
+        class="screen active"
+    >
 
         <div class="password-box">
 
-            <div class="crown">♛</div>
+            <div class="password-crown">
+                ♛
+            </div>
 
             <div class="password-decoration">
                 A royal little secret...
@@ -1599,11 +2816,17 @@ button {
 
             <br>
 
-            <button class="unlock" id="unlockButton">
+            <button
+                id="unlockButton"
+                class="unlock-button"
+            >
                 Enter ♡
             </button>
 
-            <div class="error" id="passwordError">
+            <div
+                id="passwordError"
+                class="password-error"
+            >
                 The kingdom rejects this code...
             </div>
 
@@ -1612,11 +2835,14 @@ button {
     </section>
 
 
-    <!-- =================================================
+    <!-- =====================================================
          START SCREEN
-    ================================================== -->
+    ====================================================== -->
 
-    <section id="startScreen" class="screen">
+    <section
+        id="startScreen"
+        class="screen"
+    >
 
         <h1 class="game-title">
             Legendary Couple's
@@ -1624,62 +2850,73 @@ button {
         </h1>
 
 
-        <!-- Chibi vampire -->
+        <div class="play-stars">
+            <span class="star">✦</span>
+            <span class="star">✧</span>
+            <span class="star">✦</span>
+            <span class="star">✧</span>
+            <span class="star">✦</span>
+        </div>
+
+
         <div class="start-characters">
+
+            <!-- BOY VAMPIRE -->
 
             <div class="mini-character left">
 
-                <div class="mini-hair-boy"></div>
+                <div class="mini-boy-hair"></div>
 
                 <div class="mini-head">
 
-                    <div class="mini-eye left-eye"></div>
-                    <div class="mini-eye right-eye"></div>
+                    <div class="mini-eye left"></div>
+                    <div class="mini-eye right"></div>
 
                     <div class="mini-mouth"></div>
 
-                    <div class="blush left-blush"></div>
-                    <div class="blush right-blush"></div>
+                    <div class="mini-blush left"></div>
+                    <div class="mini-blush right"></div>
 
                 </div>
 
                 <div class="mini-body"></div>
 
-                <div class="mini-arm arm-left"></div>
-                <div class="mini-arm arm-right"></div>
+                <div class="mini-shorts"></div>
 
-                <div class="hands hand-boy"></div>
+                <div class="mini-arm left"></div>
+                <div class="mini-arm right"></div>
 
             </div>
 
 
-            <!-- Chibi fairy -->
+            <!-- GIRL FAIRY -->
+
             <div class="mini-character right">
 
-                <div class="mini-hair-girl"></div>
+                <div class="mini-girl-hair"></div>
                 <div class="mini-bangs"></div>
 
                 <div class="mini-head">
 
-                    <div class="mini-eye left-eye"></div>
-                    <div class="mini-eye right-eye"></div>
+                    <div class="mini-eye left"></div>
+                    <div class="mini-eye right"></div>
 
-                    <div class="mini-lash left-lash"></div>
-                    <div class="mini-lash right-lash"></div>
+                    <div class="mini-lash left"></div>
+                    <div class="mini-lash right"></div>
 
                     <div class="mini-mouth"></div>
 
-                    <div class="blush left-blush"></div>
-                    <div class="blush right-blush"></div>
+                    <div class="mini-blush left"></div>
+                    <div class="mini-blush right"></div>
 
                 </div>
 
                 <div class="mini-body"></div>
 
-                <div class="mini-arm arm-left"></div>
-                <div class="mini-arm arm-right"></div>
+                <div class="mini-shorts"></div>
 
-                <div class="hands hand-girl"></div>
+                <div class="mini-arm left"></div>
+                <div class="mini-arm right"></div>
 
             </div>
 
@@ -1693,21 +2930,32 @@ button {
     </section>
 
 
-    <!-- =================================================
+    <!-- =====================================================
          DRESS-UP SCREEN
-    ================================================== -->
+    ====================================================== -->
 
-    <section id="dressScreen" class="screen">
+    <section
+        id="dressScreen"
+        class="screen"
+    >
 
         <button id="playAgain">
             ↻ Play again
         </button>
 
 
+        <!-- =================================================
+             CHARACTER STAGE
+        ================================================== -->
+
         <div id="dressStage">
 
             <!-- BOY -->
-            <div class="character" id="boy">
+
+            <div
+                id="boy"
+                class="character"
+            >
 
                 <div class="boy-hair"></div>
 
@@ -1725,11 +2973,10 @@ button {
 
                 <div class="body"></div>
 
+                <div class="default-shorts"></div>
+
                 <div class="arm left-arm"></div>
                 <div class="arm right-arm"></div>
-
-                <div class="leg left-leg"></div>
-                <div class="leg right-leg"></div>
 
                 <div class="holding-hand"></div>
 
@@ -1737,7 +2984,11 @@ button {
 
 
             <!-- GIRL -->
-            <div class="character" id="girl">
+
+            <div
+                id="girl"
+                class="character"
+            >
 
                 <div class="girl-hair"></div>
                 <div class="girl-bangs"></div>
@@ -1759,11 +3010,10 @@ button {
 
                 <div class="body"></div>
 
+                <div class="default-shorts"></div>
+
                 <div class="arm left-arm"></div>
                 <div class="arm right-arm"></div>
-
-                <div class="leg left-leg"></div>
-                <div class="leg right-leg"></div>
 
                 <div class="holding-hand"></div>
 
@@ -1775,20 +3025,22 @@ button {
         </div>
 
 
-        <!-- OUTFIT BUTTONS -->
+        <!-- =================================================
+             OUTFIT BUTTONS
+        ================================================== -->
 
         <div id="outfitControls">
 
             <button
-                class="outfit-category"
                 id="boyOutfitsButton"
+                class="outfit-category"
             >
                 Outfits for Burak.
             </button>
 
             <button
-                class="outfit-category"
                 id="girlOutfitsButton"
+                class="outfit-category"
             >
                 Outfits for Elanie.
             </button>
@@ -1796,42 +3048,47 @@ button {
         </div>
 
 
-        <!-- READY -->
+        <!-- =================================================
+             OUTFIT MODAL
+        ================================================== -->
 
-        <button id="readyButton">
-            Ready.
-        </button>
+        <div
+            id="outfitModal"
+            class="modal"
+        >
 
-
-        <!-- OUTFIT MODAL -->
-
-        <div id="outfitChooser">
-
-            <div class="chooser-inner">
+            <div class="modal-inner">
 
                 <h2
-                    class="chooser-title"
-                    id="chooserTitle"
+                    id="outfitModalTitle"
+                    class="modal-title"
                 >
                     Outfits
                 </h2>
 
-                <div class="outfit-grid">
+                <div class="card-grid">
 
                     <div
-                        class="outfit-card"
+                        class="choice-card"
                         data-outfit="1"
                     >
 
-                        <div class="outfit-number">
+                        <div class="choice-number">
                             OUTFIT I
                         </div>
 
-                        <div class="outfit-preview">
+                        <div class="choice-preview">
+
                             <div class="preview-person">
+
                                 <div class="preview-head"></div>
-                                <div class="preview-body preview-deftones"></div>
+
+                                <div
+                                    class="preview-body preview-deftones"
+                                ></div>
+
                             </div>
+
                         </div>
 
                         <div class="preview-label">
@@ -1842,19 +3099,26 @@ button {
 
 
                     <div
-                        class="outfit-card"
+                        class="choice-card"
                         data-outfit="2"
                     >
 
-                        <div class="outfit-number">
+                        <div class="choice-number">
                             OUTFIT II
                         </div>
 
-                        <div class="outfit-preview">
+                        <div class="choice-preview">
+
                             <div class="preview-person">
+
                                 <div class="preview-head"></div>
-                                <div class="preview-body preview-opeth"></div>
+
+                                <div
+                                    class="preview-body preview-opeth"
+                                ></div>
+
                             </div>
+
                         </div>
 
                         <div class="preview-label">
@@ -1865,42 +3129,56 @@ button {
 
 
                     <div
-                        class="outfit-card"
+                        class="choice-card"
                         data-outfit="3"
                     >
 
-                        <div class="outfit-number">
+                        <div class="choice-number">
                             OUTFIT III
                         </div>
 
-                        <div class="outfit-preview">
+                        <div class="choice-preview">
+
                             <div class="preview-person">
+
                                 <div class="preview-head"></div>
-                                <div class="preview-body preview-vampire"></div>
+
+                                <div
+                                    class="preview-body preview-vampire"
+                                ></div>
+
                             </div>
+
                         </div>
 
                         <div class="preview-label">
-                            Royal Fantasy
+                            Fantasy
                         </div>
 
                     </div>
 
 
                     <div
-                        class="outfit-card"
+                        class="choice-card"
                         data-outfit="4"
                     >
 
-                        <div class="outfit-number">
+                        <div class="choice-number">
                             OUTFIT IV
                         </div>
 
-                        <div class="outfit-preview">
+                        <div class="choice-preview">
+
                             <div class="preview-person">
+
                                 <div class="preview-head"></div>
-                                <div class="preview-body preview-pajamas"></div>
+
+                                <div
+                                    class="preview-body preview-pajamas"
+                                ></div>
+
                             </div>
+
                         </div>
 
                         <div class="preview-label">
@@ -1912,8 +3190,8 @@ button {
                 </div>
 
                 <button
-                    class="close-chooser"
-                    id="closeChooser"
+                    id="closeOutfitModal"
+                    class="close-modal"
                 >
                     Close
                 </button>
@@ -1923,7 +3201,171 @@ button {
         </div>
 
 
-        <!-- CELEBRATION -->
+        <!-- =================================================
+             BACKGROUND BUTTON
+        ================================================== -->
+
+        <button
+            id="backgroundButton"
+            class="outfit-category"
+            style="
+                position:absolute;
+                bottom:4%;
+                left:50%;
+                transform:translateX(-50%);
+                width:min(300px,70vw);
+                opacity:0;
+                visibility:hidden;
+                pointer-events:none;
+                z-index:110;
+            "
+        >
+            Backgrounds.
+        </button>
+
+
+        <!-- =================================================
+             BACKGROUND MODAL
+        ================================================== -->
+
+        <div
+            id="backgroundModal"
+            class="modal"
+        >
+
+            <div class="modal-inner">
+
+                <h2 class="modal-title">
+                    Choose a Background
+                </h2>
+
+                <div class="card-grid">
+
+                    <!-- CASTLE -->
+
+                    <div
+                        class="choice-card background-card"
+                        data-background="castle"
+                    >
+
+                        <div class="choice-number">
+                            I
+                        </div>
+
+                        <div
+                            class="
+                                background-preview
+                                preview-castle
+                            "
+                        ></div>
+
+                        <div class="preview-label">
+                            Dracula Castle
+                        </div>
+
+                    </div>
+
+
+                    <!-- SATURN -->
+
+                    <div
+                        class="choice-card background-card"
+                        data-background="saturn"
+                    >
+
+                        <div class="choice-number">
+                            II
+                        </div>
+
+                        <div
+                            class="
+                                background-preview
+                                preview-saturn
+                            "
+                        ></div>
+
+                        <div class="preview-label">
+                            Saturn
+                        </div>
+
+                    </div>
+
+
+                    <!-- BEDROOM -->
+
+                    <div
+                        class="choice-card background-card"
+                        data-background="bedroom"
+                    >
+
+                        <div class="choice-number">
+                            III
+                        </div>
+
+                        <div
+                            class="
+                                background-preview
+                                preview-bedroom
+                            "
+                        ></div>
+
+                        <div class="preview-label">
+                            Dark Bedroom
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONCERT -->
+
+                    <div
+                        class="choice-card background-card"
+                        data-background="concert"
+                    >
+
+                        <div class="choice-number">
+                            IV
+                        </div>
+
+                        <div
+                            class="
+                                background-preview
+                                preview-concert
+                            "
+                        ></div>
+
+                        <div class="preview-label">
+                            Concert Stage
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button
+                    id="closeBackgroundModal"
+                    class="close-modal"
+                >
+                    Close
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             READY
+        ================================================== -->
+
+        <button id="readyButton">
+            Ready.
+        </button>
+
+
+        <!-- =================================================
+             CELEBRATION
+        ================================================== -->
 
         <div id="celebration">
 
@@ -1940,12 +3382,10 @@ button {
 </div>
 
 
-<!-- =====================================================
-     OPTIONAL BACKGROUND MUSIC
-     
-     Put a royalty-free file named "music.mp3"
-     next to this HTML if desired.
-====================================================== -->
+<!-- Optional music:
+     Put a royalty-free/appropriately licensed
+     music.mp3 beside this HTML file.
+-->
 
 <audio
     id="bgMusic"
@@ -1957,9 +3397,9 @@ button {
 
 <script>
 
-/* =====================================================
+/* =========================================================
    ELEMENTS
-===================================================== */
+========================================================= */
 
 const passwordScreen =
     document.getElementById("passwordScreen");
@@ -1982,32 +3422,51 @@ const passwordError =
 const playButton =
     document.getElementById("playButton");
 
-const boyOutfitsButton =
-    document.getElementById("boyOutfitsButton");
-
-const girlOutfitsButton =
-    document.getElementById("girlOutfitsButton");
-
-const outfitChooser =
-    document.getElementById("outfitChooser");
-
-const chooserTitle =
-    document.getElementById("chooserTitle");
-
-const closeChooser =
-    document.getElementById("closeChooser");
-
-const outfitCards =
-    document.querySelectorAll(".outfit-card");
-
 const boy =
     document.getElementById("boy");
 
 const girl =
     document.getElementById("girl");
 
+const dressStage =
+    document.getElementById("dressStage");
+
 const outfitControls =
     document.getElementById("outfitControls");
+
+const boyOutfitsButton =
+    document.getElementById("boyOutfitsButton");
+
+const girlOutfitsButton =
+    document.getElementById("girlOutfitsButton");
+
+const outfitModal =
+    document.getElementById("outfitModal");
+
+const outfitModalTitle =
+    document.getElementById("outfitModalTitle");
+
+const closeOutfitModal =
+    document.getElementById("closeOutfitModal");
+
+const outfitCards =
+    document.querySelectorAll(
+        ".choice-card[data-outfit]"
+    );
+
+const backgroundButton =
+    document.getElementById("backgroundButton");
+
+const backgroundModal =
+    document.getElementById("backgroundModal");
+
+const backgroundCards =
+    document.querySelectorAll(
+        ".background-card"
+    );
+
+const closeBackgroundModal =
+    document.getElementById("closeBackgroundModal");
 
 const readyButton =
     document.getElementById("readyButton");
@@ -2022,65 +3481,68 @@ const bgMusic =
     document.getElementById("bgMusic");
 
 
-/* =====================================================
+/* =========================================================
    GAME STATE
-===================================================== */
+========================================================= */
 
 let currentTarget = null;
 
 let boyChosen = false;
 let girlChosen = false;
 
-let boyOutfit = 0;
-let girlOutfit = 0;
+let backgroundChosen = false;
 
 
-/* =====================================================
+/* =========================================================
    MUSIC
-===================================================== */
-
-/*
-   Modern browsers generally block audio autoplay before
-   a user gesture. The password button is the first
-   interaction, so we attempt playback there.
-
-   If music.mp3 does not exist, the error is silently
-   ignored and the game continues normally.
-*/
+========================================================= */
 
 function startMusic() {
 
-    if (!bgMusic) return;
+    if (!bgMusic) {
+        return;
+    }
 
     bgMusic.volume = 0.22;
 
-    const promise = bgMusic.play();
+    const promise =
+        bgMusic.play();
 
-    if (promise && typeof promise.catch === "function") {
+    if (
+        promise &&
+        typeof promise.catch === "function"
+    ) {
         promise.catch(() => {
-            /* No music file or autoplay restriction. */
+            /*
+                No music file or browser autoplay
+                restriction. Game continues normally.
+            */
         });
     }
 }
 
 
-/* =====================================================
-   SCREEN TRANSITION
-===================================================== */
+/* =========================================================
+   SCREEN SWITCH
+========================================================= */
 
 function showScreen(screen) {
 
     document
         .querySelectorAll(".screen")
-        .forEach(item => item.classList.remove("active"));
+        .forEach(item => {
+
+            item.classList.remove("active");
+
+        });
 
     screen.classList.add("active");
 }
 
 
-/* =====================================================
+/* =========================================================
    PASSWORD
-===================================================== */
+========================================================= */
 
 function unlockGame() {
 
@@ -2088,23 +3550,44 @@ function unlockGame() {
 
         startMusic();
 
-        passwordScreen.classList.remove("active");
+        passwordScreen.classList.remove(
+            "active"
+        );
 
         setTimeout(() => {
+
             showScreen(startScreen);
+
         }, 250);
 
     } else {
 
-        passwordError.classList.add("show");
+        passwordError.classList.add(
+            "show"
+        );
 
         codeInput.animate(
             [
-                { transform: "translateX(0)" },
-                { transform: "translateX(-7px)" },
-                { transform: "translateX(7px)" },
-                { transform: "translateX(-5px)" },
-                { transform: "translateX(0)" }
+                {
+                    transform:
+                        "translateX(0)"
+                },
+                {
+                    transform:
+                        "translateX(-7px)"
+                },
+                {
+                    transform:
+                        "translateX(7px)"
+                },
+                {
+                    transform:
+                        "translateX(-5px)"
+                },
+                {
+                    transform:
+                        "translateX(0)"
+                }
             ],
             {
                 duration: 350
@@ -2112,7 +3595,11 @@ function unlockGame() {
         );
 
         setTimeout(() => {
-            passwordError.classList.remove("show");
+
+            passwordError.classList.remove(
+                "show"
+            );
+
         }, 1700);
     }
 }
@@ -2146,9 +3633,9 @@ codeInput.addEventListener(
 );
 
 
-/* =====================================================
+/* =========================================================
    PLAY
-===================================================== */
+========================================================= */
 
 playButton.addEventListener(
     "click",
@@ -2156,18 +3643,13 @@ playButton.addEventListener(
 
         showScreen(dressScreen);
 
-        setTimeout(() => {
-            boy.style.left = "18%";
-            girl.style.right = "18%";
-        }, 50);
-
     }
 );
 
 
-/* =====================================================
-   OPEN OUTFITS
-===================================================== */
+/* =========================================================
+   OUTFIT MODAL
+========================================================= */
 
 boyOutfitsButton.addEventListener(
     "click",
@@ -2175,10 +3657,12 @@ boyOutfitsButton.addEventListener(
 
         currentTarget = "boy";
 
-        chooserTitle.textContent =
+        outfitModalTitle.textContent =
             "Outfits for Burak.";
 
-        outfitChooser.classList.add("active");
+        outfitModal.classList.add(
+            "active"
+        );
 
     }
 );
@@ -2189,32 +3673,31 @@ girlOutfitsButton.addEventListener(
 
         currentTarget = "girl";
 
-        chooserTitle.textContent =
+        outfitModalTitle.textContent =
             "Outfits for Elanie.";
 
-        outfitChooser.classList.add("active");
+        outfitModal.classList.add(
+            "active"
+        );
 
     }
 );
 
-
-/* =====================================================
-   CLOSE OUTFITS
-===================================================== */
-
-closeChooser.addEventListener(
+closeOutfitModal.addEventListener(
     "click",
     () => {
 
-        outfitChooser.classList.remove("active");
+        outfitModal.classList.remove(
+            "active"
+        );
 
     }
 );
 
 
-/* =====================================================
-   APPLY OUTFIT
-===================================================== */
+/* =========================================================
+   SELECT OUTFIT
+========================================================= */
 
 outfitCards.forEach(card => {
 
@@ -2222,30 +3705,30 @@ outfitCards.forEach(card => {
         "click",
         () => {
 
-            const number =
+            const outfit =
                 Number(card.dataset.outfit);
 
             if (currentTarget === "boy") {
 
-                applyBoyOutfit(number);
+                applyBoyOutfit(outfit);
 
                 boyChosen = true;
-                boyOutfit = number;
 
             }
 
             if (currentTarget === "girl") {
 
-                applyGirlOutfit(number);
+                applyGirlOutfit(outfit);
 
                 girlChosen = true;
-                girlOutfit = number;
 
             }
 
-            outfitChooser.classList.remove("active");
+            outfitModal.classList.remove(
+                "active"
+            );
 
-            checkReady();
+            checkOutfits();
 
         }
     );
@@ -2253,9 +3736,9 @@ outfitCards.forEach(card => {
 });
 
 
-/* =====================================================
-   BOY OUTFIT
-===================================================== */
+/* =========================================================
+   APPLY BOY OUTFIT
+========================================================= */
 
 function applyBoyOutfit(number) {
 
@@ -2269,13 +3752,12 @@ function applyBoyOutfit(number) {
     boy.classList.add(
         `boy-outfit-${number}`
     );
-
 }
 
 
-/* =====================================================
-   GIRL OUTFIT
-===================================================== */
+/* =========================================================
+   APPLY GIRL OUTFIT
+========================================================= */
 
 function applyGirlOutfit(number) {
 
@@ -2289,28 +3771,121 @@ function applyGirlOutfit(number) {
     girl.classList.add(
         `girl-outfit-${number}`
     );
-
 }
 
 
-/* =====================================================
-   READY CHECK
-===================================================== */
+/* =========================================================
+   OUTFITS COMPLETE
+========================================================= */
 
-function checkReady() {
+function checkOutfits() {
 
-    if (boyChosen && girlChosen) {
+    if (
+        boyChosen &&
+        girlChosen
+    ) {
 
-        readyButton.classList.add("show");
+        /*
+           Background selection appears only after
+           BOTH characters have an outfit.
+        */
+
+        backgroundButton.style.opacity = "1";
+        backgroundButton.style.visibility = "visible";
+        backgroundButton.style.pointerEvents = "auto";
+
+        backgroundButton.classList.add(
+            "active"
+        );
+    }
+}
+
+
+/* =========================================================
+   BACKGROUND MODAL
+========================================================= */
+
+backgroundButton.addEventListener(
+    "click",
+    () => {
+
+        backgroundModal.classList.add(
+            "active"
+        );
 
     }
+);
 
+closeBackgroundModal.addEventListener(
+    "click",
+    () => {
+
+        backgroundModal.classList.remove(
+            "active"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   SELECT BACKGROUND
+========================================================= */
+
+backgroundCards.forEach(card => {
+
+    card.addEventListener(
+        "click",
+        () => {
+
+            const background =
+                card.dataset.background;
+
+            setBackground(background);
+
+            backgroundChosen = true;
+
+            backgroundModal.classList.remove(
+                "active"
+            );
+
+            /*
+               Ready becomes available ONLY after
+               outfits + background are complete.
+            */
+
+            readyButton.classList.add(
+                "show"
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   CHANGE BACKGROUND
+========================================================= */
+
+function setBackground(background) {
+
+    dressStage.classList.remove(
+        "bg-castle",
+        "bg-saturn",
+        "bg-bedroom",
+        "bg-concert"
+    );
+
+    dressStage.classList.add(
+        `bg-${background}`
+    );
 }
 
 
-/* =====================================================
+/* =========================================================
    READY
-===================================================== */
+========================================================= */
 
 readyButton.addEventListener(
     "click",
@@ -2320,44 +3895,74 @@ readyButton.addEventListener(
 
 function finishGame() {
 
+    if (
+        !boyChosen ||
+        !girlChosen ||
+        !backgroundChosen
+    ) {
+        return;
+    }
+
+    /*
+       Hide customization controls.
+    */
+
     outfitControls.style.opacity = "0";
     outfitControls.style.pointerEvents = "none";
 
-    readyButton.classList.remove("show");
+    backgroundButton.style.opacity = "0";
+    backgroundButton.style.visibility = "hidden";
+    backgroundButton.style.pointerEvents = "none";
+
+    readyButton.classList.remove(
+        "show"
+    );
+
+    /*
+       Bring the couple slightly closer
+       without making them overlap.
+    */
 
     boy.classList.add("closer");
     girl.classList.add("closer");
 
-    dressScreen.classList.add("finished");
+    dressScreen.classList.add(
+        "finished"
+    );
 
     setTimeout(() => {
 
-        celebration.classList.add("show");
+        celebration.classList.add(
+            "show"
+        );
 
         createCelebrationConfetti();
 
-    }, 650);
-
+    }, 600);
 
     /*
-       The celebration message lasts several seconds.
-       Then only the dressed couple remains.
+       Celebration fades away.
+       Only the final dressed couple and
+       selected background remain.
     */
 
     setTimeout(() => {
 
-        celebration.classList.remove("show");
+        celebration.classList.remove(
+            "show"
+        );
 
-        playAgain.classList.add("show");
+        playAgain.classList.add(
+            "show"
+        );
 
     }, 4800);
-
 }
 
 
-/* =====================================================
-   GOLD + PINK CONFETTI
-===================================================== */
+/* =========================================================
+   CONFETTI
+========================================================= */
 
 function createCelebrationConfetti() {
 
@@ -2369,7 +3974,11 @@ function createCelebrationConfetti() {
         "#d7b45e"
     ];
 
-    for (let i = 0; i < 90; i++) {
+    for (
+        let i = 0;
+        i < 95;
+        i++
+    ) {
 
         const confetti =
             document.createElement("div");
@@ -2378,22 +3987,32 @@ function createCelebrationConfetti() {
             "confetti";
 
         const angle =
-            Math.random() * Math.PI * 2;
+            Math.random() *
+            Math.PI *
+            2;
 
         const distance =
-            130 + Math.random() * 450;
+            130 +
+            Math.random() *
+            460;
 
         const x =
-            Math.cos(angle) * distance;
+            Math.cos(angle) *
+            distance;
 
         const y =
-            Math.sin(angle) * distance;
+            Math.sin(angle) *
+            distance;
 
         const rotation =
-            Math.random() * 900 - 450;
+            Math.random() *
+            900 -
+            450;
 
         const duration =
-            1.6 + Math.random() * 2.4;
+            1.6 +
+            Math.random() *
+            2.4;
 
         confetti.style.setProperty(
             "--x",
@@ -2418,7 +4037,8 @@ function createCelebrationConfetti() {
         confetti.style.background =
             colors[
                 Math.floor(
-                    Math.random() * colors.length
+                    Math.random() *
+                    colors.length
                 )
             ];
 
@@ -2428,18 +4048,21 @@ function createCelebrationConfetti() {
         confetti.style.height =
             `${7 + Math.random() * 10}px`;
 
-        document.body.appendChild(confetti);
+        document.body.appendChild(
+            confetti
+        );
 
-        setTimeout(() => {
-            confetti.remove();
-        }, duration * 1000 + 100);
+        setTimeout(
+            () => confetti.remove(),
+            duration * 1000 + 150
+        );
     }
 }
 
 
-/* =====================================================
+/* =========================================================
    PLAY AGAIN
-===================================================== */
+========================================================= */
 
 playAgain.addEventListener(
     "click",
@@ -2451,9 +4074,13 @@ function resetGame() {
 
     boyChosen = false;
     girlChosen = false;
+    backgroundChosen = false;
 
-    boyOutfit = 0;
-    girlOutfit = 0;
+    currentTarget = null;
+
+    /*
+       Remove outfits.
+    */
 
     boy.classList.remove(
         "boy-outfit-1",
@@ -2471,27 +4098,61 @@ function resetGame() {
         "closer"
     );
 
-    celebration.classList.remove("show");
+    /*
+       Reset background.
+    */
 
-    playAgain.classList.remove("show");
+    dressStage.classList.remove(
+        "bg-castle",
+        "bg-saturn",
+        "bg-bedroom",
+        "bg-concert"
+    );
+
+    /*
+       Reset interface.
+    */
 
     outfitControls.style.opacity = "1";
     outfitControls.style.pointerEvents = "auto";
 
-    readyButton.classList.remove("show");
+    backgroundButton.style.opacity = "0";
+    backgroundButton.style.visibility = "hidden";
+    backgroundButton.style.pointerEvents = "none";
+
+    readyButton.classList.remove(
+        "show"
+    );
+
+    celebration.classList.remove(
+        "show"
+    );
+
+    playAgain.classList.remove(
+        "show"
+    );
+
+    outfitModal.classList.remove(
+        "active"
+    );
+
+    backgroundModal.classList.remove(
+        "active"
+    );
 
     showScreen(startScreen);
-
 }
 
 
-/* =====================================================
-   PREVENT ACCIDENTAL CONTEXT MENU
-===================================================== */
+/* =========================================================
+   PREVENT CONTEXT MENU
+========================================================= */
 
 document.addEventListener(
     "contextmenu",
-    event => event.preventDefault()
+    event => {
+        event.preventDefault();
+    }
 );
 
 </script>
