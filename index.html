@@ -7,2368 +7,2744 @@
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-  min-height:100vh;
-  font-family:Georgia,"Times New Roman",serif;
-  overflow-x:hidden;
-  background:
-    radial-gradient(circle at 50% 20%,#64233d 0%,#2a0c1b 45%,#110611 100%);
-  color:#ffe8ef;
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:Georgia,"Times New Roman",serif;
+    color:#ffe9f1;
+    background:
+        radial-gradient(circle at 50% 15%,#68263f 0%,#2c0b1c 43%,#10050d 100%);
 }
 
 button{
-  font:inherit;
-  cursor:pointer;
+    font:inherit;
+    cursor:pointer;
 }
 
 .hidden{
-  display:none!important;
+    display:none !important;
 }
 
-/* ---------------- PASSWORD ---------------- */
+/* =========================================================
+   PASSWORD
+========================================================= */
 
 #passwordScreen{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
 }
 
 .password-box{
-  width:min(440px,92vw);
-  padding:42px 32px;
-  text-align:center;
-  border:1px solid rgba(255,185,205,.55);
-  border-radius:24px;
-  background:rgba(45,8,27,.82);
-  box-shadow:
-    0 0 45px rgba(255,95,145,.18),
-    inset 0 0 35px rgba(255,160,190,.05);
-  backdrop-filter:blur(12px);
+    width:min(440px,92vw);
+    padding:42px 32px;
+    text-align:center;
+    border:1px solid rgba(255,190,210,.5);
+    border-radius:25px;
+    background:rgba(43,8,27,.86);
+    box-shadow:
+        0 0 45px rgba(255,90,145,.18),
+        inset 0 0 35px rgba(255,160,190,.05);
+    backdrop-filter:blur(12px);
 }
 
 .password-box h1{
-  font-size:clamp(32px,7vw,55px);
-  color:#ffd8e4;
-  text-shadow:0 0 18px #d65b83;
-  margin-bottom:12px;
+    font-size:clamp(32px,7vw,55px);
+    color:#ffd8e5;
+    text-shadow:0 0 18px #d85c83;
+    margin-bottom:12px;
 }
 
 .password-box p{
-  color:#eeb3c6;
-  margin-bottom:25px;
+    color:#eeb3c6;
+    margin-bottom:25px;
 }
 
 .password-input{
-  width:100%;
-  padding:15px;
-  border:1px solid #b85a7b;
-  border-radius:13px;
-  outline:none;
-  background:#1b0711;
-  color:white;
-  text-align:center;
-  letter-spacing:10px;
-  font-size:25px;
+    width:100%;
+    padding:15px;
+    border:1px solid #b85a7b;
+    border-radius:13px;
+    outline:none;
+    background:#190710;
+    color:white;
+    text-align:center;
+    letter-spacing:10px;
+    font-size:25px;
 }
 
 .enter-btn,
 .main-btn{
-  margin-top:18px;
-  border:1px solid #e68ca9;
-  color:#fff0f5;
-  background:linear-gradient(135deg,#8d274d,#54132d);
-  padding:13px 28px;
-  border-radius:999px;
-  box-shadow:0 0 20px rgba(230,110,150,.2);
-  transition:.2s;
+    margin-top:18px;
+    padding:13px 28px;
+    border:1px solid #e68ca9;
+    border-radius:999px;
+    color:#fff0f5;
+    background:linear-gradient(135deg,#8d274d,#54132d);
+    box-shadow:0 0 20px rgba(230,110,150,.2);
+    transition:.2s;
 }
 
 .enter-btn:hover,
 .main-btn:hover{
-  transform:translateY(-2px) scale(1.02);
-  box-shadow:0 0 28px rgba(255,120,160,.4);
+    transform:translateY(-2px) scale(1.02);
+    box-shadow:0 0 28px rgba(255,120,160,.4);
 }
 
 .error{
-  height:20px;
-  margin-top:12px;
-  color:#ff8eae;
+    height:20px;
+    margin-top:12px;
+    color:#ff8eae;
 }
 
-/* ---------------- INTRO ---------------- */
+/* =========================================================
+   INTRO
+========================================================= */
 
 #introScreen{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  overflow:hidden;
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
 }
 
 .intro-content{
-  text-align:center;
-  position:relative;
-  z-index:2;
+    position:relative;
+    z-index:2;
+    text-align:center;
 }
 
 .intro-title{
-  font-size:clamp(42px,9vw,90px);
-  color:#ffd6e3;
-  text-shadow:
-    0 0 12px #ef759e,
-    0 0 40px rgba(239,117,158,.5);
-  font-style:italic;
+    font-size:clamp(42px,9vw,90px);
+    color:#ffd6e3;
+    font-style:italic;
+    text-shadow:
+        0 0 12px #ef759e,
+        0 0 40px rgba(239,117,158,.5);
 }
 
 .intro-sub{
-  color:#d99bad;
-  margin:10px 0 28px;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  font-size:13px;
+    margin:10px 0 28px;
+    color:#d99bad;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    font-size:13px;
 }
 
 .intro-characters{
-  display:flex;
-  justify-content:center;
-  align-items:end;
-  gap:50px;
-  margin-bottom:20px;
+    display:flex;
+    justify-content:center;
+    align-items:end;
+    gap:50px;
+    margin-bottom:20px;
 }
 
 .intro-vampire,
 .intro-fairy{
-  width:90px;
-  height:130px;
-  position:relative;
+    position:relative;
+    width:90px;
+    height:130px;
 }
 
 .intro-vampire .head,
 .intro-fairy .head{
-  position:absolute;
-  width:65px;
-  height:65px;
-  left:12px;
-  top:15px;
-  border-radius:50%;
-  background:#f0c79f;
-  border:2px solid #421021;
+    position:absolute;
+    left:12px;
+    top:15px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#f0c79f;
+    border:2px solid #421021;
 }
 
 .intro-vampire .hair{
-  position:absolute;
-  width:76px;
-  height:58px;
-  left:6px;
-  top:3px;
-  border-radius:50% 50% 40% 40%;
-  background:#21121c;
+    position:absolute;
+    left:6px;
+    top:3px;
+    width:76px;
+    height:58px;
+    border-radius:50% 50% 40% 40%;
+    background:#21121c;
 }
 
 .intro-fairy .hair{
-  position:absolute;
-  width:78px;
-  height:60px;
-  left:5px;
-  top:4px;
-  border-radius:50% 50% 40% 40%;
-  background:#7f2442;
+    position:absolute;
+    left:5px;
+    top:4px;
+    width:78px;
+    height:60px;
+    border-radius:50% 50% 40% 40%;
+    background:#7f2442;
 }
 
 .intro-vampire .body,
 .intro-fairy .body{
-  position:absolute;
-  width:62px;
-  height:58px;
-  left:15px;
-  top:75px;
-  border-radius:25px 25px 8px 8px;
+    position:absolute;
+    left:15px;
+    top:75px;
+    width:62px;
+    height:58px;
+    border-radius:25px 25px 8px 8px;
 }
 
 .intro-vampire .body{
-  background:#190912;
-  border:2px solid #a9486d;
+    background:#190912;
+    border:2px solid #a9486d;
 }
 
 .intro-fairy .body{
-  background:#e986ac;
-  border:2px solid #ffd0df;
+    background:#e986ac;
+    border:2px solid #ffd0df;
 }
 
-.intro-vampire:after{
-  content:"";
-  position:absolute;
-  left:42px;
-  top:49px;
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:#4d1728;
-  box-shadow:-17px 0 #4d1728,17px 0 #4d1728;
-}
-
-.intro-fairy:after{
-  content:"✦";
-  position:absolute;
-  color:#ffd6e7;
-  font-size:30px;
-  left:-8px;
-  top:30px;
-  text-shadow:0 0 15px #fff;
-}
-
-/* ---------------- GAME ---------------- */
+/* =========================================================
+   GAME
+========================================================= */
 
 #gameScreen{
-  min-height:100vh;
-  padding:18px 18px 35px;
+    min-height:100vh;
+    padding:18px 18px 35px;
 }
 
 .game-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  margin-bottom:12px;
+    max-width:1200px;
+    margin:0 auto 12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
 }
 
 .logo{
-  font-size:clamp(25px,5vw,43px);
-  font-style:italic;
-  color:#ffd4e1;
-  text-shadow:0 0 18px rgba(255,110,155,.6);
+    font-size:clamp(25px,5vw,43px);
+    font-style:italic;
+    color:#ffd4e1;
+    text-shadow:0 0 18px rgba(255,110,155,.6);
 }
 
 .play-again{
-  border:1px solid #a64a6c;
-  background:#260b18;
-  color:#f7c8d7;
-  padding:9px 15px;
-  border-radius:999px;
+    padding:9px 15px;
+    border:1px solid #a64a6c;
+    border-radius:999px;
+    color:#f7c8d7;
+    background:#260b18;
 }
 
 .game-area{
-  max-width:1200px;
-  margin:auto;
+    max-width:1200px;
+    margin:auto;
 }
 
+/* =========================================================
+   STAGE
+========================================================= */
+
 .stage{
-  position:relative;
-  min-height:510px;
-  border-radius:30px;
-  border:1px solid rgba(255,180,205,.38);
-  overflow:hidden;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  gap:70px;
-  padding:25px 40px 5px;
-  background:
-    radial-gradient(circle at 50% 20%,rgba(255,170,195,.16),transparent 45%),
-    linear-gradient(145deg,#351020,#160711);
-  box-shadow:
-    inset 0 0 70px rgba(0,0,0,.5),
-    0 0 35px rgba(255,80,140,.1);
-  transition:.6s;
+    position:relative;
+    min-height:510px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    gap:70px;
+    padding:25px 40px 5px;
+    overflow:hidden;
+    border:1px solid rgba(255,180,205,.38);
+    border-radius:30px;
+    background:
+        radial-gradient(circle at 50% 20%,rgba(255,170,195,.16),transparent 45%),
+        linear-gradient(145deg,#351020,#160711);
+    box-shadow:
+        inset 0 0 70px rgba(0,0,0,.5),
+        0 0 35px rgba(255,80,140,.1);
+    transition:.6s;
 }
 
 /* BACKGROUNDS */
 
 .stage.castle{
-  background:
-    linear-gradient(rgba(15,4,12,.38),rgba(15,4,12,.65)),
-    radial-gradient(circle at 50% 12%,#9d355b 0%,#3b1124 35%,#08040a 100%);
+    background:
+        linear-gradient(rgba(15,4,12,.38),rgba(15,4,12,.65)),
+        radial-gradient(circle at 50% 12%,#9d355b 0%,#3b1124 35%,#08040a 100%);
 }
 
 .stage.saturn{
-  background:
-    radial-gradient(circle at 70% 25%,#d08e64 0 5%,transparent 6%),
-    radial-gradient(circle at 70% 25%,transparent 0 11%,rgba(238,194,151,.65) 11.5% 12.5%,transparent 13%),
-    radial-gradient(circle at 20% 20%,#fff 0 1px,transparent 2px),
-    radial-gradient(circle at 35% 60%,#fff 0 1px,transparent 2px),
-    radial-gradient(circle at 85% 70%,#fff 0 1px,transparent 2px),
-    radial-gradient(circle at 50% 80%,#fff 0 1px,transparent 2px),
-    #090914;
+    background:
+        radial-gradient(circle at 70% 25%,#d08e64 0 5%,transparent 6%),
+        radial-gradient(circle at 70% 25%,transparent 0 11%,rgba(238,194,151,.65) 11.5% 12.5%,transparent 13%),
+        radial-gradient(circle at 20% 20%,#fff 0 1px,transparent 2px),
+        radial-gradient(circle at 35% 60%,#fff 0 1px,transparent 2px),
+        radial-gradient(circle at 85% 70%,#fff 0 1px,transparent 2px),
+        radial-gradient(circle at 50% 80%,#fff 0 1px,transparent 2px),
+        #090914;
 }
 
 .stage.bedroom{
-  background:
-    linear-gradient(rgba(30,8,25,.25),rgba(10,3,12,.7)),
-    radial-gradient(circle at 50% 20%,#653044,#281225 60%,#10060f);
+    background:
+        linear-gradient(rgba(30,8,25,.25),rgba(10,3,12,.7)),
+        radial-gradient(circle at 50% 20%,#653044,#281225 60%,#10060f);
 }
 
 .stage.concert{
-  background:
-    radial-gradient(circle at 20% 30%,#ff3e86 0 2%,transparent 18%),
-    radial-gradient(circle at 80% 25%,#8c4dff 0 2%,transparent 18%),
-    radial-gradient(circle at 50% 15%,#fff 0 1%,transparent 9%),
-    linear-gradient(#18061b,#08030c 70%);
+    background:
+        radial-gradient(circle at 20% 30%,#ff3e86 0 2%,transparent 18%),
+        radial-gradient(circle at 80% 25%,#8c4dff 0 2%,transparent 18%),
+        radial-gradient(circle at 50% 15%,#fff 0 1%,transparent 9%),
+        linear-gradient(#18061b,#08030c 70%);
 }
 
-.stage.castle:after{
-  content:"♜     ♜     ♜";
-  position:absolute;
-  top:35px;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:70px;
-  color:rgba(255,202,217,.16);
-  white-space:nowrap;
-}
-
-.stage.saturn:after{
-  content:"SATURN";
-  position:absolute;
-  top:30px;
-  left:50%;
-  transform:translateX(-50%);
-  color:rgba(255,215,187,.3);
-  font-size:28px;
-  letter-spacing:8px;
-}
-
-.stage.bedroom:after{
-  content:"";
-  position:absolute;
-  left:8%;
-  right:8%;
-  bottom:0;
-  height:42%;
-  background:
-    linear-gradient(90deg,transparent 0 8%,rgba(255,160,190,.08) 8% 30%,transparent 30% 70%,rgba(255,160,190,.08) 70% 92%,transparent 92%);
-  border-top:1px solid rgba(255,180,200,.12);
-}
-
-.stage.concert:after{
-  content:"♫     ♫     ♫";
-  position:absolute;
-  top:25px;
-  left:50%;
-  transform:translateX(-50%);
-  color:rgba(255,210,230,.2);
-  font-size:48px;
-  white-space:nowrap;
-}
-
-/* ---------------- CHARACTERS ---------------- */
+/* =========================================================
+   CHARACTER CONTAINER
+========================================================= */
 
 .character{
-  position:relative;
-  width:250px;
-  height:485px;
-  flex:0 0 250px;
-  z-index:3;
-  transition:.7s ease;
+    position:relative;
+    width:250px;
+    height:485px;
+    flex:0 0 250px;
+    z-index:3;
+    transition:.7s ease;
 }
 
 .character svg{
-  width:100%;
-  height:100%;
-  overflow:visible;
-  display:block;
+    display:block;
+    width:100%;
+    height:100%;
+    overflow:visible;
 }
 
-/* outfit visibility */
+/*
+   IMPORTANT:
+   Outfit visibility is controlled with explicit IDs/classes.
+   This avoids the previous CSS selector problem.
+*/
 
-.character .outfit{
-  display:none;
+.outfit{
+    display:none;
 }
 
-.character.outfit1 .outfit-1,
-.character.outfit2 .outfit-2,
-.character.outfit3 .outfit-3,
-.character.outfit4 .outfit-4{
-  display:block;
+.character[data-outfit="1"] .outfit-1,
+.character[data-outfit="2"] .outfit-2,
+.character[data-outfit="3"] .outfit-3,
+.character[data-outfit="4"] .outfit-4{
+    display:block;
 }
 
-.character.outfit1 .default-shorts,
-.character.outfit2 .default-shorts,
-.character.outfit3 .default-shorts,
-.character.outfit4 .default-shorts{
-  display:none;
+.character[data-outfit="1"] .default-clothes,
+.character[data-outfit="2"] .default-clothes,
+.character[data-outfit="3"] .default-clothes,
+.character[data-outfit="4"] .default-clothes{
+    display:none;
 }
 
-/* background layer */
+/* =========================================================
+   BASIC BODY
+========================================================= */
 
-.character .skin{
-  fill:#f1c9a4;
-  stroke:#512536;
-  stroke-width:2;
+.skin{
+    fill:#f1c9a4;
+    stroke:#512536;
+    stroke-width:2;
 }
 
-.character .hair-back{
-  fill:#24161c;
+.burak-hair{
+    fill:#24161c;
 }
 
-#elanie .hair-back,
-#elanie .hair-front{
-  fill:#76213d;
+.elanie-hair{
+    fill:#76213d;
 }
-
-/* face */
 
 .eye-white{
-  fill:#fffafc;
-  stroke:#4b2632;
-  stroke-width:2;
+    fill:#fffafc;
+    stroke:#4b2632;
+    stroke-width:2;
 }
 
 .eye-pupil{
-  fill:#5b321f;
+    fill:#5b321f;
 }
 
 .eye-shine{
-  fill:#fff;
-}
-
-.mouth{
-  fill:none;
-  stroke:#7a3148;
-  stroke-width:3;
-  stroke-linecap:round;
-}
-
-.blush{
-  fill:#ed829b;
-  opacity:.35;
+    fill:white;
 }
 
 .brow{
-  fill:none;
-  stroke:#4b2930;
-  stroke-width:4;
-  stroke-linecap:round;
+    fill:none;
+    stroke:#4b2930;
+    stroke-width:4;
+    stroke-linecap:round;
 }
 
-/* Hair deliberately stays outside face */
-
-.hair-front{
-  fill:#24161c;
+.blush{
+    fill:#ed829b;
+    opacity:.35;
 }
 
-.hair-side{
-  fill:#24161c;
+.mouth{
+    fill:none;
+    stroke:#7a3148;
+    stroke-width:3;
+    stroke-linecap:round;
 }
 
-/* ---------------- OUTFITS ---------------- */
+/* =========================================================
+   BURAK OUTFITS
+========================================================= */
 
-/* BURAK 1 */
-
-#burak .b1-shirt{
-  fill:#0e0d10;
+.burak-black-shirt{
+    fill:#0d0d10;
 }
 
-#burak .b1-pants{
-  fill:#111116;
+.burak-brown-shirt{
+    fill:#39261f;
 }
 
-#burak .b1-shoe{
-  fill:#09090b;
+.burak-black-pants{
+    fill:#111116;
 }
 
-#burak .b1-text{
-  fill:white;
-  font-family:Arial,sans-serif;
-  font-weight:700;
-  letter-spacing:2px;
-  font-size:15px;
+.burak-black-shoes{
+    fill:#09090b;
 }
 
-/* BURAK 2 */
-
-#burak .b2-shirt{
-  fill:#39261f;
+.brand-deftones{
+    fill:white;
+    font-family:Arial,sans-serif;
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:2px;
 }
 
-#burak .b2-pants{
-  fill:#111116;
-}
-
-#burak .b2-shoe{
-  fill:#09090b;
-}
-
-#burak .b2-text{
-  fill:#fff;
-  font-family:Georgia,serif;
-  font-weight:bold;
-  letter-spacing:2px;
-  font-size:14px;
-}
-
-/* BURAK 3 vampire */
-
-.vampire-coat{
-  fill:#21101a;
-  stroke:#9c3b5f;
-  stroke-width:2;
-}
-
-.vampire-shirt{
-  fill:#eee0e5;
-}
-
-.vampire-pants{
-  fill:#111116;
-}
-
-.vampire-shoe{
-  fill:#08080a;
+.brand-opeth{
+    fill:white;
+    font-family:Georgia,serif;
+    font-weight:bold;
+    font-size:15px;
+    letter-spacing:2px;
 }
 
 .vampire-cape{
-  fill:#651633;
-  opacity:.95;
+    fill:#641531;
 }
 
-/* BURAK 4 pajamas */
+.vampire-coat{
+    fill:#21101a;
+    stroke:#9c3b5f;
+    stroke-width:2;
+}
 
-.pajama{
-  fill:#ef9bb9;
-  stroke:#7c2947;
-  stroke-width:2;
+.vampire-shirt{
+    fill:#eee0e5;
+}
+
+.vampire-pants{
+    fill:#111116;
+}
+
+.vampire-shoes{
+    fill:#08080a;
+}
+
+.pajama-pink{
+    fill:#ef9bb9;
+    stroke:#7c2947;
+    stroke-width:2;
 }
 
 .pajama-heart{
-  fill:#7e2143;
+    fill:#7e2143;
 }
 
-/* ELANIE */
+/* =========================================================
+   ELANIE OUTFITS
+========================================================= */
 
-#elanie .e1-shirt{
-  fill:#0e0d10;
+.elanie-black-shirt{
+    fill:#0e0d10;
 }
 
-#elanie .e1-skirt{
-  fill:#111116;
+.elanie-brown-shirt{
+    fill:#39261f;
 }
 
-#elanie .e1-shoe{
-  fill:#09090b;
+.elanie-black-skirt{
+    fill:#111116;
 }
 
-#elanie .e1-text{
-  fill:#fff;
-  font-family:Arial,sans-serif;
-  font-weight:700;
-  letter-spacing:2px;
-  font-size:14px;
+.elanie-white-skirt{
+    fill:#f8f4ef;
 }
 
-#elanie .e2-shirt{
-  fill:#39261f;
-}
-
-#elanie .e2-skirt{
-  fill:#f8f4ef;
-}
-
-#elanie .e2-shoe{
-  fill:#09090b;
-}
-
-#elanie .e2-text{
-  fill:#fff;
-  font-family:Georgia,serif;
-  font-weight:bold;
-  letter-spacing:2px;
-  font-size:14px;
+.elanie-shoes{
+    fill:#09090b;
 }
 
 .fairy-dress{
-  fill:#ef8fb3;
-  stroke:#ffd5e3;
-  stroke-width:2;
+    fill:#ef8fb3;
+    stroke:#ffd5e3;
+    stroke-width:2;
 }
 
 .fairy-wing{
-  fill:#f9b9d1;
-  opacity:.7;
-  stroke:#ffd8e6;
-  stroke-width:2;
+    fill:#f9b9d1;
+    opacity:.72;
+    stroke:#ffd8e6;
+    stroke-width:2;
 }
 
 .fairy-shoe{
-  fill:#f8c6d8;
-  stroke:#9e4667;
-  stroke-width:2;
+    fill:#f8c6d8;
+    stroke:#9e4667;
+    stroke-width:2;
 }
 
-/* ---------------- SELECTORS ---------------- */
+/* =========================================================
+   SELECTORS
+========================================================= */
 
-.selector-area{
-  margin-top:18px;
-  padding:18px;
-  border-radius:24px;
-  background:rgba(40,7,23,.78);
-  border:1px solid rgba(255,174,200,.25);
+.selector-area,
+.background-area{
+    margin-top:18px;
+    padding:18px;
+    border:1px solid rgba(255,174,200,.25);
+    border-radius:24px;
+    background:rgba(40,7,23,.78);
 }
 
 .selector-title{
-  text-align:center;
-  color:#ffd4e2;
-  font-size:21px;
-  margin-bottom:13px;
+    margin-bottom:13px;
+    color:#ffd4e2;
+    text-align:center;
+    font-size:21px;
 }
 
-.outfit-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
+.outfit-grid,
+.background-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
 }
 
-.option{
-  min-height:72px;
-  border:1px solid #7f3654;
-  background:#210a16;
-  color:#f6cfda;
-  border-radius:15px;
-  padding:10px;
-  transition:.2s;
+.option,
+.background-option{
+    min-height:78px;
+    padding:10px;
+    border:1px solid #7f3654;
+    border-radius:15px;
+    color:#f6cfda;
+    background:#210a16;
+    transition:.2s;
 }
 
-.option:hover{
-  transform:translateY(-2px);
-  border-color:#df7598;
-  background:#361025;
+.option:hover,
+.background-option:hover{
+    transform:translateY(-2px);
+    border-color:#df7598;
+    background:#361025;
 }
 
-.option.selected{
-  border-color:#ffadc5;
-  background:#542039;
-  box-shadow:0 0 18px rgba(255,120,160,.2);
+.option.selected,
+.background-option.selected{
+    border-color:#ffadc5;
+    background:#542039;
+    box-shadow:0 0 18px rgba(255,120,160,.2);
 }
 
 .option strong{
-  display:block;
-  color:#ffdce7;
-  margin-bottom:4px;
+    display:block;
+    margin-bottom:4px;
+    color:#ffdce7;
 }
 
 .option small{
-  color:#c993a5;
-  font-size:11px;
+    color:#c993a5;
+    font-size:11px;
 }
 
-/* background selector */
-
-.background-area{
-  margin-top:14px;
-  padding:18px;
-  border-radius:24px;
-  background:rgba(40,7,23,.78);
-  border:1px solid rgba(255,174,200,.25);
-}
-
-.background-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-
-.background-option{
-  min-height:82px;
-  border-radius:15px;
-  border:1px solid #7f3654;
-  color:#f7d3df;
-  background:#210a16;
-  padding:10px;
-  transition:.2s;
-}
-
-.background-option:hover{
-  transform:translateY(-2px);
-  border-color:#df7598;
-}
-
-.background-option.selected{
-  border-color:#ffadc5;
-  background:#542039;
-  box-shadow:0 0 18px rgba(255,120,160,.25);
-}
+/* =========================================================
+   BACKGROUND OPTIONS
+========================================================= */
 
 .bg-preview{
-  width:100%;
-  height:32px;
-  border-radius:8px;
-  margin-bottom:8px;
+    width:100%;
+    height:32px;
+    margin-bottom:8px;
+    border-radius:8px;
 }
 
 .preview-castle{
-  background:linear-gradient(135deg,#a03b60,#160711);
+    background:linear-gradient(135deg,#a03b60,#160711);
 }
 
 .preview-saturn{
-  background:radial-gradient(circle at 65% 40%,#d59a72 0 10%,transparent 11%),#090914;
+    background:
+        radial-gradient(circle at 65% 40%,#d59a72 0 10%,transparent 11%),
+        #090914;
 }
 
 .preview-bedroom{
-  background:linear-gradient(135deg,#71324d,#180915);
+    background:linear-gradient(135deg,#71324d,#180915);
 }
 
 .preview-concert{
-  background:radial-gradient(circle at 20% 40%,#ff4d91,transparent 20%),#09030d;
+    background:
+        radial-gradient(circle at 20% 40%,#ff4d91,transparent 20%),
+        #09030d;
 }
 
+/* =========================================================
+   READY
+========================================================= */
+
 .ready-wrap{
-  text-align:center;
-  margin-top:16px;
+    margin-top:16px;
+    text-align:center;
 }
 
 .ready-btn{
-  padding:14px 38px;
-  border:none;
-  border-radius:999px;
-  background:linear-gradient(135deg,#df7096,#8d2a50);
-  color:white;
-  font-weight:bold;
-  font-size:18px;
-  box-shadow:0 0 25px rgba(223,112,150,.35);
+    padding:14px 38px;
+    border:0;
+    border-radius:999px;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    background:linear-gradient(135deg,#df7096,#8d2a50);
+    box-shadow:0 0 25px rgba(223,112,150,.35);
 }
 
 .ready-btn:hover{
-  transform:scale(1.04);
+    transform:scale(1.04);
 }
 
-/* ---------------- CELEBRATION ---------------- */
+/* =========================================================
+   CELEBRATION
+========================================================= */
 
 .celebration{
-  position:absolute;
-  inset:0;
-  z-index:20;
-  pointer-events:none;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
+    position:absolute;
+    inset:0;
+    z-index:20;
+    pointer-events:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
 }
 
 .celebration.show{
-  animation:celebrate .8s forwards;
+    animation:celebrate .8s forwards;
 }
 
 .celebration-text{
-  text-align:center;
-  font-size:clamp(28px,6vw,60px);
-  font-style:italic;
-  font-weight:bold;
-  color:#fff1f6;
-  text-shadow:
-    0 0 10px #ff6f9e,
-    0 0 35px #ff3f82;
+    text-align:center;
+    color:#fff1f6;
+    font-size:clamp(28px,6vw,60px);
+    font-style:italic;
+    font-weight:bold;
+    text-shadow:
+        0 0 10px #ff6f9e,
+        0 0 35px #ff3f82;
 }
 
 .big-heart{
-  position:absolute;
-  font-size:70px;
-  color:#ff9fbc;
-  filter:drop-shadow(0 0 20px #ff4e8d);
-  animation:heartUp 1.5s ease-out forwards;
+    position:absolute;
+    color:#ff9fbc;
+    font-size:70px;
+    filter:drop-shadow(0 0 20px #ff4e8d);
+    animation:heartUp 1.5s ease-out forwards;
 }
 
 .confetti{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
+    position:absolute;
+    inset:0;
+    overflow:hidden;
 }
 
 .confetti span{
-  position:absolute;
-  top:-20px;
-  width:7px;
-  height:15px;
-  background:#ffadc7;
-  animation:fall 2.4s linear forwards;
+    position:absolute;
+    top:-20px;
+    width:7px;
+    height:15px;
+    background:#ffadc7;
+    animation:fall 2.4s linear forwards;
 }
 
 .confetti span:nth-child(2n){
-  background:#c56a91;
+    background:#c56a91;
 }
 
 .confetti span:nth-child(3n){
-  background:#ffd7e4;
+    background:#ffd7e4;
 }
 
 @keyframes celebrate{
-  from{opacity:0;transform:scale(.7)}
-  to{opacity:1;transform:scale(1)}
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
 }
 
 @keyframes heartUp{
-  0%{
-    transform:translateY(90px) scale(.3);
-    opacity:0;
-  }
-  35%{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
-  70%{
-    transform:translateY(-80px) scale(1.2);
-  }
-  100%{
-    transform:translateY(-150px) scale(2);
-    opacity:0;
-  }
+    0%{
+        transform:translateY(90px) scale(.3);
+        opacity:0;
+    }
+
+    35%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+    70%{
+        transform:translateY(-80px) scale(1.2);
+    }
+
+    100%{
+        transform:translateY(-150px) scale(2);
+        opacity:0;
+    }
 }
 
 @keyframes fall{
-  to{
-    transform:translateY(550px) rotate(500deg);
-    opacity:0;
-  }
+    to{
+        transform:translateY(550px) rotate(500deg);
+        opacity:0;
+    }
 }
 
-/* final zoom */
-
 .stage.final .character{
-  transform:translateY(-20px) scale(1.07);
+    transform:translateY(-20px) scale(1.07);
 }
 
 .stage.final{
-  gap:45px;
+    gap:45px;
 }
 
-/* responsive */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media(max-width:900px){
-  .stage{
-    gap:15px;
-    padding-left:5px;
-    padding-right:5px;
-  }
 
-  .character{
-    width:210px;
-    flex-basis:210px;
-  }
+    .stage{
+        gap:15px;
+        padding-left:5px;
+        padding-right:5px;
+    }
 
-  .outfit-grid,
-  .background-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+    .character{
+        width:210px;
+        flex-basis:210px;
+    }
+
+    .outfit-grid,
+    .background-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 
 @media(max-width:620px){
-  #gameScreen{
-    padding:12px 9px 25px;
-  }
 
-  .game-header{
-    align-items:flex-start;
-  }
+    #gameScreen{
+        padding:12px 9px 25px;
+    }
 
-  .stage{
-    min-height:470px;
-    gap:0;
-    padding:20px 0 0;
-  }
+    .stage{
+        min-height:470px;
+        gap:0;
+        padding:20px 0 0;
+    }
 
-  .character{
-    width:180px;
-    flex-basis:180px;
-    height:430px;
-  }
+    .character{
+        width:180px;
+        flex-basis:180px;
+        height:430px;
+    }
 
-  .stage.final{
-    gap:0;
-  }
+    .stage.final{
+        gap:0;
+    }
 
-  .stage.final .character{
-    transform:translateY(-15px) scale(1.03);
-  }
+    .stage.final .character{
+        transform:translateY(-15px) scale(1.03);
+    }
 
-  .logo{
-    font-size:23px;
-  }
+    .logo{
+        font-size:23px;
+    }
 }
 
 @media(max-width:450px){
-  .character{
-    width:165px;
-    flex-basis:165px;
-  }
 
-  .stage{
-    min-height:430px;
-  }
+    .character{
+        width:165px;
+        flex-basis:165px;
+    }
 
-  .outfit-grid,
-  .background-grid{
-    grid-template-columns:1fr 1fr;
-  }
+    .stage{
+        min-height:430px;
+    }
 
-  .option,
-  .background-option{
-    font-size:12px;
-  }
+    .outfit-grid,
+    .background-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .option,
+    .background-option{
+        font-size:12px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- PASSWORD -->
+<!-- =====================================================
+     PASSWORD
+===================================================== -->
 
 <section id="passwordScreen">
 
-  <div class="password-box">
+    <div class="password-box">
 
-    <h1>Legendary Couple's Style</h1>
+        <h1>Legendary Couple's Style</h1>
 
-    <p>You know the password.</p>
+        <p>You know the password.</p>
 
-    <input
-      id="passwordInput"
-      class="password-input"
-      maxlength="3"
-      inputmode="numeric"
-      type="password"
-      autocomplete="off"
-      aria-label="Password"
-    >
+        <input
+            id="passwordInput"
+            class="password-input"
+            maxlength="3"
+            inputmode="numeric"
+            type="password"
+            autocomplete="off"
+        >
 
-    <br>
+        <br>
 
-    <button class="enter-btn" id="enterButton">
-      Enter
-    </button>
+        <button class="enter-btn" id="enterButton">
+            Enter
+        </button>
 
-    <div class="error" id="passwordError"></div>
+        <div class="error" id="passwordError"></div>
 
-  </div>
+    </div>
 
 </section>
 
 
-<!-- INTRO -->
+<!-- =====================================================
+     INTRO
+===================================================== -->
 
 <section id="introScreen" class="hidden">
 
-  <div class="intro-content">
+    <div class="intro-content">
 
-    <div class="intro-characters">
+        <div class="intro-characters">
 
-      <div class="intro-vampire">
-        <div class="hair"></div>
-        <div class="head"></div>
-        <div class="body"></div>
-      </div>
+            <div class="intro-vampire">
+                <div class="hair"></div>
+                <div class="head"></div>
+                <div class="body"></div>
+            </div>
 
-      <div class="intro-fairy">
-        <div class="hair"></div>
-        <div class="head"></div>
-        <div class="body"></div>
-      </div>
+            <div class="intro-fairy">
+                <div class="hair"></div>
+                <div class="head"></div>
+                <div class="body"></div>
+            </div>
+
+        </div>
+
+        <h1 class="intro-title">
+            Legendary Couple's Style
+        </h1>
+
+        <p class="intro-sub">
+            a royal gothic love story
+        </p>
+
+        <button class="main-btn" id="startButton">
+            ✦ Play ✦
+        </button>
 
     </div>
-
-    <h1 class="intro-title">Legendary Couple's Style</h1>
-
-    <p class="intro-sub">
-      a royal gothic love story
-    </p>
-
-    <button class="main-btn" id="startButton">
-      ✦ Play ✦
-    </button>
-
-  </div>
 
 </section>
 
 
-<!-- GAME -->
+<!-- =====================================================
+     GAME
+===================================================== -->
 
 <section id="gameScreen" class="hidden">
 
-  <div class="game-header">
+    <div class="game-header">
 
-    <div class="logo">
-      Legendary Couple's Style
-    </div>
-
-    <button class="play-again" id="playAgain">
-      ↻ Play again
-    </button>
-
-  </div>
-
-
-  <div class="game-area">
-
-    <div class="stage" id="stage">
-
-
-      <!-- BURAK -->
-
-      <div class="character" id="burak">
-
-        <svg viewBox="0 0 230 455" aria-label="Burak character">
-
-          <!-- back hair -->
-          <path
-            class="hair-back"
-            d="M65 89
-               Q48 54 72 28
-               Q101 2 137 24
-               Q169 42 158 86
-               L150 128
-               L132 115
-               L99 120
-               L75 133
-               Z"
-          />
-
-          <!-- neck -->
-          <rect
-            class="skin"
-            x="104"
-            y="112"
-            width="26"
-            height="30"
-            rx="8"
-          />
-
-          <!-- LEFT ARM -->
-          <path
-            class="skin"
-            d="M76 157
-               Q59 159 53 180
-               L45 250
-               Q43 261 52 266
-               Q62 269 66 258
-               L79 196
-               L84 174
-               Z"
-          />
-
-          <!-- RIGHT ARM -->
-          <path
-            class="skin"
-            d="M154 157
-               Q171 159 177 180
-               L185 250
-               Q187 261 178 266
-               Q168 269 164 258
-               L151 196
-               L146 174
-               Z"
-          />
-
-          <!-- BODY -->
-          <path
-            class="skin"
-            d="M79 143
-               Q115 132 151 143
-               L158 270
-               Q115 284 72 270
-               Z"
-          />
-
-          <!-- DEFAULT SHORTS -->
-          <path
-            class="default-shorts"
-            fill="#26232a"
-            stroke="#111"
-            stroke-width="2"
-            d="M72 268
-               L158 268
-               L153 319
-               L119 319
-               L115 292
-               L111 319
-               L77 319
-               Z"
-          />
-
-          <!-- LEGS -->
-          <path
-            class="skin"
-            d="M78 315
-               L113 315
-               L111 397
-               Q110 407 98 407
-               L82 407
-               Q73 403 75 393
-               Z"
-          />
-
-          <path
-            class="skin"
-            d="M117 315
-               L152 315
-               L155 393
-               Q157 403 148 407
-               L132 407
-               Q120 407 119 397
-               Z"
-          />
-
-          <!-- SHOES -->
-          <path
-            fill="#111116"
-            stroke="#050507"
-            stroke-width="2"
-            d="M76 395
-               Q88 389 102 397
-               L109 407
-               L109 418
-               L70 418
-               Q68 406 76 395
-               Z"
-          />
-
-          <path
-            fill="#111116"
-            stroke="#050507"
-            stroke-width="2"
-            d="M120 407
-               L128 397
-               Q142 389 154 395
-               Q162 406 160 418
-               L120 418
-               Z"
-          />
-
-
-          <!-- OUTFIT 1 -->
-
-          <g class="outfit outfit-1">
-
-            <path
-              class="b1-shirt"
-              d="M75 143
-                 Q115 132 155 143
-                 L158 276
-                 Q115 286 72 276
-                 Z"
-            />
-
-            <path
-              class="b1-pants"
-              d="M72 272
-                 L158 272
-                 L153 394
-                 L120 394
-                 L115 322
-                 L110 394
-                 L77 394
-                 Z"
-            />
-
-            <path
-              class="b1-shoe"
-              d="M75 390
-                 Q88 385 101 394
-                 L108 405
-                 L108 418
-                 L69 418
-                 Q68 403 75 390
-                 Z"
-            />
-
-            <path
-              class="b1-shoe"
-              d="M122 405
-                 L129 394
-                 Q142 385 155 390
-                 Q162 403 161 418
-                 L122 418
-                 Z"
-            />
-
-            <text
-              class="b1-text"
-              x="115"
-              y="213"
-              text-anchor="middle"
-            >
-              deftones
-            </text>
-
-          </g>
-
-
-          <!-- OUTFIT 2 -->
-
-          <g class="outfit outfit-2">
-
-            <path
-              class="b2-shirt"
-              d="M75 143
-                 Q115 132 155 143
-                 L158 276
-                 Q115 286 72 276
-                 Z"
-            />
-
-            <path
-              class="b2-pants"
-              d="M72 272
-                 L158 272
-                 L153 394
-                 L120 394
-                 L115 322
-                 L110 394
-                 L77 394
-                 Z"
-            />
-
-            <path
-              class="b2-shoe"
-              d="M75 390
-                 Q88 385 101 394
-                 L108 405
-                 L108 418
-                 L69 418
-                 Q68 403 75 390
-                 Z"
-            />
-
-            <path
-              class="b2-shoe"
-              d="M122 405
-                 L129 394
-                 Q142 385 155 390
-                 Q162 403 161 418
-                 L122 418
-                 Z"
-            />
-
-            <text
-              class="b2-text"
-              x="115"
-              y="213"
-              text-anchor="middle"
-            >
-              opeth
-            </text>
-
-          </g>
-
-
-          <!-- OUTFIT 3 -->
-
-          <g class="outfit outfit-3">
-
-            <path
-              class="vampire-cape"
-              d="M67 150
-                 Q115 127 163 150
-                 L183 308
-                 Q147 286 115 307
-                 Q83 286 47 308
-                 Z"
-            />
-
-            <path
-              class="vampire-coat"
-              d="M76 146
-                 Q115 134 154 146
-                 L163 278
-                 Q115 290 67 278
-                 Z"
-            />
-
-            <path
-              class="vampire-shirt"
-              d="M102 146
-                 L128 146
-                 L115 190
-                 Z"
-            />
-
-            <path
-              class="vampire-pants"
-              d="M68 273
-                 L162 273
-                 L153 395
-                 L120 395
-                 L115 323
-                 L110 395
-                 L77 395
-                 Z"
-            />
-
-            <path
-              class="vampire-shoe"
-              d="M75 390
-                 Q88 385 101 394
-                 L108 405
-                 L108 418
-                 L69 418
-                 Q68 403 75 390
-                 Z"
-            />
-
-            <path
-              class="vampire-shoe"
-              d="M122 405
-                 L129 394
-                 Q142 385 155 390
-                 Q162 403 161 418
-                 L122 418
-                 Z"
-            />
-
-          </g>
-
-
-          <!-- OUTFIT 4 -->
-
-          <g class="outfit outfit-4">
-
-            <path
-              class="pajama"
-              d="M75 143
-                 Q115 132 155 143
-                 L159 278
-                 Q115 288 71 278
-                 Z"
-            />
-
-            <path
-              class="pajama"
-              d="M72 273
-                 L158 273
-                 L153 395
-                 L120 395
-                 L115 322
-                 L110 395
-                 L77 395
-                 Z"
-            />
-
-            <text
-              class="pajama-heart"
-              x="95"
-              y="205"
-              font-size="20"
-            >♥</text>
-
-            <text
-              class="pajama-heart"
-              x="130"
-              y="238"
-              font-size="20"
-            >♥</text>
-
-            <text
-              class="pajama-heart"
-              x="108"
-              y="274"
-              font-size="17"
-            >♥</text>
-
-            <path
-              fill="#fff5f8"
-              stroke="#b87591"
-              stroke-width="2"
-              d="M74 390
-                 Q90 384 105 397
-                 L109 418
-                 L67 418
-                 Q67 402 74 390
-                 Z"
-            />
-
-            <path
-              fill="#fff5f8"
-              stroke="#b87591"
-              stroke-width="2"
-              d="M121 397
-                 Q140 384 156 390
-                 Q163 402 162 418
-                 L120 418
-                 Z"
-            />
-
-          </g>
-
-
-          <!-- HEAD -->
-          <circle
-            class="skin"
-            cx="115"
-            cy="83"
-            r="55"
-          />
-
-          <!-- ears -->
-          <ellipse class="skin" cx="61" cy="84" rx="9" ry="14"/>
-          <ellipse class="skin" cx="169" cy="84" rx="9" ry="14"/>
-
-
-          <!-- FRONT HAIR CAP -->
-          <path
-            class="hair-front"
-            d="M63 77
-               Q60 31 91 19
-               Q123 4 148 25
-               Q169 42 164 77
-               Q149 59 136 56
-               Q121 72 103 58
-               Q84 72 63 77
-               Z"
-          />
-
-          <!-- hair sides -->
-          <path
-            class="hair-side"
-            d="M62 72
-               Q58 97 67 119
-               L79 119
-               L81 91
-               Z"
-          />
-
-          <path
-            class="hair-side"
-            d="M168 72
-               Q172 97 163 119
-               L151 119
-               L149 91
-               Z"
-          />
-
-
-          <!-- EYES -->
-          <ellipse class="eye-white" cx="91" cy="87" rx="15" ry="18"/>
-          <ellipse class="eye-white" cx="139" cy="87" rx="15" ry="18"/>
-
-          <ellipse class="eye-pupil" cx="94" cy="89" rx="8" ry="11"/>
-          <ellipse class="eye-pupil" cx="142" cy="89" rx="8" ry="11"/>
-
-          <circle class="eye-shine" cx="97" cy="84" r="3"/>
-          <circle class="eye-shine" cx="145" cy="84" r="3"/>
-
-
-          <!-- BROWS -->
-          <path class="brow" d="M77 66 Q91 58 103 66"/>
-          <path class="brow" d="M127 66 Q140 58 153 66"/>
-
-
-          <!-- NOSE -->
-          <path
-            d="M115 90 Q111 103 116 105 Q120 106 123 102"
-            fill="none"
-            stroke="#bd806f"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
-
-
-          <!-- BLUSH -->
-          <ellipse class="blush" cx="79" cy="108" rx="15" ry="6"/>
-          <ellipse class="blush" cx="151" cy="108" rx="15" ry="6"/>
-
-
-          <!-- SMILE -->
-          <path
-            class="mouth"
-            d="M105 116 Q115 123 125 116"
-          />
-
-
-          <!-- HANDS -->
-          <circle class="skin" cx="53" cy="261" r="10"/>
-          <circle class="skin" cx="177" cy="261" r="10"/>
-
-        </svg>
-
-      </div>
-
-
-      <!-- ELANIE -->
-
-      <div class="character" id="elanie">
-
-        <svg viewBox="0 0 230 455" aria-label="Elanie character">
-
-          <!-- back hair -->
-          <path
-            class="hair-back"
-            d="M65 89
-               Q47 54 72 28
-               Q101 3 137 24
-               Q169 42 158 87
-               L150 130
-               L131 116
-               L99 120
-               L75 132
-               Z"
-          />
-
-          <!-- neck -->
-          <rect
-            class="skin"
-            x="104"
-            y="112"
-            width="26"
-            height="30"
-            rx="8"
-          />
-
-          <!-- arms -->
-          <path
-            class="skin"
-            d="M76 157
-               Q59 159 53 180
-               L45 250
-               Q43 261 52 266
-               Q62 269 66 258
-               L79 196
-               L84 174
-               Z"
-          />
-
-          <path
-            class="skin"
-            d="M154 157
-               Q171 159 177 180
-               L185 250
-               Q187 261 178 266
-               Q168 269 164 258
-               L151 196
-               L146 174
-               Z"
-          />
-
-          <!-- body -->
-          <path
-            class="skin"
-            d="M79 143
-               Q115 132 151 143
-               L158 270
-               Q115 284 72 270
-               Z"
-          />
-
-          <!-- default shorts -->
-          <path
-            class="default-shorts"
-            fill="#26232a"
-            stroke="#111"
-            stroke-width="2"
-            d="M72 268
-               L158 268
-               L153 319
-               L119 319
-               L115 292
-               L111 319
-               L77 319
-               Z"
-          />
-
-          <!-- legs -->
-          <path
-            class="skin"
-            d="M78 315
-               L113 315
-               L111 397
-               Q110 407 98 407
-               L82 407
-               Q73 403 75 393
-               Z"
-          />
-
-          <path
-            class="skin"
-            d="M117 315
-               L152 315
-               L155 393
-               Q157 403 148 407
-               L132 407
-               Q120 407 119 397
-               Z"
-          />
-
-          <!-- default shoes -->
-          <path
-            fill="#111116"
-            stroke="#050507"
-            stroke-width="2"
-            d="M76 395
-               Q88 389 102 397
-               L109 407
-               L109 418
-               L70 418
-               Q68 406 76 395
-               Z"
-          />
-
-          <path
-            fill="#111116"
-            stroke="#050507"
-            stroke-width="2"
-            d="M120 407
-               L128 397
-               Q142 389 154 395
-               Q162 406 160 418
-               L120 418
-               Z"
-          />
-
-
-          <!-- ELANIE OUTFIT 1 -->
-
-          <g class="outfit outfit-1">
-
-            <path
-              class="e1-shirt"
-              d="M75 143
-                 Q115 132 155 143
-                 L158 235
-                 Q115 245 72 235
-                 Z"
-            />
-
-            <path
-              class="e1-skirt"
-              d="M72 230
-                 Q115 239 158 230
-                 L170 318
-                 Q115 335 60 318
-                 Z"
-            />
-
-            <path
-              class="e1-shoe"
-              d="M75 390
-                 Q88 385 101 394
-                 L108 405
-                 L108 418
-                 L69 418
-                 Q68 403 75 390
-                 Z"
-            />
-
-            <path
-              class="e1-shoe"
-              d="M122 405
-                 L129 394
-                 Q142 385 155 390
-                 Q162 403 161 418
-                 L122 418
-                 Z"
-            />
-
-            <text
-              class="e1-text"
-              x="115"
-              y="200"
-              text-anchor="middle"
-            >
-              deftones
-            </text>
-
-          </g>
-
-
-          <!-- ELANIE OUTFIT 2 -->
-
-          <g class="outfit outfit-2">
-
-            <path
-              class="e2-shirt"
-              d="M75 143
-                 Q115 132 155 143
-                 L158 235
-                 Q115 245 72 235
-                 Z"
-            />
-
-            <path
-              class="e2-skirt"
-              d="M72 230
-                 Q115 239 158 230
-                 L170 318
-                 Q115 335 60 318
-                 Z"
-            />
-
-            <path
-              class="e2-shoe"
-              d="M75 390
-                 Q88 385 101 394
-                 L108 405
-                 L108 418
-                 L69 418
-                 Q68 403 75 390
-                 Z"
-            />
-
-            <path
-              class="e2-shoe"
-              d="M122 405
-                 L129 394
-                 Q142 385 155 390
-                 Q162 403 161 418
-                 L122 418
-                 Z"
-            />
-
-            <text
-              class="e2-text"
-              x="115"
-              y="200"
-              text-anchor="middle"
-            >
-              opeth
-            </text>
-
-          </g>
-
-
-          <!-- FAIRY -->
-
-          <g class="outfit outfit-3">
-
-            <ellipse
-              class="fairy-wing"
-              cx="62"
-              cy="195"
-              rx="35"
-              ry="55"
-              transform="rotate(-20 62 195)"
-            />
-
-            <ellipse
-              class="fairy-wing"
-              cx="168"
-              cy="195"
-              rx="35"
-              ry="55"
-              transform="rotate(20 168 195)"
-            />
-
-            <path
-              class="fairy-dress"
-              d="M79 143
-                 Q115 132 151 143
-                 L164 317
-                 Q115 337 66 317
-                 Z"
-            />
-
-            <path
-              class="fairy-dress"
-              d="M91 148
-                 L115 188
-                 L139 148
-                 L130 140
-                 L100 140
-                 Z"
-            />
-
-            <path
-              class="fairy-shoe"
-              d="M75 390
-                 Q88 385 101 394
-                 L108 405
-                 L108 418
-                 L69 418
-                 Q68 403 75 390
-                 Z"
-            />
-
-            <path
-              class="fairy-shoe"
-              d="M122 405
-                 L129 394
-                 Q142 385 155 390
-                 Q162 403 161 418
-                 L122 418
-                 Z"
-            />
-
-            <circle cx="95" cy="228" r="5" fill="#fff0f6"/>
-            <circle cx="135" cy="260" r="5" fill="#fff0f6"/>
-            <circle cx="111" cy="292" r="5" fill="#fff0f6"/>
-
-          </g>
-
-
-          <!-- PAJAMAS -->
-
-          <g class="outfit outfit-4">
-
-            <path
-              class="pajama"
-              d="M75 143
-                 Q115 132 155 143
-                 L159 278
-                 Q115 288 71 278
-                 Z"
-            />
-
-            <path
-              class="pajama"
-              d="M72 273
-                 L158 273
-                 L153 395
-                 L120 395
-                 L115 322
-                 L110 395
-                 L77 395
-                 Z"
-            />
-
-            <text class="pajama-heart" x="95" y="205" font-size="20">♥</text>
-            <text class="pajama-heart" x="130" y="238" font-size="20">♥</text>
-            <text class="pajama-heart" x="108" y="274" font-size="17">♥</text>
-
-            <path
-              fill="#fff5f8"
-              stroke="#b87591"
-              stroke-width="2"
-              d="M74 390
-                 Q90 384 105 397
-                 L109 418
-                 L67 418
-                 Q67 402 74 390
-                 Z"
-            />
-
-            <path
-              fill="#fff5f8"
-              stroke="#b87591"
-              stroke-width="2"
-              d="M121 397
-                 Q140 384 156 390
-                 Q163 402 162 418
-                 L120 418
-                 Z"
-            />
-
-          </g>
-
-
-          <!-- HEAD -->
-
-          <circle
-            class="skin"
-            cx="115"
-            cy="83"
-            r="55"
-          />
-
-          <ellipse class="skin" cx="61" cy="84" rx="9" ry="14"/>
-          <ellipse class="skin" cx="169" cy="84" rx="9" ry="14"/>
-
-
-          <!-- HAIR CAP -->
-
-          <path
-            class="hair-front"
-            d="M63 77
-               Q60 31 91 19
-               Q123 4 148 25
-               Q169 42 164 77
-               Q149 59 136 56
-               Q121 72 103 58
-               Q84 72 63 77
-               Z"
-          />
-
-          <!-- bangs that stop ABOVE eyes -->
-
-          <path
-            class="hair-front"
-            d="M73 62
-               Q84 42 102 39
-               L100 69
-               Q91 75 81 73
-               Z"
-          />
-
-          <path
-            class="hair-front"
-            d="M102 45
-               Q115 35 129 43
-               L125 68
-               Q114 74 103 68
-               Z"
-          />
-
-          <path
-            class="hair-front"
-            d="M128 43
-               Q145 45 157 63
-               L151 74
-               Q140 71 128 66
-               Z"
-          />
-
-          <!-- side hair -->
-          <path
-            class="hair-side"
-            d="M62 72
-               Q58 97 67 119
-               L79 119
-               L81 91
-               Z"
-          />
-
-          <path
-            class="hair-side"
-            d="M168 72
-               Q172 97 163 119
-               L151 119
-               L149 91
-               Z"
-          />
-
-
-          <!-- EYES -->
-
-          <ellipse class="eye-white" cx="91" cy="87" rx="15" ry="18"/>
-          <ellipse class="eye-white" cx="139" cy="87" rx="15" ry="18"/>
-
-          <ellipse class="eye-pupil" cx="94" cy="89" rx="8" ry="11"/>
-          <ellipse class="eye-pupil" cx="142" cy="89" rx="8" ry="11"/>
-
-          <circle class="eye-shine" cx="97" cy="84" r="3"/>
-          <circle class="eye-shine" cx="145" cy="84" r="3"/>
-
-
-          <!-- EYEBROWS -->
-
-          <path class="brow" d="M77 66 Q91 58 103 66"/>
-          <path class="brow" d="M127 66 Q140 58 153 66"/>
-
-
-          <!-- EYELASHES -->
-
-          <path
-            d="M77 78 L70 73
-               M80 74 L74 67
-               M153 78 L160 73
-               M150 74 L156 67"
-            stroke="#41202d"
-            stroke-width="3"
-            stroke-linecap="round"
-          />
-
-
-          <!-- NOSE -->
-
-          <path
-            d="M115 90 Q111 103 116 105 Q120 106 123 102"
-            fill="none"
-            stroke="#bd806f"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
-
-
-          <!-- BLUSH -->
-
-          <ellipse class="blush" cx="79" cy="108" rx="15" ry="6"/>
-          <ellipse class="blush" cx="151" cy="108" rx="15" ry="6"/>
-
-
-          <!-- SMILE -->
-
-          <path
-            class="mouth"
-            d="M105 116 Q115 123 125 116"
-          />
-
-
-          <!-- hands -->
-          <circle class="skin" cx="53" cy="261" r="10"/>
-          <circle class="skin" cx="177" cy="261" r="10"/>
-
-        </svg>
-
-      </div>
-
-
-      <!-- CELEBRATION -->
-
-      <div class="celebration" id="celebration">
-
-        <div class="confetti" id="confetti"></div>
-
-        <div class="big-heart">
-          ♥
+        <div class="logo">
+            Legendary Couple's Style
         </div>
 
-        <div class="celebration-text">
-          Goated couple is ready!
+        <button class="play-again" id="playAgain">
+            ↻ Play again
+        </button>
+
+    </div>
+
+
+    <div class="game-area">
+
+        <!-- STAGE -->
+
+        <div class="stage" id="stage">
+
+            <!-- =================================================
+                 BURAK
+            ================================================== -->
+
+            <div
+                class="character"
+                id="burak"
+                data-outfit=""
+            >
+
+                <svg viewBox="0 0 230 455">
+
+                    <!-- BACK HAIR -->
+                    <path
+                        class="burak-hair"
+                        d="M65 89
+                           Q48 54 72 28
+                           Q101 2 137 24
+                           Q169 42 158 86
+                           L150 128
+                           L132 115
+                           L99 120
+                           L75 133
+                           Z"
+                    />
+
+                    <!-- NECK -->
+                    <rect
+                        class="skin"
+                        x="104"
+                        y="112"
+                        width="26"
+                        height="30"
+                        rx="8"
+                    />
+
+                    <!-- LEFT ARM -->
+                    <path
+                        class="skin"
+                        d="M76 157
+                           Q59 159 53 180
+                           L45 250
+                           Q43 261 52 266
+                           Q62 269 66 258
+                           L79 196
+                           L84 174
+                           Z"
+                    />
+
+                    <!-- RIGHT ARM -->
+                    <path
+                        class="skin"
+                        d="M154 157
+                           Q171 159 177 180
+                           L185 250
+                           Q187 261 178 266
+                           Q168 269 164 258
+                           L151 196
+                           L146 174
+                           Z"
+                    />
+
+                    <!-- BODY -->
+                    <path
+                        class="skin"
+                        d="M79 143
+                           Q115 132 151 143
+                           L158 270
+                           Q115 284 72 270
+                           Z"
+                    />
+
+                    <!-- DEFAULT SHORTS -->
+                    <path
+                        class="default-clothes"
+                        fill="#29262d"
+                        stroke="#111"
+                        stroke-width="2"
+                        d="M72 268
+                           L158 268
+                           L153 319
+                           L119 319
+                           L115 292
+                           L111 319
+                           L77 319
+                           Z"
+                    />
+
+                    <!-- LEGS -->
+                    <path
+                        class="skin"
+                        d="M78 315
+                           L113 315
+                           L111 397
+                           Q110 407 98 407
+                           L82 407
+                           Q73 403 75 393
+                           Z"
+                    />
+
+                    <path
+                        class="skin"
+                        d="M117 315
+                           L152 315
+                           L155 393
+                           Q157 403 148 407
+                           L132 407
+                           Q120 407 119 397
+                           Z"
+                    />
+
+                    <!-- DEFAULT SHOES -->
+                    <path
+                        class="default-clothes"
+                        fill="#111116"
+                        stroke="#050507"
+                        stroke-width="2"
+                        d="M76 395
+                           Q88 389 102 397
+                           L109 407
+                           L109 418
+                           L70 418
+                           Q68 406 76 395
+                           Z"
+                    />
+
+                    <path
+                        class="default-clothes"
+                        fill="#111116"
+                        stroke="#050507"
+                        stroke-width="2"
+                        d="M120 407
+                           L128 397
+                           Q142 389 154 395
+                           Q162 406 160 418
+                           L120 418
+                           Z"
+                    />
+
+
+                    <!-- =================================================
+                         BURAK OUTFIT 1
+                    ================================================== -->
+
+                    <g class="outfit outfit-1">
+
+                        <!-- SHIRT -->
+                        <path
+                            class="burak-black-shirt"
+                            d="M75 143
+                               Q115 132 155 143
+                               L158 276
+                               Q115 286 72 276
+                               Z"
+                        />
+
+                        <!-- PANTS -->
+                        <path
+                            class="burak-black-pants"
+                            d="M72 272
+                               L158 272
+                               L153 395
+                               L120 395
+                               L115 322
+                               L110 395
+                               L77 395
+                               Z"
+                        />
+
+                        <!-- SHOES -->
+                        <path
+                            class="burak-black-shoes"
+                            d="M75 390
+                               Q88 385 101 394
+                               L108 405
+                               L108 418
+                               L69 418
+                               Q68 403 75 390
+                               Z"
+                        />
+
+                        <path
+                            class="burak-black-shoes"
+                            d="M122 405
+                               L129 394
+                               Q142 385 155 390
+                               Q162 403 161 418
+                               L122 418
+                               Z"
+                        />
+
+                        <!-- TEXT -->
+                        <text
+                            class="brand-deftones"
+                            x="115"
+                            y="213"
+                            text-anchor="middle"
+                        >
+                            deftones
+                        </text>
+
+                    </g>
+
+
+                    <!-- =================================================
+                         BURAK OUTFIT 2
+                    ================================================== -->
+
+                    <g class="outfit outfit-2">
+
+                        <path
+                            class="burak-brown-shirt"
+                            d="M75 143
+                               Q115 132 155 143
+                               L158 276
+                               Q115 286 72 276
+                               Z"
+                        />
+
+                        <path
+                            class="burak-black-pants"
+                            d="M72 272
+                               L158 272
+                               L153 395
+                               L120 395
+                               L115 322
+                               L110 395
+                               L77 395
+                               Z"
+                        />
+
+                        <path
+                            class="burak-black-shoes"
+                            d="M75 390
+                               Q88 385 101 394
+                               L108 405
+                               L108 418
+                               L69 418
+                               Q68 403 75 390
+                               Z"
+                        />
+
+                        <path
+                            class="burak-black-shoes"
+                            d="M122 405
+                               L129 394
+                               Q142 385 155 390
+                               Q162 403 161 418
+                               L122 418
+                               Z"
+                        />
+
+                        <text
+                            class="brand-opeth"
+                            x="115"
+                            y="213"
+                            text-anchor="middle"
+                        >
+                            opeth
+                        </text>
+
+                    </g>
+
+
+                    <!-- =================================================
+                         BURAK OUTFIT 3
+                    ================================================== -->
+
+                    <g class="outfit outfit-3">
+
+                        <path
+                            class="vampire-cape"
+                            d="M67 150
+                               Q115 127 163 150
+                               L183 308
+                               Q147 286 115 307
+                               Q83 286 47 308
+                               Z"
+                        />
+
+                        <path
+                            class="vampire-coat"
+                            d="M76 146
+                               Q115 134 154 146
+                               L163 278
+                               Q115 290 67 278
+                               Z"
+                        />
+
+                        <path
+                            class="vampire-shirt"
+                            d="M102 146
+                               L128 146
+                               L115 190
+                               Z"
+                        />
+
+                        <path
+                            class="vampire-pants"
+                            d="M68 273
+                               L162 273
+                               L153 395
+                               L120 395
+                               L115 323
+                               L110 395
+                               L77 395
+                               Z"
+                        />
+
+                        <path
+                            class="vampire-shoes"
+                            d="M75 390
+                               Q88 385 101 394
+                               L108 405
+                               L108 418
+                               L69 418
+                               Q68 403 75 390
+                               Z"
+                        />
+
+                        <path
+                            class="vampire-shoes"
+                            d="M122 405
+                               L129 394
+                               Q142 385 155 390
+                               Q162 403 161 418
+                               L122 418
+                               Z"
+                        />
+
+                    </g>
+
+
+                    <!-- =================================================
+                         BURAK OUTFIT 4
+                    ================================================== -->
+
+                    <g class="outfit outfit-4">
+
+                        <path
+                            class="pajama-pink"
+                            d="M75 143
+                               Q115 132 155 143
+                               L159 278
+                               Q115 288 71 278
+                               Z"
+                        />
+
+                        <path
+                            class="pajama-pink"
+                            d="M72 273
+                               L158 273
+                               L153 395
+                               L120 395
+                               L115 322
+                               L110 395
+                               L77 395
+                               Z"
+                        />
+
+                        <text
+                            class="pajama-heart"
+                            x="95"
+                            y="205"
+                            font-size="20"
+                        >♥</text>
+
+                        <text
+                            class="pajama-heart"
+                            x="130"
+                            y="238"
+                            font-size="20"
+                        >♥</text>
+
+                        <text
+                            class="pajama-heart"
+                            x="108"
+                            y="274"
+                            font-size="17"
+                        >♥</text>
+
+                        <path
+                            fill="#fff5f8"
+                            stroke="#b87591"
+                            stroke-width="2"
+                            d="M74 390
+                               Q90 384 105 397
+                               L109 418
+                               L67 418
+                               Q67 402 74 390
+                               Z"
+                        />
+
+                        <path
+                            fill="#fff5f8"
+                            stroke="#b87591"
+                            stroke-width="2"
+                            d="M121 397
+                               Q140 384 156 390
+                               Q163 402 162 418
+                               L120 418
+                               Z"
+                        />
+
+                    </g>
+
+
+                    <!-- HEAD -->
+
+                    <circle
+                        class="skin"
+                        cx="115"
+                        cy="83"
+                        r="55"
+                    />
+
+                    <!-- EARS -->
+
+                    <ellipse
+                        class="skin"
+                        cx="61"
+                        cy="84"
+                        rx="9"
+                        ry="14"
+                    />
+
+                    <ellipse
+                        class="skin"
+                        cx="169"
+                        cy="84"
+                        rx="9"
+                        ry="14"
+                    />
+
+
+                    <!-- HAIR -->
+
+                    <path
+                        class="burak-hair"
+                        d="M63 77
+                           Q60 31 91 19
+                           Q123 4 148 25
+                           Q169 42 164 77
+                           Q149 59 136 56
+                           Q121 72 103 58
+                           Q84 72 63 77
+                           Z"
+                    />
+
+                    <path
+                        class="burak-hair"
+                        d="M62 72
+                           Q58 97 67 119
+                           L79 119
+                           L81 91
+                           Z"
+                    />
+
+                    <path
+                        class="burak-hair"
+                        d="M168 72
+                           Q172 97 163 119
+                           L151 119
+                           L149 91
+                           Z"
+                    />
+
+
+                    <!-- EYES -->
+
+                    <ellipse
+                        class="eye-white"
+                        cx="91"
+                        cy="87"
+                        rx="15"
+                        ry="18"
+                    />
+
+                    <ellipse
+                        class="eye-white"
+                        cx="139"
+                        cy="87"
+                        rx="15"
+                        ry="18"
+                    />
+
+                    <ellipse
+                        class="eye-pupil"
+                        cx="94"
+                        cy="89"
+                        rx="8"
+                        ry="11"
+                    />
+
+                    <ellipse
+                        class="eye-pupil"
+                        cx="142"
+                        cy="89"
+                        rx="8"
+                        ry="11"
+                    />
+
+                    <circle
+                        class="eye-shine"
+                        cx="97"
+                        cy="84"
+                        r="3"
+                    />
+
+                    <circle
+                        class="eye-shine"
+                        cx="145"
+                        cy="84"
+                        r="3"
+                    />
+
+
+                    <!-- BROWS -->
+
+                    <path
+                        class="brow"
+                        d="M77 66 Q91 58 103 66"
+                    />
+
+                    <path
+                        class="brow"
+                        d="M127 66 Q140 58 153 66"
+                    />
+
+
+                    <!-- NOSE -->
+
+                    <path
+                        d="M115 90
+                           Q111 103 116 105
+                           Q120 106 123 102"
+                        fill="none"
+                        stroke="#bd806f"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+
+
+                    <!-- BLUSH -->
+
+                    <ellipse
+                        class="blush"
+                        cx="79"
+                        cy="108"
+                        rx="15"
+                        ry="6"
+                    />
+
+                    <ellipse
+                        class="blush"
+                        cx="151"
+                        cy="108"
+                        rx="15"
+                        ry="6"
+                    />
+
+
+                    <!-- MOUTH -->
+
+                    <path
+                        class="mouth"
+                        d="M105 116 Q115 123 125 116"
+                    />
+
+
+                    <!-- HANDS -->
+
+                    <circle
+                        class="skin"
+                        cx="53"
+                        cy="261"
+                        r="10"
+                    />
+
+                    <circle
+                        class="skin"
+                        cx="177"
+                        cy="261"
+                        r="10"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <!-- =================================================
+                 ELANIE
+            ================================================== -->
+
+            <div
+                class="character"
+                id="elanie"
+                data-outfit=""
+            >
+
+                <svg viewBox="0 0 230 455">
+
+                    <!-- BACK HAIR -->
+
+                    <path
+                        class="elanie-hair"
+                        d="M65 89
+                           Q47 54 72 28
+                           Q101 3 137 24
+                           Q169 42 158 87
+                           L150 130
+                           L131 116
+                           L99 120
+                           L75 132
+                           Z"
+                    />
+
+                    <!-- NECK -->
+
+                    <rect
+                        class="skin"
+                        x="104"
+                        y="112"
+                        width="26"
+                        height="30"
+                        rx="8"
+                    />
+
+                    <!-- ARMS -->
+
+                    <path
+                        class="skin"
+                        d="M76 157
+                           Q59 159 53 180
+                           L45 250
+                           Q43 261 52 266
+                           Q62 269 66 258
+                           L79 196
+                           L84 174
+                           Z"
+                    />
+
+                    <path
+                        class="skin"
+                        d="M154 157
+                           Q171 159 177 180
+                           L185 250
+                           Q187 261 178 266
+                           Q168 269 164 258
+                           L151 196
+                           L146 174
+                           Z"
+                    />
+
+                    <!-- BODY -->
+
+                    <path
+                        class="skin"
+                        d="M79 143
+                           Q115 132 151 143
+                           L158 270
+                           Q115 284 72 270
+                           Z"
+                    />
+
+                    <!-- DEFAULT SHORTS -->
+
+                    <path
+                        class="default-clothes"
+                        fill="#29262d"
+                        stroke="#111"
+                        stroke-width="2"
+                        d="M72 268
+                           L158 268
+                           L153 319
+                           L119 319
+                           L115 292
+                           L111 319
+                           L77 319
+                           Z"
+                    />
+
+                    <!-- LEGS -->
+
+                    <path
+                        class="skin"
+                        d="M78 315
+                           L113 315
+                           L111 397
+                           Q110 407 98 407
+                           L82 407
+                           Q73 403 75 393
+                           Z"
+                    />
+
+                    <path
+                        class="skin"
+                        d="M117 315
+                           L152 315
+                           L155 393
+                           Q157 403 148 407
+                           L132 407
+                           Q120 407 119 397
+                           Z"
+                    />
+
+                    <!-- DEFAULT SHOES -->
+
+                    <path
+                        class="default-clothes"
+                        fill="#111116"
+                        stroke="#050507"
+                        stroke-width="2"
+                        d="M76 395
+                           Q88 389 102 397
+                           L109 407
+                           L109 418
+                           L70 418
+                           Q68 406 76 395
+                           Z"
+                    />
+
+                    <path
+                        class="default-clothes"
+                        fill="#111116"
+                        stroke="#050507"
+                        stroke-width="2"
+                        d="M120 407
+                           L128 397
+                           Q142 389 154 395
+                           Q162 406 160 418
+                           L120 418
+                           Z"
+                    />
+
+
+                    <!-- =================================================
+                         ELANIE OUTFIT 1
+                    ================================================== -->
+
+                    <g class="outfit outfit-1">
+
+                        <path
+                            class="elanie-black-shirt"
+                            d="M75 143
+                               Q115 132 155 143
+                               L158 235
+                               Q115 245 72 235
+                               Z"
+                        />
+
+                        <path
+                            class="elanie-black-skirt"
+                            d="M72 230
+                               Q115 239 158 230
+                               L170 318
+                               Q115 335 60 318
+                               Z"
+                        />
+
+                        <path
+                            class="elanie-shoes"
+                            d="M75 390
+                               Q88 385 101 394
+                               L108 405
+                               L108 418
+                               L69 418
+                               Q68 403 75 390
+                               Z"
+                        />
+
+                        <path
+                            class="elanie-shoes"
+                            d="M122 405
+                               L129 394
+                               Q142 385 155 390
+                               Q162 403 161 418
+                               L122 418
+                               Z"
+                        />
+
+                        <text
+                            class="brand-deftones"
+                            x="115"
+                            y="200"
+                            text-anchor="middle"
+                        >
+                            deftones
+                        </text>
+
+                    </g>
+
+
+                    <!-- =================================================
+                         ELANIE OUTFIT 2
+                    ================================================== -->
+
+                    <g class="outfit outfit-2">
+
+                        <path
+                            class="elanie-brown-shirt"
+                            d="M75 143
+                               Q115 132 155 143
+                               L158 235
+                               Q115 245 72 235
+                               Z"
+                        />
+
+                        <path
+                            class="elanie-white-skirt"
+                            d="M72 230
+                               Q115 239 158 230
+                               L170 318
+                               Q115 335 60 318
+                               Z"
+                        />
+
+                        <path
+                            class="elanie-shoes"
+                            d="M75 390
+                               Q88 385 101 394
+                               L108 405
+                               L108 418
+                               L69 418
+                               Q68 403 75 390
+                               Z"
+                        />
+
+                        <path
+                            class="elanie-shoes"
+                            d="M122 405
+                               L129 394
+                               Q142 385 155 390
+                               Q162 403 161 418
+                               L122 418
+                               Z"
+                        />
+
+                        <text
+                            class="brand-opeth"
+                            x="115"
+                            y="200"
+                            text-anchor="middle"
+                        >
+                            opeth
+                        </text>
+
+                    </g>
+
+
+                    <!-- =================================================
+                         ELANIE OUTFIT 3 — FAIRY
+                    ================================================== -->
+
+                    <g class="outfit outfit-3">
+
+                        <ellipse
+                            class="fairy-wing"
+                            cx="62"
+                            cy="195"
+                            rx="35"
+                            ry="55"
+                            transform="rotate(-20 62 195)"
+                        />
+
+                        <ellipse
+                            class="fairy-wing"
+                            cx="168"
+                            cy="195"
+                            rx="35"
+                            ry="55"
+                            transform="rotate(20 168 195)"
+                        />
+
+                        <path
+                            class="fairy-dress"
+                            d="M79 143
+                               Q115 132 151 143
+                               L164 317
+                               Q115 337 66 317
+                               Z"
+                        />
+
+                        <path
+                            class="fairy-dress"
+                            d="M91 148
+                               L115 188
+                               L139 148
+                               L130 140
+                               L100 140
+                               Z"
+                        />
+
+                        <path
+                            class="fairy-shoe"
+                            d="M75 390
+                               Q88 385 101 394
+                               L108 405
+                               L108 418
+                               L69 418
+                               Q68 403 75 390
+                               Z"
+                        />
+
+                        <path
+                            class="fairy-shoe"
+                            d="M122 405
+                               L129 394
+                               Q142 385 155 390
+                               Q162 403 161 418
+                               L122 418
+                               Z"
+                        />
+
+                        <circle
+                            cx="95"
+                            cy="228"
+                            r="5"
+                            fill="#fff0f6"
+                        />
+
+                        <circle
+                            cx="135"
+                            cy="260"
+                            r="5"
+                            fill="#fff0f6"
+                        />
+
+                        <circle
+                            cx="111"
+                            cy="292"
+                            r="5"
+                            fill="#fff0f6"
+                        />
+
+                    </g>
+
+
+                    <!-- =================================================
+                         ELANIE OUTFIT 4
+                    ================================================== -->
+
+                    <g class="outfit outfit-4">
+
+                        <path
+                            class="pajama-pink"
+                            d="M75 143
+                               Q115 132 155 143
+                               L159 278
+                               Q115 288 71 278
+                               Z"
+                        />
+
+                        <path
+                            class="pajama-pink"
+                            d="M72 273
+                               L158 273
+                               L153 395
+                               L120 395
+                               L115 322
+                               L110 395
+                               L77 395
+                               Z"
+                        />
+
+                        <text
+                            class="pajama-heart"
+                            x="95"
+                            y="205"
+                            font-size="20"
+                        >♥</text>
+
+                        <text
+                            class="pajama-heart"
+                            x="130"
+                            y="238"
+                            font-size="20"
+                        >♥</text>
+
+                        <text
+                            class="pajama-heart"
+                            x="108"
+                            y="274"
+                            font-size="17"
+                        >♥</text>
+
+                        <path
+                            fill="#fff5f8"
+                            stroke="#b87591"
+                            stroke-width="2"
+                            d="M74 390
+                               Q90 384 105 397
+                               L109 418
+                               L67 418
+                               Q67 402 74 390
+                               Z"
+                        />
+
+                        <path
+                            fill="#fff5f8"
+                            stroke="#b87591"
+                            stroke-width="2"
+                            d="M121 397
+                               Q140 384 156 390
+                               Q163 402 162 418
+                               L120 418
+                               Z"
+                        />
+
+                    </g>
+
+
+                    <!-- HEAD -->
+
+                    <circle
+                        class="skin"
+                        cx="115"
+                        cy="83"
+                        r="55"
+                    />
+
+                    <!-- EARS -->
+
+                    <ellipse
+                        class="skin"
+                        cx="61"
+                        cy="84"
+                        rx="9"
+                        ry="14"
+                    />
+
+                    <ellipse
+                        class="skin"
+                        cx="169"
+                        cy="84"
+                        rx="9"
+                        ry="14"
+                    />
+
+
+                    <!-- FRONT HAIR -->
+
+                    <path
+                        class="elanie-hair"
+                        d="M63 77
+                           Q60 31 91 19
+                           Q123 4 148 25
+                           Q169 42 164 77
+                           Q149 59 136 56
+                           Q121 72 103 58
+                           Q84 72 63 77
+                           Z"
+                    />
+
+                    <!-- BANGS -->
+
+                    <path
+                        class="elanie-hair"
+                        d="M73 62
+                           Q84 42 102 39
+                           L100 69
+                           Q91 75 81 73
+                           Z"
+                    />
+
+                    <path
+                        class="elanie-hair"
+                        d="M102 45
+                           Q115 35 129 43
+                           L125 68
+                           Q114 74 103 68
+                           Z"
+                    />
+
+                    <path
+                        class="elanie-hair"
+                        d="M128 43
+                           Q145 45 157 63
+                           L151 74
+                           Q140 71 128 66
+                           Z"
+                    />
+
+                    <!-- SIDE HAIR -->
+
+                    <path
+                        class="elanie-hair"
+                        d="M62 72
+                           Q58 97 67 119
+                           L79 119
+                           L81 91
+                           Z"
+                    />
+
+                    <path
+                        class="elanie-hair"
+                        d="M168 72
+                           Q172 97 163 119
+                           L151 119
+                           L149 91
+                           Z"
+                    />
+
+
+                    <!-- EYES -->
+
+                    <ellipse
+                        class="eye-white"
+                        cx="91"
+                        cy="87"
+                        rx="15"
+                        ry="18"
+                    />
+
+                    <ellipse
+                        class="eye-white"
+                        cx="139"
+                        cy="87"
+                        rx="15"
+                        ry="18"
+                    />
+
+                    <ellipse
+                        class="eye-pupil"
+                        cx="94"
+                        cy="89"
+                        rx="8"
+                        ry="11"
+                    />
+
+                    <ellipse
+                        class="eye-pupil"
+                        cx="142"
+                        cy="89"
+                        rx="8"
+                        ry="11"
+                    />
+
+                    <circle
+                        class="eye-shine"
+                        cx="97"
+                        cy="84"
+                        r="3"
+                    />
+
+                    <circle
+                        class="eye-shine"
+                        cx="145"
+                        cy="84"
+                        r="3"
+                    />
+
+
+                    <!-- EYEBROWS -->
+
+                    <path
+                        class="brow"
+                        d="M77 66 Q91 58 103 66"
+                    />
+
+                    <path
+                        class="brow"
+                        d="M127 66 Q140 58 153 66"
+                    />
+
+
+                    <!-- EYELASHES -->
+
+                    <path
+                        d="M77 78 L70 73
+                           M80 74 L74 67
+                           M153 78 L160 73
+                           M150 74 L156 67"
+                        stroke="#41202d"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                    />
+
+
+                    <!-- NOSE -->
+
+                    <path
+                        d="M115 90
+                           Q111 103 116 105
+                           Q120 106 123 102"
+                        fill="none"
+                        stroke="#bd806f"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+
+
+                    <!-- BLUSH -->
+
+                    <ellipse
+                        class="blush"
+                        cx="79"
+                        cy="108"
+                        rx="15"
+                        ry="6"
+                    />
+
+                    <ellipse
+                        class="blush"
+                        cx="151"
+                        cy="108"
+                        rx="15"
+                        ry="6"
+                    />
+
+
+                    <!-- MOUTH -->
+
+                    <path
+                        class="mouth"
+                        d="M105 116 Q115 123 125 116"
+                    />
+
+
+                    <!-- HANDS -->
+
+                    <circle
+                        class="skin"
+                        cx="53"
+                        cy="261"
+                        r="10"
+                    />
+
+                    <circle
+                        class="skin"
+                        cx="177"
+                        cy="261"
+                        r="10"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <!-- =================================================
+                 CELEBRATION
+            ================================================== -->
+
+            <div
+                class="celebration"
+                id="celebration"
+            >
+
+                <div
+                    class="confetti"
+                    id="confetti"
+                ></div>
+
+                <div class="big-heart">
+                    ♥
+                </div>
+
+                <div class="celebration-text">
+                    Goated couple is ready!
+                </div>
+
+            </div>
+
         </div>
 
-      </div>
+
+        <!-- =================================================
+             BURAK SELECTOR
+        ================================================== -->
+
+        <div
+            class="selector-area"
+            id="burakSelector"
+        >
+
+            <div class="selector-title">
+                Outfits for Burak
+            </div>
+
+            <div class="outfit-grid">
+
+                <button
+                    class="option"
+                    data-character="burak"
+                    data-outfit="1"
+                >
+                    <strong>01 — Deftones</strong>
+                    <small>Black baggy fit</small>
+                </button>
+
+                <button
+                    class="option"
+                    data-character="burak"
+                    data-outfit="2"
+                >
+                    <strong>02 — Opeth</strong>
+                    <small>Brown & black fit</small>
+                </button>
+
+                <button
+                    class="option"
+                    data-character="burak"
+                    data-outfit="3"
+                >
+                    <strong>03 — Vampire</strong>
+                    <small>Classic gothic vampire</small>
+                </button>
+
+                <button
+                    class="option"
+                    data-character="burak"
+                    data-outfit="4"
+                >
+                    <strong>04 — Pajama</strong>
+                    <small>Pink hearts</small>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             ELANIE SELECTOR
+        ================================================== -->
+
+        <div
+            class="selector-area"
+            id="elanieSelector"
+        >
+
+            <div class="selector-title">
+                Outfits for Elanie
+            </div>
+
+            <div class="outfit-grid">
+
+                <button
+                    class="option"
+                    data-character="elanie"
+                    data-outfit="1"
+                >
+                    <strong>01 — Deftones</strong>
+                    <small>Black pleated skirt</small>
+                </button>
+
+                <button
+                    class="option"
+                    data-character="elanie"
+                    data-outfit="2"
+                >
+                    <strong>02 — Opeth</strong>
+                    <small>White pleated skirt</small>
+                </button>
+
+                <button
+                    class="option"
+                    data-character="elanie"
+                    data-outfit="3"
+                >
+                    <strong>03 — Fairy</strong>
+                    <small>Classic pink fairy</small>
+                </button>
+
+                <button
+                    class="option"
+                    data-character="elanie"
+                    data-outfit="4"
+                >
+                    <strong>04 — Pajama</strong>
+                    <small>Pink hearts</small>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             BACKGROUNDS
+        ================================================== -->
+
+        <div
+            class="background-area hidden"
+            id="backgroundArea"
+        >
+
+            <div class="selector-title">
+                Choose Your Background
+            </div>
+
+            <div class="background-grid">
+
+                <button
+                    class="background-option"
+                    data-bg="castle"
+                >
+                    <div class="bg-preview preview-castle"></div>
+                    Dracula Castle
+                </button>
+
+                <button
+                    class="background-option"
+                    data-bg="saturn"
+                >
+                    <div class="bg-preview preview-saturn"></div>
+                    Saturn
+                </button>
+
+                <button
+                    class="background-option"
+                    data-bg="bedroom"
+                >
+                    <div class="bg-preview preview-bedroom"></div>
+                    Dark Bedroom
+                </button>
+
+                <button
+                    class="background-option"
+                    data-bg="concert"
+                >
+                    <div class="bg-preview preview-concert"></div>
+                    Concert Venue
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- READY -->
+
+        <div
+            class="ready-wrap hidden"
+            id="readyWrap"
+        >
+
+            <button
+                class="ready-btn"
+                id="readyButton"
+            >
+                ♥ Ready ♥
+            </button>
+
+        </div>
 
     </div>
-
-
-    <!-- BURAK SELECTOR -->
-
-    <div class="selector-area" id="burakSelector">
-
-      <div class="selector-title">
-        Outfits for Burak
-      </div>
-
-      <div class="outfit-grid">
-
-        <button class="option" data-character="burak" data-outfit="1">
-          <strong>01 — Deftones</strong>
-          <small>Black baggy fit</small>
-        </button>
-
-        <button class="option" data-character="burak" data-outfit="2">
-          <strong>02 — Opeth</strong>
-          <small>Brown & black fit</small>
-        </button>
-
-        <button class="option" data-character="burak" data-outfit="3">
-          <strong>03 — Vampire</strong>
-          <small>Classic gothic vampire</small>
-        </button>
-
-        <button class="option" data-character="burak" data-outfit="4">
-          <strong>04 — Pajama</strong>
-          <small>Pink hearts</small>
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- ELANIE SELECTOR -->
-
-    <div class="selector-area" id="elanieSelector">
-
-      <div class="selector-title">
-        Outfits for Elanie
-      </div>
-
-      <div class="outfit-grid">
-
-        <button class="option" data-character="elanie" data-outfit="1">
-          <strong>01 — Deftones</strong>
-          <small>Black pleated skirt</small>
-        </button>
-
-        <button class="option" data-character="elanie" data-outfit="2">
-          <strong>02 — Opeth</strong>
-          <small>White pleated skirt</small>
-        </button>
-
-        <button class="option" data-character="elanie" data-outfit="3">
-          <strong>03 — Fairy</strong>
-          <small>Classic pink fairy</small>
-        </button>
-
-        <button class="option" data-character="elanie" data-outfit="4">
-          <strong>04 — Pajama</strong>
-          <small>Pink hearts</small>
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- BACKGROUND -->
-
-    <div class="background-area hidden" id="backgroundArea">
-
-      <div class="selector-title">
-        Choose Your Background
-      </div>
-
-      <div class="background-grid">
-
-        <button class="background-option" data-bg="castle">
-
-          <div class="bg-preview preview-castle"></div>
-
-          Dracula Castle
-
-        </button>
-
-
-        <button class="background-option" data-bg="saturn">
-
-          <div class="bg-preview preview-saturn"></div>
-
-          Saturn
-
-        </button>
-
-
-        <button class="background-option" data-bg="bedroom">
-
-          <div class="bg-preview preview-bedroom"></div>
-
-          Dark Bedroom
-
-        </button>
-
-
-        <button class="background-option" data-bg="concert">
-
-          <div class="bg-preview preview-concert"></div>
-
-          Concert Venue
-
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- READY -->
-
-    <div class="ready-wrap hidden" id="readyWrap">
-
-      <button class="ready-btn" id="readyButton">
-        ♥ Ready ♥
-      </button>
-
-    </div>
-
-  </div>
 
 </section>
 
 
 <script>
 
-const passwordScreen = document.getElementById("passwordScreen");
-const introScreen = document.getElementById("introScreen");
-const gameScreen = document.getElementById("gameScreen");
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
-const passwordInput = document.getElementById("passwordInput");
-const passwordError = document.getElementById("passwordError");
+const passwordScreen =
+    document.getElementById("passwordScreen");
 
-const enterButton = document.getElementById("enterButton");
-const startButton = document.getElementById("startButton");
+const introScreen =
+    document.getElementById("introScreen");
 
-const burak = document.getElementById("burak");
-const elanie = document.getElementById("elanie");
+const gameScreen =
+    document.getElementById("gameScreen");
 
-const backgroundArea = document.getElementById("backgroundArea");
-const readyWrap = document.getElementById("readyWrap");
+const passwordInput =
+    document.getElementById("passwordInput");
 
-const stage = document.getElementById("stage");
-const celebration = document.getElementById("celebration");
-const confetti = document.getElementById("confetti");
+const passwordError =
+    document.getElementById("passwordError");
 
-const playAgain = document.getElementById("playAgain");
+const enterButton =
+    document.getElementById("enterButton");
+
+const startButton =
+    document.getElementById("startButton");
+
+const burak =
+    document.getElementById("burak");
+
+const elanie =
+    document.getElementById("elanie");
+
+const stage =
+    document.getElementById("stage");
+
+const backgroundArea =
+    document.getElementById("backgroundArea");
+
+const readyWrap =
+    document.getElementById("readyWrap");
+
+const celebration =
+    document.getElementById("celebration");
+
+const confetti =
+    document.getElementById("confetti");
+
+const playAgain =
+    document.getElementById("playAgain");
 
 let burakSelected = false;
 let elanieSelected = false;
-let backgroundSelected = false;
+let selectedBackground = null;
 
 
-/* PASSWORD */
+/* =========================================================
+   PASSWORD
+========================================================= */
 
 function checkPassword(){
 
-  if(passwordInput.value === "666"){
+    if(passwordInput.value === "666"){
 
-    passwordScreen.classList.add("hidden");
-    introScreen.classList.remove("hidden");
-    passwordError.textContent = "";
+        passwordScreen.classList.add("hidden");
 
-  }else{
+        introScreen.classList.remove("hidden");
 
-    passwordError.textContent = "Wrong password.";
+        passwordError.textContent = "";
 
-    passwordInput.value = "";
+    }else{
 
-  }
+        passwordError.textContent =
+            "Wrong password.";
 
-}
-
-enterButton.addEventListener("click",checkPassword);
-
-passwordInput.addEventListener("keydown",function(e){
-
-  if(e.key === "Enter"){
-    checkPassword();
-  }
-
-});
-
-
-/* START */
-
-startButton.addEventListener("click",function(){
-
-  introScreen.classList.add("hidden");
-  gameScreen.classList.remove("hidden");
-
-});
-
-
-/* OUTFIT SELECTION */
-
-document.querySelectorAll(".option").forEach(button => {
-
-  button.addEventListener("click",function(){
-
-    const character = this.dataset.character;
-    const outfit = this.dataset.outfit;
-
-    if(character === "burak"){
-
-      burak.className = "character outfit-" + outfit;
-
-      document
-        .querySelectorAll('[data-character="burak"]')
-        .forEach(btn => btn.classList.remove("selected"));
-
-      this.classList.add("selected");
-
-      burakSelected = true;
+        passwordInput.value = "";
 
     }
 
-
-    if(character === "elanie"){
-
-      elanie.className = "character outfit-" + outfit;
-
-      document
-        .querySelectorAll('[data-character="elanie"]')
-        .forEach(btn => btn.classList.remove("selected"));
-
-      this.classList.add("selected");
-
-      elanieSelected = true;
-
-    }
-
-
-    checkOutfits();
-
-  });
-
-});
-
-
-/* CHECK BOTH */
-
-function checkOutfits(){
-
-  if(burakSelected && elanieSelected){
-
-    backgroundArea.classList.remove("hidden");
-
-  }
-
 }
 
+enterButton.addEventListener(
+    "click",
+    checkPassword
+);
 
-/* BACKGROUND */
+passwordInput.addEventListener(
+    "keydown",
+    function(event){
 
-document.querySelectorAll(".background-option").forEach(button => {
+        if(event.key === "Enter"){
+            checkPassword();
+        }
 
-  button.addEventListener("click",function(){
+    }
+);
 
-    const bg = this.dataset.bg;
 
-    stage.classList.remove(
-      "castle",
-      "saturn",
-      "bedroom",
-      "concert"
+/* =========================================================
+   START
+========================================================= */
+
+startButton.addEventListener(
+    "click",
+    function(){
+
+        introScreen.classList.add("hidden");
+
+        gameScreen.classList.remove("hidden");
+
+    }
+);
+
+
+/* =========================================================
+   OUTFIT SYSTEM
+   THIS IS THE IMPORTANT FIX
+========================================================= */
+
+document
+    .querySelectorAll(".option")
+    .forEach(function(button){
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                const characterName =
+                    this.dataset.character;
+
+                const outfitNumber =
+                    this.dataset.outfit;
+
+
+                /*
+                    Instead of relying on a CSS class like
+                    outfit-1, outfit-2, etc., we use a dedicated
+                    data attribute.
+                */
+
+                if(characterName === "burak"){
+
+                    burak.setAttribute(
+                        "data-outfit",
+                        outfitNumber
+                    );
+
+                    burakSelected = true;
+
+
+                    document
+                        .querySelectorAll(
+                            '[data-character="burak"]'
+                        )
+                        .forEach(function(btn){
+
+                            btn.classList.remove(
+                                "selected"
+                            );
+
+                        });
+
+                    this.classList.add("selected");
+
+                }
+
+
+                if(characterName === "elanie"){
+
+                    elanie.setAttribute(
+                        "data-outfit",
+                        outfitNumber
+                    );
+
+                    elanieSelected = true;
+
+
+                    document
+                        .querySelectorAll(
+                            '[data-character="elanie"]'
+                        )
+                        .forEach(function(btn){
+
+                            btn.classList.remove(
+                                "selected"
+                            );
+
+                        });
+
+                    this.classList.add("selected");
+
+                }
+
+
+                /*
+                    Once both characters have clothes,
+                    unlock backgrounds.
+                */
+
+                if(
+                    burakSelected &&
+                    elanieSelected
+                ){
+
+                    backgroundArea.classList.remove(
+                        "hidden"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   BACKGROUND SYSTEM
+========================================================= */
+
+document
+    .querySelectorAll(".background-option")
+    .forEach(function(button){
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                const bg =
+                    this.dataset.bg;
+
+                stage.classList.remove(
+                    "castle",
+                    "saturn",
+                    "bedroom",
+                    "concert"
+                );
+
+                stage.classList.add(bg);
+
+                selectedBackground = bg;
+
+
+                document
+                    .querySelectorAll(
+                        ".background-option"
+                    )
+                    .forEach(function(btn){
+
+                        btn.classList.remove(
+                            "selected"
+                        );
+
+                    });
+
+                this.classList.add("selected");
+
+
+                /*
+                    Ready becomes available only
+                    after a background is selected.
+                */
+
+                if(selectedBackground){
+
+                    readyWrap.classList.remove(
+                        "hidden"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   READY
+========================================================= */
+
+document
+    .getElementById("readyButton")
+    .addEventListener(
+        "click",
+        function(){
+
+            document
+                .getElementById("burakSelector")
+                .classList.add("hidden");
+
+            document
+                .getElementById("elanieSelector")
+                .classList.add("hidden");
+
+            backgroundArea.classList.add(
+                "hidden"
+            );
+
+            readyWrap.classList.add(
+                "hidden"
+            );
+
+
+            stage.classList.add("final");
+
+
+            createConfetti();
+
+
+            celebration.classList.add(
+                "show"
+            );
+
+
+            /*
+                Celebration fades away after a few seconds,
+                leaving the final couple screen.
+            */
+
+            setTimeout(
+                function(){
+
+                    celebration.classList.remove(
+                        "show"
+                    );
+
+                },
+                4000
+            );
+
+        }
     );
 
-    stage.classList.add(bg);
 
-    document
-      .querySelectorAll(".background-option")
-      .forEach(btn => btn.classList.remove("selected"));
-
-    this.classList.add("selected");
-
-    backgroundSelected = true;
-
-    if(backgroundSelected){
-
-      readyWrap.classList.remove("hidden");
-
-    }
-
-  });
-
-});
-
-
-/* READY */
-
-document.getElementById("readyButton").addEventListener("click",function(){
-
-  document.getElementById("burakSelector").classList.add("hidden");
-  document.getElementById("elanieSelector").classList.add("hidden");
-  backgroundArea.classList.add("hidden");
-  readyWrap.classList.add("hidden");
-
-  stage.classList.add("final");
-
-  createConfetti();
-
-  celebration.classList.add("show");
-
-  setTimeout(function(){
-
-    celebration.classList.remove("show");
-
-  },4000);
-
-});
-
-
-/* CONFETTI */
+/* =========================================================
+   CONFETTI
+========================================================= */
 
 function createConfetti(){
 
-  confetti.innerHTML = "";
+    confetti.innerHTML = "";
 
-  for(let i=0;i<90;i++){
+    for(let i = 0; i < 90; i++){
 
-    const piece = document.createElement("span");
+        const piece =
+            document.createElement("span");
 
-    piece.style.left = Math.random()*100 + "%";
+        piece.style.left =
+            Math.random() * 100 + "%";
 
-    piece.style.animationDelay =
-      Math.random()*0.8 + "s";
+        piece.style.animationDelay =
+            Math.random() * .8 + "s";
 
-    piece.style.transform =
-      "rotate(" + Math.random()*360 + "deg)";
+        piece.style.transform =
+            "rotate(" +
+            Math.random() * 360 +
+            "deg)";
 
-    confetti.appendChild(piece);
+        confetti.appendChild(piece);
 
-  }
+    }
 
 }
 
 
-/* PLAY AGAIN */
+/* =========================================================
+   PLAY AGAIN
+========================================================= */
 
-playAgain.addEventListener("click",function(){
+playAgain.addEventListener(
+    "click",
+    function(){
 
-  location.reload();
+        location.reload();
 
-});
+    }
+);
 
 </script>
 
