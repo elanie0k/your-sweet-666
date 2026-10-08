@@ -1,0 +1,2500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Legendary Couple's Style</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
+
+:root {
+    --wine: #4b1020;
+    --wine-dark: #270811;
+    --wine-light: #741f38;
+    --dusty: #d99aa9;
+    --dusty-light: #f0c7d0;
+    --cream: #fff0e5;
+    --gold: #d9b45b;
+    --gold-light: #f5d98b;
+    --brown: #482c27;
+    --pink: #e9a8b9;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: var(--wine-dark);
+    color: var(--cream);
+    font-family: "Cormorant Garamond", serif;
+    touch-action: manipulation;
+}
+
+button {
+    font: inherit;
+}
+
+/* =====================================================
+   GLOBAL BACKGROUND
+===================================================== */
+
+#game {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(217,154,169,.16), transparent 28%),
+        radial-gradient(circle at 80% 75%, rgba(217,180,91,.08), transparent 30%),
+        linear-gradient(135deg, #25070f 0%, #4c1021 45%, #32101a 100%);
+}
+
+#game::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .13;
+    background-image:
+        radial-gradient(circle, #f3d58b 1px, transparent 1px);
+    background-size: 30px 30px;
+    mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+}
+
+/* =====================================================
+   ROYAL / COQUETTE FRAME
+===================================================== */
+
+.frame {
+    position: absolute;
+    inset: 13px;
+    border: 1px solid rgba(224,187,98,.55);
+    pointer-events: none;
+    z-index: 50;
+}
+
+.frame::before,
+.frame::after {
+    position: absolute;
+    color: var(--gold);
+    font-size: 23px;
+}
+
+.frame::before {
+    content: "✦";
+    left: -7px;
+    top: -16px;
+}
+
+.frame::after {
+    content: "✦";
+    right: -7px;
+    bottom: -16px;
+}
+
+.corner {
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    border-color: rgba(227,185,87,.65);
+    z-index: 51;
+}
+
+.corner.tl {
+    top: 22px;
+    left: 22px;
+    border-top: 2px solid;
+    border-left: 2px solid;
+}
+
+.corner.tr {
+    top: 22px;
+    right: 22px;
+    border-top: 2px solid;
+    border-right: 2px solid;
+}
+
+.corner.bl {
+    bottom: 22px;
+    left: 22px;
+    border-bottom: 2px solid;
+    border-left: 2px solid;
+}
+
+.corner.br {
+    bottom: 22px;
+    right: 22px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+}
+
+/* =====================================================
+   SCREENS
+===================================================== */
+
+.screen {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .65s ease, visibility .65s ease;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* =====================================================
+   PASSWORD SCREEN
+===================================================== */
+
+.password-box {
+    width: min(430px, 90vw);
+    text-align: center;
+    padding: 30px;
+}
+
+.crown {
+    color: var(--gold-light);
+    font-size: 45px;
+    text-shadow: 0 0 15px rgba(245,217,139,.35);
+}
+
+.password-decoration {
+    color: var(--dusty);
+    font-family: "Great Vibes", cursive;
+    font-size: 27px;
+    margin: 8px 0 12px;
+}
+
+.password-title {
+    margin: 0;
+    color: #ffe9dc;
+    font-size: clamp(37px, 9vw, 58px);
+    font-weight: 500;
+}
+
+.password-line {
+    width: 180px;
+    height: 1px;
+    margin: 23px auto;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+    );
+}
+
+.code-input {
+    width: 180px;
+    height: 62px;
+    border-radius: 15px;
+    border: 1px solid var(--gold);
+    outline: none;
+    background: rgba(26,4,11,.55);
+    color: var(--dusty-light);
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 13px;
+    padding-left: 13px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,.25);
+}
+
+.code-input:focus {
+    border-color: var(--dusty-light);
+    box-shadow: 0 0 20px rgba(224,161,177,.2);
+}
+
+.unlock {
+    margin-top: 18px;
+    padding: 10px 30px;
+    border: 1px solid var(--gold);
+    border-radius: 13px;
+    color: #ffe9bd;
+    background: linear-gradient(135deg,#701d38,#45101f);
+    cursor: pointer;
+}
+
+.error {
+    height: 24px;
+    margin-top: 10px;
+    color: #efaabb;
+    opacity: 0;
+    transition: opacity .25s;
+}
+
+.error.show {
+    opacity: 1;
+}
+
+/* =====================================================
+   TITLE / PLAY SCREEN
+===================================================== */
+
+#startScreen {
+    flex-direction: column;
+    text-align: center;
+}
+
+.game-title {
+    position: absolute;
+    top: 8%;
+    margin: 0;
+    color: #f4d69c;
+    font-size: clamp(28px, 7vw, 50px);
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.game-title span {
+    display: block;
+    font-family: "Great Vibes", cursive;
+    color: var(--dusty-light);
+    font-size: 1.15em;
+    letter-spacing: 0;
+}
+
+#playButton {
+    position: absolute;
+    bottom: 13%;
+    border: none;
+    background: transparent;
+    color: #ffe6a1;
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(70px, 18vw, 125px);
+    cursor: pointer;
+    text-shadow:
+        0 0 8px rgba(246,214,133,.6),
+        0 0 35px rgba(246,178,195,.25);
+    transition: transform .25s;
+}
+
+#playButton:active {
+    transform: scale(.94);
+}
+
+/* =====================================================
+   CHIBI START CHARACTERS
+===================================================== */
+
+.start-characters {
+    position: absolute;
+    top: 22%;
+    width: min(440px, 85vw);
+    height: 300px;
+}
+
+.mini-character {
+    position: absolute;
+    bottom: 0;
+    width: 145px;
+    height: 245px;
+}
+
+.mini-character.left {
+    left: 5%;
+}
+
+.mini-character.right {
+    right: 5%;
+}
+
+.mini-head {
+    position: absolute;
+    width: 105px;
+    height: 110px;
+    left: 20px;
+    top: 8px;
+    background: #e4bb9f;
+    border-radius: 48% 48% 45% 45%;
+    z-index: 5;
+    box-shadow: inset 0 -6px 0 rgba(112,58,51,.08);
+}
+
+.mini-hair-boy {
+    position: absolute;
+    width: 118px;
+    height: 115px;
+    left: 14px;
+    top: 0;
+    border-radius: 48% 52% 35% 45%;
+    background: #291613;
+    z-index: 7;
+}
+
+.mini-hair-boy::after {
+    content: "";
+    position: absolute;
+    width: 33px;
+    height: 83px;
+    right: -3px;
+    top: 28px;
+    background: #291613;
+    border-radius: 0 50% 50% 30%;
+}
+
+.mini-hair-girl {
+    position: absolute;
+    width: 120px;
+    height: 128px;
+    left: 13px;
+    top: -3px;
+    border-radius: 50% 50% 40% 45%;
+    background: #651f25;
+    z-index: 7;
+}
+
+.mini-hair-girl::before {
+    content: "";
+    position: absolute;
+    left: 42px;
+    top: 57px;
+    width: 60px;
+    height: 78px;
+    background: #651f25;
+    border-radius: 0 0 45% 50%;
+}
+
+.mini-bangs {
+    position: absolute;
+    z-index: 8;
+    left: 32px;
+    top: 37px;
+    width: 77px;
+    height: 35px;
+    background: #651f25;
+    border-radius: 0 0 45% 45%;
+}
+
+.mini-eye {
+    position: absolute;
+    width: 12px;
+    height: 17px;
+    background: #4a2a24;
+    border-radius: 50%;
+    top: 54px;
+    z-index: 10;
+}
+
+.mini-eye.left-eye {
+    left: 39px;
+}
+
+.mini-eye.right-eye {
+    right: 39px;
+}
+
+.mini-lash {
+    position: absolute;
+    width: 20px;
+    height: 11px;
+    border-top: 3px solid #35201e;
+    z-index: 11;
+    top: 51px;
+}
+
+.mini-lash.left-lash {
+    left: 34px;
+    transform: rotate(-12deg);
+}
+
+.mini-lash.right-lash {
+    right: 34px;
+    transform: rotate(12deg);
+}
+
+.mini-mouth {
+    position: absolute;
+    left: 47px;
+    top: 79px;
+    width: 13px;
+    height: 6px;
+    border-bottom: 2px solid #6b3034;
+    border-radius: 0 0 50% 50%;
+    z-index: 10;
+}
+
+.blush {
+    position: absolute;
+    width: 22px;
+    height: 10px;
+    background: rgba(213,94,111,.3);
+    filter: blur(4px);
+    border-radius: 50%;
+    top: 77px;
+    z-index: 9;
+}
+
+.blush.left-blush { left: 16px; }
+.blush.right-blush { right: 16px; }
+
+.mini-body {
+    position: absolute;
+    left: 35px;
+    top: 112px;
+    width: 75px;
+    height: 110px;
+    background: #cfa17f;
+    border-radius: 35px 35px 22px 22px;
+}
+
+.mini-arm {
+    position: absolute;
+    width: 20px;
+    height: 82px;
+    top: 122px;
+    background: #e4bb9f;
+    border-radius: 20px;
+    z-index: 4;
+}
+
+.arm-left { left: 22px; transform: rotate(18deg); }
+.arm-right { right: 22px; transform: rotate(-18deg); }
+
+.hands {
+    position: absolute;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background: #e4bb9f;
+    top: 192px;
+    z-index: 20;
+}
+
+.start-characters .hands {
+    box-shadow: 0 0 0 2px rgba(229,178,190,.25);
+}
+
+.hand-boy {
+    right: 2px;
+}
+
+.hand-girl {
+    left: 2px;
+}
+
+/* =====================================================
+   GAME SCREEN
+===================================================== */
+
+#dressScreen {
+    flex-direction: column;
+}
+
+#dressStage {
+    position: absolute;
+    top: 8%;
+    width: min(650px, 94vw);
+    height: 52vh;
+    min-height: 310px;
+    max-height: 470px;
+}
+
+/* decorative stage */
+.stage-floor {
+    position: absolute;
+    left: 50%;
+    bottom: 4%;
+    width: 88%;
+    height: 28px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: linear-gradient(
+        to bottom,
+        #a66a76,
+        #5c1c2d
+    );
+    border: 1px solid rgba(230,190,100,.6);
+    box-shadow: 0 8px 30px rgba(0,0,0,.35);
+}
+
+.stage-floor::before {
+    content: "✦  ✧  ✦  ✧  ✦";
+    position: absolute;
+    left: 50%;
+    top: 3px;
+    transform: translateX(-50%);
+    color: #f3d98e;
+    font-size: 12px;
+    letter-spacing: 12px;
+}
+
+/* =====================================================
+   FULL CHIBI CHARACTERS
+===================================================== */
+
+.character {
+    position: absolute;
+    bottom: 9%;
+    width: 180px;
+    height: 340px;
+    transition:
+        left .8s cubic-bezier(.2,.8,.2,1),
+        right .8s cubic-bezier(.2,.8,.2,1),
+        transform .8s;
+}
+
+#boy {
+    left: 18%;
+}
+
+#girl {
+    right: 18%;
+}
+
+.character.closer#boy {
+    left: 25%;
+}
+
+.character.closer#girl {
+    right: 25%;
+}
+
+.head {
+    position: absolute;
+    width: 130px;
+    height: 135px;
+    left: 25px;
+    top: 5px;
+    border-radius: 48% 48% 44% 44%;
+    background: #e2b99d;
+    z-index: 8;
+}
+
+.boy-hair {
+    position: absolute;
+    width: 142px;
+    height: 142px;
+    left: 19px;
+    top: -6px;
+    background: #291512;
+    border-radius: 50% 50% 35% 45%;
+    z-index: 10;
+}
+
+.boy-hair::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 30px;
+    width: 35px;
+    height: 102px;
+    background: #291512;
+    border-radius: 50%;
+    transform: rotate(5deg);
+}
+
+.boy-hair::after {
+    content: "";
+    position: absolute;
+    right: 6px;
+    top: 29px;
+    width: 36px;
+    height: 105px;
+    background: #291512;
+    border-radius: 50%;
+    transform: rotate(-4deg);
+}
+
+.girl-hair {
+    position: absolute;
+    width: 145px;
+    height: 150px;
+    left: 17px;
+    top: -7px;
+    background: #681e26;
+    border-radius: 50% 50% 38% 42%;
+    z-index: 10;
+}
+
+.girl-hair::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 65px;
+    width: 135px;
+    height: 100px;
+    background: #681e26;
+    border-radius: 0 0 48% 48%;
+}
+
+.girl-bangs {
+    position: absolute;
+    left: 32px;
+    top: 38px;
+    width: 96px;
+    height: 49px;
+    background: #681e26;
+    border-radius: 0 0 45% 45%;
+    z-index: 12;
+}
+
+.eye {
+    position: absolute;
+    top: 69px;
+    width: 14px;
+    height: 19px;
+    background: #4c2c25;
+    border-radius: 50%;
+    z-index: 20;
+}
+
+.eye.left {
+    left: 43px;
+}
+
+.eye.right {
+    right: 43px;
+}
+
+.lash {
+    position: absolute;
+    top: 65px;
+    width: 22px;
+    height: 13px;
+    border-top: 3px solid #34201d;
+    z-index: 21;
+}
+
+.lash.left {
+    left: 39px;
+    transform: rotate(-12deg);
+}
+
+.lash.right {
+    right: 39px;
+    transform: rotate(12deg);
+}
+
+.mouth {
+    position: absolute;
+    left: 58px;
+    top: 97px;
+    width: 15px;
+    height: 7px;
+    border-bottom: 2px solid #6b3035;
+    border-radius: 0 0 50% 50%;
+    z-index: 20;
+}
+
+.face-blush {
+    position: absolute;
+    width: 29px;
+    height: 12px;
+    top: 94px;
+    background: rgba(213,92,112,.3);
+    filter: blur(5px);
+    border-radius: 50%;
+    z-index: 19;
+}
+
+.face-blush.left {
+    left: 19px;
+}
+
+.face-blush.right {
+    right: 19px;
+}
+
+.body {
+    position: absolute;
+    left: 43px;
+    top: 137px;
+    width: 95px;
+    height: 115px;
+    background: #d2a582;
+    border-radius: 40px 40px 25px 25px;
+    z-index: 3;
+}
+
+/* legs: neutral stylized base */
+.leg {
+    position: absolute;
+    top: 235px;
+    width: 30px;
+    height: 75px;
+    background: #d2a582;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+.leg.left-leg { left: 57px; }
+.leg.right-leg { right: 57px; }
+
+.arm {
+    position: absolute;
+    top: 147px;
+    width: 25px;
+    height: 92px;
+    background: #e2b99d;
+    border-radius: 25px;
+    z-index: 4;
+}
+
+.arm.left-arm {
+    left: 26px;
+    transform: rotate(8deg);
+}
+
+.arm.right-arm {
+    right: 26px;
+    transform: rotate(-8deg);
+}
+
+/* =====================================================
+   HAND HOLDING
+===================================================== */
+
+.holding-hand {
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    background: #e2b99d;
+    border-radius: 50%;
+    top: 218px;
+    z-index: 30;
+}
+
+#boy .holding-hand {
+    right: 18px;
+}
+
+#girl .holding-hand {
+    left: 18px;
+}
+
+/* outfits are dynamically inserted */
+.outfit {
+    position: absolute;
+    z-index: 15;
+    pointer-events: none;
+}
+
+/* =====================================================
+   OUTFIT PANEL
+===================================================== */
+
+#outfitControls {
+    position: absolute;
+    bottom: 4%;
+    width: min(650px, 94vw);
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    z-index: 100;
+}
+
+.outfit-category {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 8px;
+    border-radius: 15px;
+    border: 1px solid rgba(228,187,98,.75);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(113,29,52,.95),
+            rgba(70,14,29,.95)
+        );
+    color: #f9dfc9;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0,0,0,.25);
+}
+
+.outfit-category.active {
+    background:
+        linear-gradient(
+            135deg,
+            #c47f90,
+            #7b273d
+        );
+    color: #fff1e8;
+}
+
+/* =====================================================
+   OUTFIT CHOOSER
+===================================================== */
+
+#outfitChooser {
+    position: absolute;
+    inset: 0;
+    background: rgba(33,5,13,.86);
+    backdrop-filter: blur(8px);
+    z-index: 150;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: .4s;
+}
+
+#outfitChooser.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.chooser-inner {
+    width: min(700px, 92vw);
+    max-height: 85vh;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.chooser-title {
+    color: #f7d58e;
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(36px, 8vw, 54px);
+    margin: 0 0 20px;
+}
+
+.outfit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 13px;
+}
+
+.outfit-card {
+    min-height: 180px;
+    padding: 13px 8px;
+    border-radius: 16px;
+    border: 1px solid rgba(229,184,95,.55);
+    background:
+        linear-gradient(
+            150deg,
+            rgba(235,177,191,.18),
+            rgba(77,14,30,.88)
+        );
+    cursor: pointer;
+    transition: transform .2s, border-color .2s;
+}
+
+.outfit-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold-light);
+}
+
+.outfit-number {
+    color: var(--gold-light);
+    font-size: 14px;
+}
+
+.outfit-preview {
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0;
+    position: relative;
+}
+
+/* preview mannequin */
+.preview-person {
+    width: 55px;
+    height: 80px;
+    position: relative;
+}
+
+.preview-head {
+    position: absolute;
+    left: 15px;
+    top: 0;
+    width: 28px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e2b99d;
+}
+
+.preview-body {
+    position: absolute;
+    left: 11px;
+    top: 27px;
+    width: 36px;
+    height: 50px;
+    border-radius: 14px;
+    background: #b86d7d;
+}
+
+.preview-label {
+    color: #f5d8d4;
+    font-size: 14px;
+    line-height: 1.05;
+}
+
+.close-chooser {
+    margin-top: 17px;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: #f5d89a;
+    border-radius: 10px;
+    padding: 7px 20px;
+    cursor: pointer;
+}
+
+/* preview outfit colors */
+.preview-deftones {
+    background: linear-gradient(#151316 0 55%, #171518 55%);
+}
+
+.preview-opeth {
+    background: linear-gradient(#4c3028 0 55%, #171518 55%);
+}
+
+.preview-vampire {
+    background:
+        linear-gradient(90deg, #24101b 0 30%, #7b1830 30% 70%, #24101b 70%);
+}
+
+.preview-pajamas {
+    background:
+        radial-gradient(circle, #7b1830 2px, transparent 3px),
+        #e9aabb;
+    background-size: 13px 13px;
+}
+
+.preview-fairy {
+    background:
+        linear-gradient(135deg, #f0b4c4, #d986a1);
+}
+
+/* =====================================================
+   READY
+===================================================== */
+
+#readyButton {
+    position: absolute;
+    bottom: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 120;
+    border: 1px solid var(--gold-light);
+    border-radius: 15px;
+    padding: 11px 35px;
+    background: linear-gradient(135deg,#b66d80,#6f1d35);
+    color: #fff1dd;
+    font-family: "Great Vibes", cursive;
+    font-size: 28px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: .4s;
+}
+
+#readyButton.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* =====================================================
+   PLAY AGAIN
+===================================================== */
+
+#playAgain {
+    position: absolute;
+    right: 6%;
+    top: 5%;
+    z-index: 300;
+    border: 1px solid rgba(229,190,104,.7);
+    background: rgba(70,13,28,.7);
+    color: #f7d9a0;
+    border-radius: 10px;
+    padding: 7px 14px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: .4s;
+}
+
+#playAgain.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* =====================================================
+   FINAL CELEBRATION
+===================================================== */
+
+#celebration {
+    position: absolute;
+    inset: 0;
+    z-index: 250;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .8s;
+}
+
+#celebration.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#goatedText {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    width: 90%;
+    transform: translate(-50%,-50%) scale(.5);
+    text-align: center;
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(40px, 10vw, 75px);
+    color: #f8d995;
+    text-shadow:
+        0 0 10px rgba(255,221,150,.75),
+        0 0 35px rgba(237,159,183,.35);
+    opacity: 0;
+}
+
+#celebration.show #goatedText {
+    animation: goated 4.2s ease forwards;
+}
+
+@keyframes goated {
+    0% {
+        opacity: 0;
+        transform: translate(-50%,-50%) scale(.45);
+    }
+
+    15% {
+        opacity: 1;
+        transform: translate(-50%,-50%) scale(1.08);
+    }
+
+    25%, 72% {
+        opacity: 1;
+        transform: translate(-50%,-50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%,-50%) scale(.9);
+    }
+}
+
+#finalHeart {
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    width: 40px;
+    height: 40px;
+    background: #e7a4b6;
+    transform: translate(-50%,-50%) rotate(-45deg) scale(.2);
+    opacity: 0;
+    border-radius: 8px 0 8px 8px;
+}
+
+#finalHeart::before,
+#finalHeart::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+#finalHeart::before {
+    top: -20px;
+}
+
+#finalHeart::after {
+    left: 20px;
+}
+
+#celebration.show #finalHeart {
+    animation: heartRise 3s ease forwards;
+}
+
+@keyframes heartRise {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 80px) rotate(-45deg) scale(.2);
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    55% {
+        transform: translate(-50%,-80px) rotate(-45deg) scale(1.1);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translate(-50%,-80px) rotate(-45deg) scale(1.1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%,-80px) rotate(-45deg) scale(2.5);
+        filter: brightness(2);
+    }
+}
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 13px;
+    left: 50%;
+    top: 48%;
+    z-index: 400;
+    pointer-events: none;
+    animation:
+        confettiFly var(--duration) cubic-bezier(.1,.7,.25,1) forwards;
+}
+
+@keyframes confettiFly {
+    0% {
+        opacity: 1;
+        transform: translate(-50%,-50%) rotate(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            rotate(var(--r));
+    }
+}
+
+/* =====================================================
+   FINISHED CHARACTER STYLING
+===================================================== */
+
+.finished .character {
+    transform: scale(.92);
+}
+
+.finished #dressStage {
+    transition: transform 1s;
+    transform: scale(.94);
+}
+
+/* =====================================================
+   OUTFITS — BOY
+===================================================== */
+
+.boy-outfit-1 .body {
+    background:
+        linear-gradient(
+            #18171a 0 52%,
+            #09090b 52%
+        );
+}
+
+.boy-outfit-1 .body::after {
+    content: "deftones";
+    position: absolute;
+    left: 12px;
+    top: 17px;
+    color: white;
+    font-family: Arial,sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.boy-outfit-1 .leg {
+    background: #121114;
+    width: 34px;
+}
+
+.boy-outfit-1::after {
+    content: "";
+    position: absolute;
+    left: 45px;
+    top: 295px;
+    width: 91px;
+    height: 23px;
+    background:
+        linear-gradient(
+            90deg,
+            #151419 0 43%,
+            transparent 43% 57%,
+            #151419 57%
+        );
+    border-radius: 8px;
+}
+
+.boy-outfit-2 .body {
+    background:
+        linear-gradient(
+            #4b3029 0 52%,
+            #09090b 52%
+        );
+}
+
+.boy-outfit-2 .body::after {
+    content: "opeth";
+    position: absolute;
+    left: 24px;
+    top: 17px;
+    color: white;
+    font-family: Arial,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.boy-outfit-2 .leg {
+    background: #121114;
+}
+
+.boy-outfit-2::after {
+    content: "";
+    position: absolute;
+    left: 45px;
+    top: 295px;
+    width: 91px;
+    height: 23px;
+    background:
+        linear-gradient(
+            90deg,
+            #151419 0 43%,
+            transparent 43% 57%,
+            #151419 57%
+        );
+    border-radius: 8px;
+}
+
+.boy-outfit-3 .body {
+    background:
+        linear-gradient(
+            90deg,
+            #23101a 0 30%,
+            #741b32 30% 70%,
+            #23101a 70%
+        );
+    border-radius: 25px 25px 12px 12px;
+}
+
+.boy-outfit-3 .body::before {
+    content: "";
+    position: absolute;
+    left: 38px;
+    top: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 38px solid #e5c982;
+}
+
+.boy-outfit-3 .leg {
+    background: #1b1016;
+}
+
+.boy-outfit-3::after {
+    content: "✦";
+    position: absolute;
+    right: 4px;
+    top: 170px;
+    color: #f0cf77;
+    font-size: 20px;
+}
+
+.boy-outfit-4 .body {
+    background:
+        radial-gradient(
+            circle,
+            #761b35 0 3px,
+            transparent 4px
+        ),
+        #e9a9ba;
+    background-size: 24px 24px;
+}
+
+.boy-outfit-4 .leg {
+    background: #e8a8ba;
+}
+
+.boy-outfit-4::after {
+    content: "☁";
+    position: absolute;
+    left: 45px;
+    top: 293px;
+    color: white;
+    font-size: 35px;
+    text-shadow: 0 2px 5px rgba(0,0,0,.15);
+}
+
+/* =====================================================
+   OUTFITS — GIRL
+===================================================== */
+
+.girl-outfit-1 .body {
+    background: #161518;
+    clip-path: polygon(
+        12% 0, 88% 0,
+        100% 100%, 0 100%
+    );
+}
+
+.girl-outfit-1 .body::after {
+    content: "deftones";
+    position: absolute;
+    left: 20px;
+    top: 17px;
+    color: white;
+    font-family: Arial,sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.girl-outfit-1 .leg {
+    background: #e2b99d;
+}
+
+.girl-outfit-1::after {
+    content: "";
+    position: absolute;
+    left: 44px;
+    top: 263px;
+    width: 93px;
+    height: 34px;
+    background: #171619;
+    clip-path: polygon(0 0,100% 0,82% 100%,18% 100%);
+}
+
+.girl-outfit-2 .body {
+    background: #51332a;
+    clip-path: polygon(
+        12% 0, 88% 0,
+        100% 100%, 0 100%
+    );
+}
+
+.girl-outfit-2 .body::after {
+    content: "opeth";
+    position: absolute;
+    left: 25px;
+    top: 17px;
+    color: white;
+    font-family: Arial,sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.girl-outfit-2::after {
+    content: "";
+    position: absolute;
+    left: 44px;
+    top: 263px;
+    width: 93px;
+    height: 34px;
+    background: white;
+    clip-path: polygon(0 0,100% 0,82% 100%,18% 100%);
+    border-bottom: 5px solid #cfcfd3;
+}
+
+.girl-outfit-3 .body {
+    background:
+        linear-gradient(
+            135deg,
+            #f4b8ca,
+            #d987a1
+        );
+    clip-path: polygon(
+        12% 0, 88% 0,
+        100% 100%, 0 100%
+    );
+}
+
+.girl-outfit-3 .body::before {
+    content: "✦";
+    position: absolute;
+    left: 38px;
+    top: 28px;
+    color: #fff4fa;
+    font-size: 24px;
+}
+
+.girl-outfit-3 .body::after {
+    content: "♡";
+    position: absolute;
+    right: 15px;
+    top: 52px;
+    color: white;
+    font-size: 18px;
+}
+
+.girl-outfit-3 .leg {
+    background: #d9a6b6;
+}
+
+.girl-outfit-3::after {
+    content: "✧";
+    position: absolute;
+    right: 5px;
+    top: 175px;
+    color: #f8e4f0;
+    font-size: 25px;
+}
+
+.girl-outfit-4 .body {
+    background:
+        radial-gradient(
+            circle,
+            #761b35 0 3px,
+            transparent 4px
+        ),
+        #e9a9ba;
+    background-size: 24px 24px;
+}
+
+.girl-outfit-4 .leg {
+    background: #e7a6b8;
+}
+
+.girl-outfit-4::after {
+    content: "☁";
+    position: absolute;
+    left: 44px;
+    top: 293px;
+    color: white;
+    font-size: 35px;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 620px) {
+
+    .outfit-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #dressStage {
+        top: 8%;
+        height: 53vh;
+    }
+
+    .character {
+        transform: scale(.76);
+        transform-origin: bottom center;
+    }
+
+    #boy {
+        left: 6%;
+    }
+
+    #girl {
+        right: 6%;
+    }
+
+    .character.closer#boy {
+        left: 15%;
+    }
+
+    .character.closer#girl {
+        right: 15%;
+    }
+
+    .stage-floor {
+        bottom: 4%;
+    }
+
+    #outfitControls {
+        bottom: 4%;
+    }
+
+    .outfit-category {
+        font-size: 14px;
+    }
+
+    #readyButton {
+        bottom: 5%;
+    }
+}
+
+@media (max-width: 390px) {
+
+    .character {
+        transform: scale(.66);
+    }
+
+    .character.closer#boy {
+        left: 9%;
+    }
+
+    .character.closer#girl {
+        right: 9%;
+    }
+
+    #dressStage {
+        height: 55vh;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<div id="game">
+
+    <div class="frame"></div>
+
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+
+
+    <!-- =================================================
+         PASSWORD
+    ================================================== -->
+
+    <section id="passwordScreen" class="screen active">
+
+        <div class="password-box">
+
+            <div class="crown">♛</div>
+
+            <div class="password-decoration">
+                A royal little secret...
+            </div>
+
+            <h1 class="password-title">
+                You know the password.
+            </h1>
+
+            <div class="password-line"></div>
+
+            <input
+                id="codeInput"
+                class="code-input"
+                type="password"
+                inputmode="numeric"
+                maxlength="3"
+                autocomplete="off"
+                aria-label="Password"
+            >
+
+            <br>
+
+            <button class="unlock" id="unlockButton">
+                Enter ♡
+            </button>
+
+            <div class="error" id="passwordError">
+                The kingdom rejects this code...
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         START SCREEN
+    ================================================== -->
+
+    <section id="startScreen" class="screen">
+
+        <h1 class="game-title">
+            Legendary Couple's
+            <span>Style</span>
+        </h1>
+
+
+        <!-- Chibi vampire -->
+        <div class="start-characters">
+
+            <div class="mini-character left">
+
+                <div class="mini-hair-boy"></div>
+
+                <div class="mini-head">
+
+                    <div class="mini-eye left-eye"></div>
+                    <div class="mini-eye right-eye"></div>
+
+                    <div class="mini-mouth"></div>
+
+                    <div class="blush left-blush"></div>
+                    <div class="blush right-blush"></div>
+
+                </div>
+
+                <div class="mini-body"></div>
+
+                <div class="mini-arm arm-left"></div>
+                <div class="mini-arm arm-right"></div>
+
+                <div class="hands hand-boy"></div>
+
+            </div>
+
+
+            <!-- Chibi fairy -->
+            <div class="mini-character right">
+
+                <div class="mini-hair-girl"></div>
+                <div class="mini-bangs"></div>
+
+                <div class="mini-head">
+
+                    <div class="mini-eye left-eye"></div>
+                    <div class="mini-eye right-eye"></div>
+
+                    <div class="mini-lash left-lash"></div>
+                    <div class="mini-lash right-lash"></div>
+
+                    <div class="mini-mouth"></div>
+
+                    <div class="blush left-blush"></div>
+                    <div class="blush right-blush"></div>
+
+                </div>
+
+                <div class="mini-body"></div>
+
+                <div class="mini-arm arm-left"></div>
+                <div class="mini-arm arm-right"></div>
+
+                <div class="hands hand-girl"></div>
+
+            </div>
+
+        </div>
+
+
+        <button id="playButton">
+            Play
+        </button>
+
+    </section>
+
+
+    <!-- =================================================
+         DRESS-UP SCREEN
+    ================================================== -->
+
+    <section id="dressScreen" class="screen">
+
+        <button id="playAgain">
+            ↻ Play again
+        </button>
+
+
+        <div id="dressStage">
+
+            <!-- BOY -->
+            <div class="character" id="boy">
+
+                <div class="boy-hair"></div>
+
+                <div class="head">
+
+                    <div class="eye left"></div>
+                    <div class="eye right"></div>
+
+                    <div class="mouth"></div>
+
+                    <div class="face-blush left"></div>
+                    <div class="face-blush right"></div>
+
+                </div>
+
+                <div class="body"></div>
+
+                <div class="arm left-arm"></div>
+                <div class="arm right-arm"></div>
+
+                <div class="leg left-leg"></div>
+                <div class="leg right-leg"></div>
+
+                <div class="holding-hand"></div>
+
+            </div>
+
+
+            <!-- GIRL -->
+            <div class="character" id="girl">
+
+                <div class="girl-hair"></div>
+                <div class="girl-bangs"></div>
+
+                <div class="head">
+
+                    <div class="eye left"></div>
+                    <div class="eye right"></div>
+
+                    <div class="lash left"></div>
+                    <div class="lash right"></div>
+
+                    <div class="mouth"></div>
+
+                    <div class="face-blush left"></div>
+                    <div class="face-blush right"></div>
+
+                </div>
+
+                <div class="body"></div>
+
+                <div class="arm left-arm"></div>
+                <div class="arm right-arm"></div>
+
+                <div class="leg left-leg"></div>
+                <div class="leg right-leg"></div>
+
+                <div class="holding-hand"></div>
+
+            </div>
+
+
+            <div class="stage-floor"></div>
+
+        </div>
+
+
+        <!-- OUTFIT BUTTONS -->
+
+        <div id="outfitControls">
+
+            <button
+                class="outfit-category"
+                id="boyOutfitsButton"
+            >
+                Outfits for Burak.
+            </button>
+
+            <button
+                class="outfit-category"
+                id="girlOutfitsButton"
+            >
+                Outfits for Elanie.
+            </button>
+
+        </div>
+
+
+        <!-- READY -->
+
+        <button id="readyButton">
+            Ready.
+        </button>
+
+
+        <!-- OUTFIT MODAL -->
+
+        <div id="outfitChooser">
+
+            <div class="chooser-inner">
+
+                <h2
+                    class="chooser-title"
+                    id="chooserTitle"
+                >
+                    Outfits
+                </h2>
+
+                <div class="outfit-grid">
+
+                    <div
+                        class="outfit-card"
+                        data-outfit="1"
+                    >
+
+                        <div class="outfit-number">
+                            OUTFIT I
+                        </div>
+
+                        <div class="outfit-preview">
+                            <div class="preview-person">
+                                <div class="preview-head"></div>
+                                <div class="preview-body preview-deftones"></div>
+                            </div>
+                        </div>
+
+                        <div class="preview-label">
+                            Deftones
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="outfit-card"
+                        data-outfit="2"
+                    >
+
+                        <div class="outfit-number">
+                            OUTFIT II
+                        </div>
+
+                        <div class="outfit-preview">
+                            <div class="preview-person">
+                                <div class="preview-head"></div>
+                                <div class="preview-body preview-opeth"></div>
+                            </div>
+                        </div>
+
+                        <div class="preview-label">
+                            Opeth
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="outfit-card"
+                        data-outfit="3"
+                    >
+
+                        <div class="outfit-number">
+                            OUTFIT III
+                        </div>
+
+                        <div class="outfit-preview">
+                            <div class="preview-person">
+                                <div class="preview-head"></div>
+                                <div class="preview-body preview-vampire"></div>
+                            </div>
+                        </div>
+
+                        <div class="preview-label">
+                            Royal Fantasy
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="outfit-card"
+                        data-outfit="4"
+                    >
+
+                        <div class="outfit-number">
+                            OUTFIT IV
+                        </div>
+
+                        <div class="outfit-preview">
+                            <div class="preview-person">
+                                <div class="preview-head"></div>
+                                <div class="preview-body preview-pajamas"></div>
+                            </div>
+                        </div>
+
+                        <div class="preview-label">
+                            Heart Pajamas
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="close-chooser"
+                    id="closeChooser"
+                >
+                    Close
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- CELEBRATION -->
+
+        <div id="celebration">
+
+            <div id="finalHeart"></div>
+
+            <div id="goatedText">
+                Goated couple is ready!
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- =====================================================
+     OPTIONAL BACKGROUND MUSIC
+     
+     Put a royalty-free file named "music.mp3"
+     next to this HTML if desired.
+====================================================== -->
+
+<audio
+    id="bgMusic"
+    src="music.mp3"
+    loop
+    preload="auto"
+></audio>
+
+
+<script>
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const passwordScreen =
+    document.getElementById("passwordScreen");
+
+const startScreen =
+    document.getElementById("startScreen");
+
+const dressScreen =
+    document.getElementById("dressScreen");
+
+const codeInput =
+    document.getElementById("codeInput");
+
+const unlockButton =
+    document.getElementById("unlockButton");
+
+const passwordError =
+    document.getElementById("passwordError");
+
+const playButton =
+    document.getElementById("playButton");
+
+const boyOutfitsButton =
+    document.getElementById("boyOutfitsButton");
+
+const girlOutfitsButton =
+    document.getElementById("girlOutfitsButton");
+
+const outfitChooser =
+    document.getElementById("outfitChooser");
+
+const chooserTitle =
+    document.getElementById("chooserTitle");
+
+const closeChooser =
+    document.getElementById("closeChooser");
+
+const outfitCards =
+    document.querySelectorAll(".outfit-card");
+
+const boy =
+    document.getElementById("boy");
+
+const girl =
+    document.getElementById("girl");
+
+const outfitControls =
+    document.getElementById("outfitControls");
+
+const readyButton =
+    document.getElementById("readyButton");
+
+const celebration =
+    document.getElementById("celebration");
+
+const playAgain =
+    document.getElementById("playAgain");
+
+const bgMusic =
+    document.getElementById("bgMusic");
+
+
+/* =====================================================
+   GAME STATE
+===================================================== */
+
+let currentTarget = null;
+
+let boyChosen = false;
+let girlChosen = false;
+
+let boyOutfit = 0;
+let girlOutfit = 0;
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+/*
+   Modern browsers generally block audio autoplay before
+   a user gesture. The password button is the first
+   interaction, so we attempt playback there.
+
+   If music.mp3 does not exist, the error is silently
+   ignored and the game continues normally.
+*/
+
+function startMusic() {
+
+    if (!bgMusic) return;
+
+    bgMusic.volume = 0.22;
+
+    const promise = bgMusic.play();
+
+    if (promise && typeof promise.catch === "function") {
+        promise.catch(() => {
+            /* No music file or autoplay restriction. */
+        });
+    }
+}
+
+
+/* =====================================================
+   SCREEN TRANSITION
+===================================================== */
+
+function showScreen(screen) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(item => item.classList.remove("active"));
+
+    screen.classList.add("active");
+}
+
+
+/* =====================================================
+   PASSWORD
+===================================================== */
+
+function unlockGame() {
+
+    if (codeInput.value === "666") {
+
+        startMusic();
+
+        passwordScreen.classList.remove("active");
+
+        setTimeout(() => {
+            showScreen(startScreen);
+        }, 250);
+
+    } else {
+
+        passwordError.classList.add("show");
+
+        codeInput.animate(
+            [
+                { transform: "translateX(0)" },
+                { transform: "translateX(-7px)" },
+                { transform: "translateX(7px)" },
+                { transform: "translateX(-5px)" },
+                { transform: "translateX(0)" }
+            ],
+            {
+                duration: 350
+            }
+        );
+
+        setTimeout(() => {
+            passwordError.classList.remove("show");
+        }, 1700);
+    }
+}
+
+unlockButton.addEventListener(
+    "click",
+    unlockGame
+);
+
+codeInput.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "Enter") {
+            unlockGame();
+        }
+
+    }
+);
+
+codeInput.addEventListener(
+    "input",
+    () => {
+
+        codeInput.value =
+            codeInput.value
+                .replace(/\D/g, "")
+                .slice(0, 3);
+
+    }
+);
+
+
+/* =====================================================
+   PLAY
+===================================================== */
+
+playButton.addEventListener(
+    "click",
+    () => {
+
+        showScreen(dressScreen);
+
+        setTimeout(() => {
+            boy.style.left = "18%";
+            girl.style.right = "18%";
+        }, 50);
+
+    }
+);
+
+
+/* =====================================================
+   OPEN OUTFITS
+===================================================== */
+
+boyOutfitsButton.addEventListener(
+    "click",
+    () => {
+
+        currentTarget = "boy";
+
+        chooserTitle.textContent =
+            "Outfits for Burak.";
+
+        outfitChooser.classList.add("active");
+
+    }
+);
+
+girlOutfitsButton.addEventListener(
+    "click",
+    () => {
+
+        currentTarget = "girl";
+
+        chooserTitle.textContent =
+            "Outfits for Elanie.";
+
+        outfitChooser.classList.add("active");
+
+    }
+);
+
+
+/* =====================================================
+   CLOSE OUTFITS
+===================================================== */
+
+closeChooser.addEventListener(
+    "click",
+    () => {
+
+        outfitChooser.classList.remove("active");
+
+    }
+);
+
+
+/* =====================================================
+   APPLY OUTFIT
+===================================================== */
+
+outfitCards.forEach(card => {
+
+    card.addEventListener(
+        "click",
+        () => {
+
+            const number =
+                Number(card.dataset.outfit);
+
+            if (currentTarget === "boy") {
+
+                applyBoyOutfit(number);
+
+                boyChosen = true;
+                boyOutfit = number;
+
+            }
+
+            if (currentTarget === "girl") {
+
+                applyGirlOutfit(number);
+
+                girlChosen = true;
+                girlOutfit = number;
+
+            }
+
+            outfitChooser.classList.remove("active");
+
+            checkReady();
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   BOY OUTFIT
+===================================================== */
+
+function applyBoyOutfit(number) {
+
+    boy.classList.remove(
+        "boy-outfit-1",
+        "boy-outfit-2",
+        "boy-outfit-3",
+        "boy-outfit-4"
+    );
+
+    boy.classList.add(
+        `boy-outfit-${number}`
+    );
+
+}
+
+
+/* =====================================================
+   GIRL OUTFIT
+===================================================== */
+
+function applyGirlOutfit(number) {
+
+    girl.classList.remove(
+        "girl-outfit-1",
+        "girl-outfit-2",
+        "girl-outfit-3",
+        "girl-outfit-4"
+    );
+
+    girl.classList.add(
+        `girl-outfit-${number}`
+    );
+
+}
+
+
+/* =====================================================
+   READY CHECK
+===================================================== */
+
+function checkReady() {
+
+    if (boyChosen && girlChosen) {
+
+        readyButton.classList.add("show");
+
+    }
+
+}
+
+
+/* =====================================================
+   READY
+===================================================== */
+
+readyButton.addEventListener(
+    "click",
+    finishGame
+);
+
+
+function finishGame() {
+
+    outfitControls.style.opacity = "0";
+    outfitControls.style.pointerEvents = "none";
+
+    readyButton.classList.remove("show");
+
+    boy.classList.add("closer");
+    girl.classList.add("closer");
+
+    dressScreen.classList.add("finished");
+
+    setTimeout(() => {
+
+        celebration.classList.add("show");
+
+        createCelebrationConfetti();
+
+    }, 650);
+
+
+    /*
+       The celebration message lasts several seconds.
+       Then only the dressed couple remains.
+    */
+
+    setTimeout(() => {
+
+        celebration.classList.remove("show");
+
+        playAgain.classList.add("show");
+
+    }, 4800);
+
+}
+
+
+/* =====================================================
+   GOLD + PINK CONFETTI
+===================================================== */
+
+function createCelebrationConfetti() {
+
+    const colors = [
+        "#f3d58a",
+        "#e6a7b8",
+        "#fff0cf",
+        "#a94c68",
+        "#d7b45e"
+    ];
+
+    for (let i = 0; i < 90; i++) {
+
+        const confetti =
+            document.createElement("div");
+
+        confetti.className =
+            "confetti";
+
+        const angle =
+            Math.random() * Math.PI * 2;
+
+        const distance =
+            130 + Math.random() * 450;
+
+        const x =
+            Math.cos(angle) * distance;
+
+        const y =
+            Math.sin(angle) * distance;
+
+        const rotation =
+            Math.random() * 900 - 450;
+
+        const duration =
+            1.6 + Math.random() * 2.4;
+
+        confetti.style.setProperty(
+            "--x",
+            `${x}px`
+        );
+
+        confetti.style.setProperty(
+            "--y",
+            `${y}px`
+        );
+
+        confetti.style.setProperty(
+            "--r",
+            `${rotation}deg`
+        );
+
+        confetti.style.setProperty(
+            "--duration",
+            `${duration}s`
+        );
+
+        confetti.style.background =
+            colors[
+                Math.floor(
+                    Math.random() * colors.length
+                )
+            ];
+
+        confetti.style.width =
+            `${5 + Math.random() * 7}px`;
+
+        confetti.style.height =
+            `${7 + Math.random() * 10}px`;
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, duration * 1000 + 100);
+    }
+}
+
+
+/* =====================================================
+   PLAY AGAIN
+===================================================== */
+
+playAgain.addEventListener(
+    "click",
+    resetGame
+);
+
+
+function resetGame() {
+
+    boyChosen = false;
+    girlChosen = false;
+
+    boyOutfit = 0;
+    girlOutfit = 0;
+
+    boy.classList.remove(
+        "boy-outfit-1",
+        "boy-outfit-2",
+        "boy-outfit-3",
+        "boy-outfit-4",
+        "closer"
+    );
+
+    girl.classList.remove(
+        "girl-outfit-1",
+        "girl-outfit-2",
+        "girl-outfit-3",
+        "girl-outfit-4",
+        "closer"
+    );
+
+    celebration.classList.remove("show");
+
+    playAgain.classList.remove("show");
+
+    outfitControls.style.opacity = "1";
+    outfitControls.style.pointerEvents = "auto";
+
+    readyButton.classList.remove("show");
+
+    showScreen(startScreen);
+
+}
+
+
+/* =====================================================
+   PREVENT ACCIDENTAL CONTEXT MENU
+===================================================== */
+
+document.addEventListener(
+    "contextmenu",
+    event => event.preventDefault()
+);
+
+</script>
+
+</body>
+</html>
